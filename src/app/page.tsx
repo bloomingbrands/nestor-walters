@@ -5,6 +5,7 @@ import { BentoGridShowcase } from "@/components/ui/bento-grid";
 import { PolaroidCard } from "@/components/ui/polaroid-card";
 import { PoemCard } from "@/components/ui/poem-card";
 import { Card } from "@/components/ui/card";
+import { VeteranTransferScene } from "@/components/ui/veteran-transfer-scene";
 
 // --- Center Portrait ---
 
@@ -185,6 +186,8 @@ export default function Home() {
           />
         </div>
       </section>
+
+      <VeteranTransferScene />
     </>
   );
 }

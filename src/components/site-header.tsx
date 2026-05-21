@@ -116,6 +116,7 @@ export function SiteHeader() {
               </button>
             </div>
           </div>
+        </div>
       </header>
 
       <div
