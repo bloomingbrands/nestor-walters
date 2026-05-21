@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function NewsletterCorrespondence() {
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -14,6 +15,10 @@ export function NewsletterCorrespondence() {
     if (!email || !email.includes("@")) {
       setError("A valid address, please.");
       inputRef.current?.focus();
+      return;
+    }
+    if (!consent) {
+      setError("Please confirm your wish to receive correspondence.");
       return;
     }
     setError("");
@@ -93,9 +98,9 @@ export function NewsletterCorrespondence() {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 onSubmit={handleSubmit}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0 max-w-sm mx-auto"
+                className="flex flex-col items-center gap-4 max-w-sm mx-auto"
               >
-                <div className="relative flex-1">
+                <div className="relative w-full">
                   <input
                     ref={inputRef}
                     type="email"
@@ -123,9 +128,41 @@ export function NewsletterCorrespondence() {
                     </motion.p>
                   )}
                 </div>
+
+                <label className="flex items-start gap-3 mt-2 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={consent}
+                    onChange={(e) => {
+                      setConsent(e.target.checked);
+                      if (error) setError("");
+                    }}
+                    className="sr-only peer"
+                  />
+                  <span
+                    className="mt-0.5 w-3.5 h-3.5 rounded-sm border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-white/40 peer-checked:bg-white/15 peer-checked:border-white/40 shrink-0"
+                  >
+                    <svg
+                      className="w-2.5 h-2.5 text-white/60 opacity-0 peer-checked:opacity-100 transition-opacity duration-300"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={3}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <span
+                    className="text-[11px] leading-relaxed text-white/35 transition-colors duration-300 group-hover:text-white/50"
+                    style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
+                  >
+                    I would like to receive this correspondence.
+                  </span>
+                </label>
+
                 <button
                   type="submit"
-                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/50 transition-colors duration-500 hover:text-white/90 sm:ml-6 sm:mt-0 mt-2"
+                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/50 transition-colors duration-500 hover:text-white/90 mt-2"
                   style={{ fontFamily: "var(--font-geist-mono)" }}
                 >
                   <span className="relative z-10">Send</span>
