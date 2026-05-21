@@ -6,6 +6,7 @@ import { PolaroidCard } from "@/components/ui/polaroid-card";
 import { PoemCard } from "@/components/ui/poem-card";
 import { Card } from "@/components/ui/card";
 import { VeteranTransferScene } from "@/components/ui/veteran-transfer-scene";
+import { NewsletterCorrespondence } from "@/components/ui/newsletter-correspondence";
 
 // --- Center Portrait ---
 
@@ -188,6 +189,7 @@ export default function Home() {
       </section>
 
       <VeteranTransferScene />
+      <NewsletterCorrespondence />
     </>
   );
 }
