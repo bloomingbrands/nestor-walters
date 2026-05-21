@@ -366,11 +366,11 @@ export function VeteranTransferScene() {
           >
             <div className="h-full border border-amber-900/10 p-2">
               <div className="space-y-1.5">
-                {[...Array(8)].map((_, i) => (
+                {[68, 74, 62, 80, 71, 65, 78, 72].map((w, i) => (
                   <div
                     key={i}
                     className="h-px bg-amber-900/20"
-                    style={{ width: `${60 + Math.random() * 30}%` }}
+                    style={{ width: `${w}%` }}
                   />
                 ))}
               </div>
@@ -392,11 +392,11 @@ export function VeteranTransferScene() {
           >
             <div className="h-full border border-stone-800/10 p-2 flex flex-col justify-between">
               <div className="space-y-1">
-                {[...Array(5)].map((_, i) => (
+                {[78, 84, 72, 90, 81].map((w, i) => (
                   <div
                     key={i}
                     className="h-px bg-stone-800/15"
-                    style={{ width: `${70 + Math.random() * 25}%` }}
+                    style={{ width: `${w}%` }}
                   />
                 ))}
               </div>
