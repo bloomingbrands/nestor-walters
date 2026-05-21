@@ -173,7 +173,7 @@ export function VeteranTransferScene() {
       {/* Layered content */}
       <div
         ref={layersRef}
-        className="relative min-h-[150vh] md:min-h-[180vh]"
+        className="relative min-h-[100vh] md:min-h-[120vh]"
       >
         {/* Background layer: subtle campus architecture suggestion */}
         <div
@@ -411,7 +411,7 @@ export function VeteranTransferScene() {
         </div>
 
         {/* Central text content */}
-        <div className="relative z-30 flex flex-col items-center justify-center min-h-[100vh] px-6 py-24 md:py-32">
+        <div className="relative z-30 flex flex-col items-center justify-center min-h-[70vh] px-6 py-16 md:py-20">
           <div className="max-w-3xl text-center">
             <p
               data-vtp-reveal
