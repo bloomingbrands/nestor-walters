@@ -8,9 +8,10 @@ export function NewsletterCorrespondence() {
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes("@")) {
       setError("A valid address, please.");
@@ -21,8 +22,30 @@ export function NewsletterCorrespondence() {
       setError("Please confirm your wish to receive correspondence.");
       return;
     }
+
     setError("");
-    setSubmitted(true);
+    setSending(true);
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "The message could not be sent.");
+        setSending(false);
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("The message could not be sent.");
+      setSending(false);
+    }
   };
 
   return (
@@ -105,13 +128,14 @@ export function NewsletterCorrespondence() {
                     ref={inputRef}
                     type="email"
                     value={email}
+                    disabled={sending}
                     onChange={(e) => {
                       setEmail(e.target.value);
                       if (error) setError("");
                     }}
                     placeholder="your address"
                     required
-                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-sm text-white/80 placeholder:text-white/25 focus:border-white/50 focus:outline-none transition-colors duration-500"
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-sm text-white/80 placeholder:text-white/25 focus:border-white/50 focus:outline-none transition-colors duration-500 disabled:text-white/40 disabled:cursor-not-allowed"
                     style={{
                       fontFamily: "var(--font-geist-sans)",
                       fontWeight: 300,
@@ -133,6 +157,7 @@ export function NewsletterCorrespondence() {
                   <input
                     type="checkbox"
                     checked={consent}
+                    disabled={sending}
                     onChange={(e) => {
                       setConsent(e.target.checked);
                       if (error) setError("");
@@ -162,11 +187,12 @@ export function NewsletterCorrespondence() {
 
                 <button
                   type="submit"
-                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/50 transition-colors duration-500 hover:text-white/90 mt-2"
+                  disabled={sending}
+                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/50 transition-colors duration-500 hover:text-white/90 disabled:text-white/25 disabled:cursor-not-allowed mt-2"
                   style={{ fontFamily: "var(--font-geist-mono)" }}
                 >
-                  <span className="relative z-10">Send</span>
-                  <span className="absolute bottom-2 left-6 right-6 h-px bg-white/20 transition-all duration-500 group-hover:bg-white/50" />
+                  <span className="relative z-10">{sending ? "Sending..." : "Send"}</span>
+                  <span className="absolute bottom-2 left-6 right-6 h-px bg-white/20 transition-all duration-500 group-hover:bg-white/50 disabled:bg-white/10" />
                 </button>
               </motion.form>
             ) : (
