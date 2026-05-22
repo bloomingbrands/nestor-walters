@@ -1,0 +1,96 @@
+{
+  "theme": "LIGHT",
+  "archetype": "4 (Swiss & High-Contrast)",
+  "emotional_tone": "Authoritative, raw, poetic, structured",
+  "design_direction": "Bold modernist, editorial brutalism, asymmetric grid, strong typography-as-image, exposed grid lines.",
+  "colors": {
+    "background": "#F4F4F0",
+    "foreground": "#0F0F0F",
+    "surface": "#EAEAEA",
+    "border": "#0F0F0F",
+    "accent": "#FF3B00",
+    "accent_hover": "#D93200",
+    "muted_text": "#555555"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Chivo",
+      "body": "Cormorant Garamond",
+      "mono": "Space Mono"
+    },
+    "scale": {
+      "h1": "text-6xl sm:text-7xl lg:text-8xl font-black tracking-tighter uppercase",
+      "h2": "text-4xl sm:text-5xl font-black tracking-tight uppercase",
+      "h3": "text-2xl sm:text-3xl font-bold",
+      "body": "text-lg sm:text-xl font-serif leading-relaxed",
+      "meta": "text-xs sm:text-sm font-mono tracking-[0.2em] uppercase"
+    },
+    "rules": [
+      "Use tight letter spacing on large headings.",
+      "Meta labels and overlines must use Space Mono, uppercase, wide tracking.",
+      "Poems and prose must use Cormorant Garamond for an elegant, literary contrast to the brutalist headers."
+    ]
+  },
+  "layout_and_spacing": {
+    "grid_system": "Asymmetric bento/editorial grids. Exposed 1px black borders separating sections.",
+    "spacing_scale": "Generous internal padding for text (p-8 to p-12).",
+    "alignment": "Strict grid alignment, frequent use of left-aligned text within bordered blocks. Never center-align body text."
+  },
+  "components": {
+    "hero": {
+      "style": "Massive typography for 'NESTOR WALTERS'. Exposed borders. Hero image placed as a stark block inside a grid cell. Accent color used for a subtle graphical element or single word."
+    },
+    "selected_work": {
+      "style": "Instead of friendly sticky notes, present the poems as a rigid, archival index. Monospace meta-data for the publication source, paired with elegant serif for the poem excerpt. Housed in a harsh grid."
+    },
+    "photo_series": {
+      "style": "High contrast black and white images. Hard borders. Captions in monospace."
+    },
+    "veteran_transfer_project": {
+      "style": "Layout resembling classified documents or forms. Use grid blocks for the Stanford / U. Maine / DD-214 text. Buttons should be stark, solid black or accent colored with sharp corners."
+    },
+    "newsletter": {
+      "style": "Editorial form block. Hard borders on inputs. No rounded corners."
+    }
+  },
+  "media": {
+    "image_urls": {
+      "hero_silhouette": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/80950cd3-ba3d-4e26-910f-4febc1ac68dd/images/1e598c9e0d729270ff135355ab9d289394b9ade4d8f9318bd030b9d70ec77001.png",
+        "description": "Minimalist portrait silhouette of a man by the ocean, high contrast, used for the Hero or Bio section."
+      },
+      "the_ascent": {
+        "url": "https://images.unsplash.com/reserve/aOcWqRTfQ12uwr3wWevA_14401305508_804b300054_o.jpg?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMGFzY2VudCUyMG1pbmltYWx8ZW58MHx8fHwxNzc5NDE2ODk1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Minimalist mountain ascent, used for 'The ascent' card."
+      },
+      "between_deployments": {
+        "url": "https://images.pexels.com/photos/30037147/pexels-photo-30037147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Minimalist ocean waves, used for 'Between deployments' card."
+      },
+      "earth_and_memory": {
+        "url": "https://images.unsplash.com/photo-1624973192803-c52b7530afe8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwxfHxlYXJ0aCUyMHRleHR1cmUlMjBhYnN0cmFjdHxlbnwwfHx8fDE3Nzk0MTY4OTV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract earth texture, used for 'Earth & memory' card."
+      },
+      "veteran_documents": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/80950cd3-ba3d-4e26-910f-4febc1ac68dd/images/c7d0486b9e68461cf8963a99f927d4723bffecde00b7944787b80a10968f132a.png",
+        "description": "Vintage military documents, used for the Veteran Transfer Project section."
+      }
+    },
+    "style": "Images should ideally have a grayscale or high-contrast filter applied via CSS (e.g., grayscale, contrast-125) to fit the bold modernist theme."
+  },
+  "interactive_elements": {
+    "buttons": "Square edges, high contrast. Hover states should invert colors or slide in the accent color.",
+    "hover_effects": "Subtle translation or stark color inversion. No soft shadows."
+  },
+  "accessibility": {
+    "testing": "All interactive and key informational elements MUST include a data-testid attribute in kebab-case."
+  },
+  "instructions_to_main_agent": [
+    "Build a static landing page using React, Tailwind CSS, and lucide-react.",
+    "Use grid lines extensively. Wrap sections in border-black/10 or border-black grids. This is an editorial brutalist design, so borders are visible and act as structural art.",
+    "Import Google Fonts: Chivo (headings), Cormorant Garamond (poems/body), Space Mono (meta/labels).",
+    "Ensure image wrappers use grayscale filter to maintain the stark monochrome palette, unless it's the accent.",
+    "No purple, teal, or typical SaaS aesthetics. Keep it raw, paper-like, and heavily reliant on typographic tension.",
+    "For the Selected Work section, design an archival ledger or rigid grid instead of the old sticky note style."
+  ]
+}

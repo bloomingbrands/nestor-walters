@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 interface FloatingLetterProps {
   children: React.ReactNode;
@@ -150,7 +151,6 @@ export function VeteranTransferScene() {
       ref={sectionRef}
       id="veteran-transfer"
       className="relative w-full overflow-hidden"
-      style={{ backgroundColor: "oklch(0.08 0.005 55)" }}
     >
       {/* Atmospheric gradient overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
@@ -173,7 +173,7 @@ export function VeteranTransferScene() {
       {/* Layered content */}
       <div
         ref={layersRef}
-        className="relative min-h-[100vh] md:min-h-[120vh]"
+        className="relative min-h-[80vh] md:min-h-[90vh]"
       >
         {/* Background layer: subtle campus architecture suggestion */}
         <div
@@ -366,9 +366,9 @@ export function VeteranTransferScene() {
           >
             <div className="h-full border border-amber-900/10 p-2">
               <div className="space-y-1.5">
-                {[68, 74, 62, 80, 71, 65, 78, 72].map((w, i) => (
+                {[68, 74, 62, 80, 71, 65, 78, 72].map((w) => (
                   <div
-                    key={i}
+                    key={w}
                     className="h-px bg-amber-900/20"
                     style={{ width: `${w}%` }}
                   />
@@ -392,9 +392,9 @@ export function VeteranTransferScene() {
           >
             <div className="h-full border border-stone-800/10 p-2 flex flex-col justify-between">
               <div className="space-y-1">
-                {[78, 84, 72, 90, 81].map((w, i) => (
+                {[78, 84, 72, 90, 81].map((w) => (
                   <div
-                    key={i}
+                    key={w}
                     className="h-px bg-stone-800/15"
                     style={{ width: `${w}%` }}
                   />
@@ -439,7 +439,7 @@ export function VeteranTransferScene() {
 
             <p
               data-vtp-reveal
-              className="text-sm text-white/40 leading-relaxed mb-10 max-w-xl mx-auto"
+              className="text-sm text-white/55 leading-relaxed mb-10 max-w-xl mx-auto"
               style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
             >
               Service develops discipline. Education expands possibility. The transition between the two should never be walked alone. Built from lived experience, this project offers guidance, strategy, and mentorship for veterans pursuing higher education and long-term transformation.
@@ -449,22 +449,22 @@ export function VeteranTransferScene() {
               data-vtp-reveal
               className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
             >
-              <a
-                href="#"
+              <Link
+                href="#veteran-transfer"
                 className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] text-white/80 transition-colors duration-500 hover:text-white"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
                 <span className="relative z-10">Explore the Mission</span>
                 <span className="absolute inset-0 border border-white/20 transition-all duration-500 group-hover:border-white/40 group-hover:bg-white/5" />
-              </a>
-              <a
-                href="#"
-                className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] text-white/50 transition-colors duration-500 hover:text-white/80"
+              </Link>
+              <Link
+                href="/blog"
+                className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] text-white/60 transition-colors duration-500 hover:text-white/80"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
                 <span className="relative z-10">Read the Manual</span>
                 <span className="absolute inset-0 border border-white/10 transition-all duration-500 group-hover:border-white/25" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

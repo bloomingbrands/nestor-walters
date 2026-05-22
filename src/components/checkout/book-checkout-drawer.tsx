@@ -4,6 +4,7 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { checkoutShippingSchema, type CheckoutShipping } from "@/lib/checkout-schema";
 import { useCart } from "@/context/cart-context";
+import Link from "next/link";
 
 const emptyShipping: CheckoutShipping = {
   fullName: "",
@@ -95,7 +96,7 @@ export function BookCheckoutDrawer({ paypalClientId }: BookCheckoutDrawerProps) 
   return (
     <>
       <div
-        className="fixed inset-0 z-200 bg-black/70 transition-opacity"
+        className="fixed inset-0 z-[200] bg-black/70 transition-opacity"
         aria-hidden
         onClick={handleCloseCheckout}
       />
@@ -104,7 +105,7 @@ export function BookCheckoutDrawer({ paypalClientId }: BookCheckoutDrawerProps) 
         role="dialog"
         aria-modal
         aria-label="Checkout"
-        className="fixed inset-y-0 right-0 z-210 flex w-[min(100%,24rem)] flex-col border-l border-white/10 bg-zinc-950 shadow-[-16px_0_48px_rgba(0,0,0,0.5)]"
+        className="fixed inset-y-0 right-0 z-[210] flex w-[min(100%,24rem)] flex-col border-l border-white/10 bg-zinc-950 shadow-[-16px_0_48px_rgba(0,0,0,0.5)]"
       >
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-white/10 px-4">
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -128,9 +129,9 @@ export function BookCheckoutDrawer({ paypalClientId }: BookCheckoutDrawerProps) 
                 <p className="text-sm leading-relaxed text-zinc-500">
                   Your cart is empty. Open a book page and choose{" "}
                   <span className="text-zinc-400">Add to cart</span>, or browse{" "}
-                  <a href="/books" className="text-amber-100/90 underline-offset-4 hover:underline">
+                  <Link href="/books" className="text-amber-100/90 underline-offset-4 hover:underline">
                     Books
-                  </a>
+                  </Link>
                   .
                 </p>
               ) : (

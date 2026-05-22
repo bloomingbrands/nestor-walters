@@ -7,6 +7,7 @@ import {
   wpPlainText,
   type WPBook,
 } from "@/lib/wordpress";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Books — Nestor Walters",
@@ -27,10 +28,11 @@ function BookCard({ book }: { book: WPBook }) {
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-zinc-950">
         {cover ? (
-          // eslint-disable-next-line @next/next/no-img-element -- WP media
-          <img
+          <Image
+            fill
             src={cover}
-            alt=""
+            alt={title}
+            sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw"
             className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.02]"
           />
         ) : (

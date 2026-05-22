@@ -1,8 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+
+const tapeImages = [
+  "/assets/scotch-tape-01.png",
+  "/assets/scotsh-tape-02.png",
+  "/assets/scotsh-tape-03.png",
+  "/assets/scotsh-tape-04.png",
+];
 
 interface PoemCardProps {
   title: string;
@@ -11,8 +19,13 @@ interface PoemCardProps {
   href: string;
   rotate?: number;
   color?: string;
+  bgColor?: string;
+  /** Which scotch tape strip image to use (1–4) */
+  tape?: 1 | 2 | 3 | 4;
   /** Tighter layout for bento column height-matched to polaroids */
   compact?: boolean;
+  /** Extra downward offset for the tape strip in px */
+  tapeOffsetY?: number;
 }
 
 export function PoemCard({
@@ -22,7 +35,10 @@ export function PoemCard({
   href,
   rotate = -1,
   color = "bg-yellow-100",
+  bgColor,
+  tape = 1,
   compact = false,
+  tapeOffsetY = 0,
 }: PoemCardProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -51,13 +67,16 @@ export function PoemCard({
 
   return (
     <>
-      <div className={cn("relative flex justify-center", compact ? "pt-2" : "pt-4")}>
-        <div
-          className={cn(
-            "absolute top-0 left-1/2 z-10 -translate-x-1/2 rounded-sm bg-white/50 shadow-sm",
-            compact ? "h-3 w-7" : "h-5 w-10",
-          )}
-        />
+      <div className={cn("relative flex justify-center", compact ? "pt-3" : "pt-5")}>
+        <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-1/3" style={tapeOffsetY ? { marginTop: tapeOffsetY } : undefined}>
+          <Image
+            src={tapeImages[(tape - 1) % tapeImages.length]}
+            alt=""
+            width={compact ? 52 : 72}
+            height={compact ? 20 : 28}
+            className="object-contain"
+          />
+        </div>
 
         <motion.button
           type="button"
@@ -65,10 +84,10 @@ export function PoemCard({
           aria-label={`Read ${title}`}
           className={cn(
             "relative w-full max-w-full cursor-pointer text-left shadow-[4px_6px_20px_rgba(0,0,0,0.45)]",
-            color,
+            !bgColor && color,
             compact ? "p-2 pt-4" : "p-4 pt-6 sm:p-5 sm:pt-7",
           )}
-          style={{ rotate }}
+          style={{ rotate, ...(bgColor ? { backgroundColor: bgColor } : {}) }}
           whileHover={{
             y: compact ? -2 : -6,
             rotate: 0,
@@ -119,7 +138,7 @@ export function PoemCard({
       {open ? (
         <>
           <div
-            className="fixed inset-0 z-200 bg-black/75 backdrop-blur-sm"
+            className="fixed inset-0 z-[200] bg-black/75 backdrop-blur-sm"
             aria-hidden
             onClick={close}
           />
@@ -128,14 +147,15 @@ export function PoemCard({
             role="dialog"
             aria-modal
             aria-labelledby={`${panelId}-title`}
-            className="fixed inset-0 z-210 flex items-center justify-center p-4 sm:p-8"
+            className="fixed inset-0 z-[210] flex items-center justify-center p-4 sm:p-8"
             onClick={close}
           >
             <div
               className={cn(
                 "relative max-h-[min(88vh,42rem)] w-full max-w-lg overflow-y-auto shadow-[0_24px_64px_rgba(0,0,0,0.55)]",
-                color,
+                !bgColor && color,
               )}
+              style={bgColor ? { backgroundColor: bgColor } : undefined}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="sticky top-0 z-10 flex items-center justify-between border-b border-zinc-300/50 bg-inherit/95 px-5 py-3 backdrop-blur-sm">

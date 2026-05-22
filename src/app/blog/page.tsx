@@ -9,6 +9,7 @@ import {
   wpPlainText,
   type WPPost,
 } from "@/lib/wordpress";
+import Image from "next/image";
 
 const JOURNAL_DESCRIPTION =
   "Essays and reflections from WordPress — prose, memory, and the long work of paying attention.";
@@ -50,8 +51,7 @@ function PostEntry({ post }: { post: WPPost }) {
       <div className="flex flex-col gap-6 md:flex-row md:items-start">
         {img ? (
           <div className="relative h-36 w-full shrink-0 overflow-hidden bg-zinc-900 md:h-28 md:w-40">
-            {/* eslint-disable-next-line @next/next/no-img-element -- remote WP media; domains allowlisted in next.config */}
-            <img src={img} alt="" className="h-full w-full object-cover opacity-90" />
+            <Image fill src={img} alt={title} sizes="(min-width: 768px) 160px, 100vw" className="h-full w-full object-cover opacity-90" />
           </div>
         ) : null}
         <div className="min-w-0 flex-1">

@@ -4,6 +4,7 @@ const FOOTER_NAV = [
   { href: "/", label: "Home" },
   { href: "/blog", label: "Journal" },
   { href: "/books", label: "Books" },
+  { href: "/#speaking", label: "Speaking" },
 ] as const;
 
 export function SiteFooter() {

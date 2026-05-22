@@ -10,6 +10,7 @@ import {
   stripBookCoverFromContentHtml,
   wpPlainText,
 } from "@/lib/wordpress";
+import Image from "next/image";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -63,8 +64,7 @@ export default async function BookDetailPage({ params }: Props) {
         <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start">
           <div className="relative overflow-hidden rounded-lg border border-white/10 bg-zinc-900">
             {cover ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={cover} alt="" className="aspect-[3/4] w-full object-cover" />
+              <Image fill src={cover} alt={title} sizes="(min-width: 1024px) 500px, 100vw" className="aspect-[3/4] w-full object-cover" />
             ) : (
               <div className="flex aspect-[3/4] items-center justify-center text-sm text-zinc-600">
                 No cover image

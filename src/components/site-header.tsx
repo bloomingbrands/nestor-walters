@@ -11,6 +11,7 @@ const NAV = [
   { href: "/", label: "Home" },
   { href: "/blog", label: "Journal" },
   { href: "/books", label: "Books" },
+  { href: "/#speaking", label: "Speaking" },
 ] as const;
 
 export function SiteHeader() {
@@ -48,7 +49,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-100 border-b border-white/10 bg-zinc-950/90 backdrop-blur-md transform-[translateZ(0)]">
+      <header className="fixed inset-x-0 top-0 z-[100] border-b border-white/10 bg-zinc-950/90 backdrop-blur-md" style={{ transform: "translateZ(0)" }}>
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 md:h-16 md:px-6">
           <Link
             href="/"
@@ -121,7 +122,7 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/70 transition-opacity duration-300 md:hidden",
+          "fixed inset-0 z-40 bg-[oklch(0.08_0.005_55)]/70 transition-opacity duration-300 md:hidden",
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         aria-hidden={!open}
@@ -134,7 +135,7 @@ export function SiteHeader() {
         aria-modal="true"
         aria-label="Site navigation"
         className={cn(
-          "fixed top-14 right-0 bottom-0 z-45 flex w-[min(100%,20rem)] flex-col border-l border-white/10 bg-zinc-950 shadow-[-12px_0_40px_rgba(0,0,0,0.45)] transition-transform duration-300 ease-out md:top-16 md:hidden",
+          "fixed top-14 right-0 bottom-0 z-[45] flex w-[min(100%,20rem)] flex-col border-l border-white/10 bg-zinc-950 shadow-[-12px_0_40px_rgba(0,0,0,0.45)] transition-transform duration-300 ease-out md:top-16 md:hidden",
           open ? "translate-x-0" : "translate-x-full pointer-events-none",
         )}
       >

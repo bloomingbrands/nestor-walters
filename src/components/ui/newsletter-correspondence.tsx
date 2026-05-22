@@ -52,7 +52,6 @@ export function NewsletterCorrespondence() {
     <section
       id="correspondence"
       className="relative w-full overflow-hidden"
-      style={{ backgroundColor: "oklch(0.08 0.005 55)" }}
     >
       {/* Atmospheric warm glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -106,7 +105,7 @@ export function NewsletterCorrespondence() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-sm md:text-base text-white/50 leading-relaxed mb-10"
+            className="text-sm md:text-base text-white/60 leading-relaxed mb-10"
             style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
           >
             New essays, field notes, and stray thoughts arrive irregularly — when there is something worth saying. No schedule, no noise.
@@ -178,7 +177,7 @@ export function NewsletterCorrespondence() {
                     </svg>
                   </span>
                   <span
-                    className="text-[11px] leading-relaxed text-white/35 transition-colors duration-300 group-hover:text-white/50"
+                    className="text-[11px] leading-relaxed text-white/45 transition-colors duration-300 group-hover:text-white/60"
                     style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
                   >
                     I would like to receive this correspondence.
@@ -188,7 +187,7 @@ export function NewsletterCorrespondence() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/50 transition-colors duration-500 hover:text-white/90 disabled:text-white/25 disabled:cursor-not-allowed mt-2"
+                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/60 transition-colors duration-500 hover:text-white/90 disabled:text-white/25 disabled:cursor-not-allowed mt-2"
                   style={{ fontFamily: "var(--font-geist-mono)" }}
                 >
                   <span className="relative z-10">{sending ? "Sending..." : "Send"}</span>
@@ -219,7 +218,7 @@ export function NewsletterCorrespondence() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className="mt-16 text-[10px] uppercase tracking-[0.25em] text-white/15"
+            className="mt-16 text-[10px] uppercase tracking-[0.25em] text-white/25"
             style={{ fontFamily: "var(--font-geist-mono)" }}
           >
             Sword Circle Pen

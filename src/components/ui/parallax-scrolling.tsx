@@ -47,7 +47,13 @@ export function ParallaxComponent() {
       });
     }
 
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.85,
+      touchMultiplier: 1.2,
+    });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
@@ -62,10 +68,10 @@ export function ParallaxComponent() {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden bg-black" ref={parallaxRef}>
+    <div className="relative w-full overflow-hidden" ref={parallaxRef} style={{ backgroundColor: "oklch(0.08 0.005 55)" }}>
       <section className="relative z-2 flex min-h-svh items-center justify-center py-[10em] px-4">
         <div className="absolute top-0 left-0 h-[120%] w-full">
-          <div className="absolute -bottom-px left-0 z-20 h-0.5 w-full bg-black"></div>
+          <div className="absolute -bottom-px left-0 z-20 h-0.5 w-full bg-[oklch(0.08_0.005_55)]"></div>
           <div
             data-parallax-layers
             className="absolute top-0 left-0 h-full w-full overflow-hidden"
@@ -75,7 +81,7 @@ export function ParallaxComponent() {
               className="absolute top-[-17.5%] left-0 h-[117.5%] w-full pointer-events-none"
             >
               <Image
-                src="/assets/clearsky.png"
+                src="/assets/clear-sky-colored.png"
                 fill
                 sizes="100vw"
                 alt=""
@@ -88,14 +94,14 @@ export function ParallaxComponent() {
               className="absolute top-[-17.5%] left-0 h-[117.5%] w-full pointer-events-none"
             >
               <Image
-                src="/assets/mount-olympus-summit.png"
+                src="/assets/mount-olympus-colored.png"
                 fill
                 sizes="100vw"
                 alt=""
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-black/30" aria-hidden />
+              <div className="absolute inset-0 bg-[oklch(0.08_0.005_55)]/30" aria-hidden />
             </div>
             <div
               data-parallax-layer="3"
@@ -113,7 +119,7 @@ export function ParallaxComponent() {
               className="absolute bottom-0 left-0 h-[150%] w-full pointer-events-none"
             >
               <Image
-                src="/assets/man-dog-facing-summit.png"
+                src="/assets/man-dog-facing-summit-colored.png"
                 fill
                 sizes="100vw"
                 alt=""

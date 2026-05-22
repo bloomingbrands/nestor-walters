@@ -9,50 +9,63 @@ interface PolaroidCardProps {
   alt: string;
   caption: string;
   rotate?: number;
-  /** Larger frame and image (e.g. bento beside portrait) */
-  size?: "default" | "large";
+  size?: "sm" | "default" | "large";
+  deep?: boolean;
 }
 
-export function PolaroidCard({ src, alt, caption, rotate = 0, size = "default" }: PolaroidCardProps) {
+const SHADOW_DEFAULT = "0 25px 50px -12px rgba(0,0,0,0.28)";
+const SHADOW_DEEP    = "0 40px 90px rgba(0,0,0,0.55), 0 10px 28px rgba(0,0,0,0.30)";
+const HOVER_DEFAULT  = "0 28px 56px rgba(0,0,0,0.62)";
+const HOVER_DEEP     = "0 55px 110px rgba(0,0,0,0.72), 0 18px 40px rgba(0,0,0,0.42)";
+
+export function PolaroidCard({ src, alt, caption, rotate = 0, size = "default", deep = false }: PolaroidCardProps) {
   const large = size === "large";
+  const sm = size === "sm";
+  const width = large ? 313 : sm ? 148 : 180;
   const imageSizes = large
-    ? "(max-width: 768px) 92vw, 280px"
-    : "(max-width: 768px) 80vw, 200px";
+    ? "(max-width: 768px) 92vw, 313px"
+    : sm
+    ? "(max-width: 768px) 45vw, 148px"
+    : "(max-width: 768px) 80vw, 180px";
   return (
-    <div className={cn("flex h-full min-h-0 items-center justify-center", large ? "p-2 md:p-3" : "p-4")}>
-      <motion.div
+    <motion.div
+      className={cn(
+        "group flex cursor-pointer flex-col bg-white",
+        large ? "p-3 pb-9" : sm ? "p-2 pb-6" : "p-2.5 pb-7",
+      )}
+      style={{
+        rotate,
+        width,
+        position: "relative",
+        zIndex: 1,
+        boxShadow: deep ? SHADOW_DEEP : SHADOW_DEFAULT,
+      }}
+      whileHover={{
+        scale: 1.05,
+        rotate: rotate * -0.3,
+        boxShadow: deep ? HOVER_DEEP : HOVER_DEFAULT,
+        y: -8,
+        zIndex: 20,
+      }}
+      transition={{ type: "spring", stiffness: 280, damping: 18 }}
+    >
+      <div className="relative w-full overflow-hidden bg-zinc-200" style={{ aspectRatio: "4 / 3.45" }}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={imageSizes}
+          className="object-cover sepia transition-all duration-500 ease-out group-hover:sepia-0 group-hover:saturate-110"
+        />
+      </div>
+      <p
         className={cn(
-          "group flex w-full cursor-pointer flex-col bg-white shadow-xl",
-          large ? "max-w-60 p-3 pb-8 md:max-w-66" : "max-w-44 p-2.5 pb-7",
+          "mt-2.5 text-center leading-tight text-zinc-700",
+          large ? "text-base" : sm ? "text-xs" : "text-sm",
         )}
-        style={{ rotate, zIndex: 1, position: "relative" }}
-        whileHover={{
-          scale: 1.06,
-          rotate: rotate * -0.4,
-          boxShadow: "0 24px 48px rgba(0,0,0,0.55)",
-          y: -6,
-          zIndex: 20,
-        }}
-        transition={{ type: "spring", stiffness: 280, damping: 18 }}
       >
-        <div className="relative w-full aspect-4/3 overflow-hidden bg-zinc-200">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes={imageSizes}
-            className="object-cover sepia transition-all duration-500 ease-out group-hover:sepia-0 group-hover:saturate-110"
-          />
-        </div>
-        <p
-          className={cn(
-            "mt-2.5 text-center leading-tight text-zinc-700",
-            large ? "text-lg md:text-xl" : "text-base",
-          )}
-        >
-          {caption}
-        </p>
-      </motion.div>
-    </div>
+        {caption}
+      </p>
+    </motion.div>
   );
 }

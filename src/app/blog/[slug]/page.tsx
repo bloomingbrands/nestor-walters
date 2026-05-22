@@ -6,6 +6,7 @@ import {
   getPostFeaturedImage,
   wpPlainText,
 } from "@/lib/wordpress";
+import Image from "next/image";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -59,8 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {img ? (
           <div className="relative mt-10 aspect-video w-full overflow-hidden bg-zinc-900">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={img} alt="" className="h-full w-full object-cover" />
+            <Image fill src={img} alt={title} sizes="(min-width: 768px) 768px, 100vw" className="h-full w-full object-cover" />
           </div>
         ) : null}
 
