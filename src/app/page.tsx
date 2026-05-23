@@ -13,7 +13,6 @@ import { VeteranTransferScene } from "@/components/ui/veteran-transfer-scene";
 import { VeteranFaq } from "@/components/ui/veteran-faq";
 import { SpeakingScene } from "@/components/ui/speaking-scene";
 import { NewsletterCorrespondence } from "@/components/ui/newsletter-correspondence";
-import { HorizonScene } from "@/components/ui/horizon-scene";
 import { SelectedWork } from "@/components/landing/SelectedWork";
 
 export default function Home() {

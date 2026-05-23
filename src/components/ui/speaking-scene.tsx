@@ -4,85 +4,9 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-interface FloatingFragmentProps {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  delay?: number;
-  duration?: number;
-  xRange?: [number, number];
-  yRange?: [number, number];
-  rotateRange?: [number, number];
-}
-
-function FloatingFragment({
-  children,
-  className = "",
-  style,
-  delay = 0,
-  duration = 20,
-  xRange = [-20, 20],
-  yRange = [-15, 15],
-  rotateRange = [-3, 3],
-}: FloatingFragmentProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
-
-    const tl = gsap.timeline({ repeat: -1, yoyo: true });
-    tl.to(ref.current, {
-      x: gsap.utils.random(xRange[0], xRange[1]),
-      y: gsap.utils.random(yRange[0], yRange[1]),
-      rotation: gsap.utils.random(rotateRange[0], rotateRange[1]),
-      duration: duration + gsap.utils.random(-5, 5),
-      ease: "sine.inOut",
-      delay,
-    });
-
-    return () => { tl.kill(); };
-  }, [delay, duration, xRange, yRange, rotateRange]);
-
-  return (
-    <div ref={ref} className={className} style={style}>
-      {children}
-    </div>
-  );
-}
-
-const QUOTES = [
-  {
-    text: "a real poet doesn't slip into a sleeve-holed sleeping bag",
-    source: "Some Days",
-  },
-  {
-    text: "we rise, together, one more time",
-    source: "In The Boot Camp Laundry Room",
-  },
-  {
-    text: "grey light bands his closed door with no silver at the edges",
-    source: "Homecoming",
-  },
-  {
-    text: "stare at an empty page on the dining table, scrape dried food",
-    source: "Some Days",
-  },
-  {
-    text: "The boy and I face the same wall streaked with old, white, lead paint",
-    source: "In The Boot Camp Laundry Room",
-  },
-  {
-    text: "he left one foot in the sand. wait, a head no, a hand",
-    source: "Homecoming",
-  },
-];
-
 export function SpeakingScene() {
   const sectionRef = useRef<HTMLElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const fragmentsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
