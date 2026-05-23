@@ -35,7 +35,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://swordcirclepen.com"),
+  metadataBase: new URL("https://harmonious-quokka-8c13da.netlify.app"),
   title: "Nestor Walters",
   description:
     "Fiction, poetry, essays and tutorials by Navy veteran and earth scientist Nestor Walters.",
