@@ -123,6 +123,14 @@ export function NewsletterCorrespondence() {
             </svg>
           </motion.div>
 
+          <motion.p
+            {...reveal(0.05)}
+            className="text-xs uppercase tracking-[0.3em] mb-4"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "oklch(0.45 0.08 55)" }}
+          >
+            Sign up for our newsletter
+          </motion.p>
+
           <motion.h2
             id="correspondence-heading"
             {...reveal(0.1)}
