@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -118,7 +119,7 @@ export function EarthDayEulogy() {
           </blockquote>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <a
+            <Link
               href="/books"
               className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] transition-colors duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-900/40"
               style={{ fontFamily: "var(--font-geist-mono)", color: "oklch(0.35 0.03 65)" }}
@@ -126,9 +127,9 @@ export function EarthDayEulogy() {
               <span className="relative z-10 transition-colors duration-500 group-hover:text-[oklch(0.20_0.03_60)]">Explore Earth Day Eulogy</span>
               <span
                 className="absolute inset-0 border transition-all duration-500 group-hover:bg-[oklch(0.88_0.03_75/0.4)]"
-                style={{ borderColor: "oklch(0.50 0.03 65 / 0.5)" }}
+                style={{ borderColor: "oklch(0.50 0.03_65 / 0.5)" }}
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
