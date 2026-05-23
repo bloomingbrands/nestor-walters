@@ -14,26 +14,30 @@ export function TheManScene() {
     const layers = layersRef.current;
     if (!section || !layers) return;
 
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
-      gsap.to(layers.querySelector("[data-man-layer='bg']"), {
-        yPercent: -20,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
+      if (!prefersReduced) {
+        gsap.to(layers.querySelector("[data-man-layer='bg']"), {
+          yPercent: -20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+      }
 
       gsap.utils.toArray<HTMLElement>("[data-man-reveal]").forEach((el) => {
         gsap.fromTo(
           el,
-          { y: 40, opacity: 0 },
+          { y: prefersReduced ? 0 : 40, opacity: prefersReduced ? 1 : 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: prefersReduced ? 0 : 1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: el,
@@ -52,7 +56,7 @@ export function TheManScene() {
     <section
       ref={sectionRef}
       id="the-man"
-      className="relative w-full overflow-hidden bg-[url('/assets/world-stamps.png')] bg-fixed bg-center bg-contain"
+      className="relative w-full overflow-hidden bg-[url('/assets/world-stamps.png')] bg-scroll bg-center bg-contain"
     >
       {/* Atmospheric gradient overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export function NewsletterCorrespondence() {
   const [email, setEmail] = useState("");
@@ -10,6 +10,7 @@ export function NewsletterCorrespondence() {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const handleSubmit = async (e: { preventDefault(): void }) => {
     e.preventDefault();
@@ -48,43 +49,90 @@ export function NewsletterCorrespondence() {
     }
   };
 
+  const reveal = (delay = 0) => ({
+    initial: { opacity: 0, y: shouldReduceMotion ? 0 : 36 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" } as const,
+    transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] as const },
+  });
+
   return (
     <section
       id="correspondence"
-      className="relative w-full h-full flex flex-col overflow-hidden"
+      aria-labelledby="correspondence-heading"
+      className="relative w-full overflow-hidden"
     >
-      {/* Atmospheric warm glow */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Top hairline — marks the section boundary without a hard edge */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 inset-x-0 h-px pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, oklch(0.38 0.04 75 / 0.5) 30%, oklch(0.38 0.04 75 / 0.5) 70%, transparent)",
+        }}
+      />
+
+      {/* Candlelight glow — layered so the center feels warm, not flat */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%]"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 50%, oklch(0.20 0.04 75 / 0.12) 0%, transparent 60%)",
+              "radial-gradient(ellipse 65% 55% at 50% 38%, oklch(0.22 0.06 75 / 0.22) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 inset-x-0 h-2/5"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 100%, oklch(0.16 0.04 75 / 0.18) 0%, transparent 75%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 flex flex-col flex-1 justify-start px-8 pt-28 pb-12 md:px-12 md:pt-36 md:pb-16">
-        <div className="w-full max-w-md">
-          {/* Wax seal / mark */}
-<motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl md:text-3xl font-bold tracking-tight mb-4"
-            style={{ color: "oklch(0.88 0.1 80)", fontFamily: "var(--font-caveat)" }}
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 py-28 md:py-36">
+        <div className="w-full max-w-sm">
+
+          {/* Wax mark — sword through circle, reduced to pure line geometry */}
+          <motion.div {...reveal(0)} aria-hidden="true" className="mb-10">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle
+                cx="15" cy="15" r="13"
+                stroke="oklch(0.52 0.07 75)"
+                strokeWidth="0.8"
+                strokeDasharray="2.8 3.2"
+              />
+              <circle
+                cx="15" cy="15" r="7"
+                stroke="oklch(0.52 0.07 75)"
+                strokeWidth="0.6"
+              />
+              {/* Blade — vertical */}
+              <line x1="15" y1="2" x2="15" y2="28" stroke="oklch(0.58 0.07 75)" strokeWidth="0.9" />
+              {/* Guard — horizontal crosspiece */}
+              <line x1="10" y1="15" x2="20" y2="15" stroke="oklch(0.58 0.07 75)" strokeWidth="1.1" />
+              {/* Pommel dot */}
+              <circle cx="15" cy="26" r="1.2" fill="oklch(0.52 0.07 75)" />
+            </svg>
+          </motion.div>
+
+          <motion.h2
+            id="correspondence-heading"
+            {...reveal(0.1)}
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-5 leading-tight"
+            style={{ color: "oklch(0.90 0.012 72)", fontFamily: "var(--font-caveat)" }}
           >
             A word between us
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="text-sm md:text-base text-white/60 leading-relaxed mb-10"
-            style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
+            {...reveal(0.22)}
+            className="text-sm md:text-base leading-relaxed mb-10"
+            style={{
+              fontFamily: "var(--font-geist-sans)",
+              fontWeight: 300,
+              color: "oklch(0.63 0.006 55)",
+            }}
           >
             New essays, field notes, and stray thoughts arrive irregularly — when there is something worth saying. No schedule, no noise.
           </motion.p>
@@ -93,12 +141,12 @@ export function NewsletterCorrespondence() {
             {!submitted ? (
               <motion.form
                 key="form"
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 36 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.9, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.9, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
                 onSubmit={handleSubmit}
-                className="flex flex-col items-start gap-4"
+                className="flex flex-col gap-5"
               >
                 <div className="relative w-full">
                   <input
@@ -112,25 +160,24 @@ export function NewsletterCorrespondence() {
                     }}
                     placeholder="your address"
                     required
-                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-sm text-white/80 placeholder:text-white/25 focus:border-white/50 focus:outline-none transition-colors duration-500 disabled:text-white/40 disabled:cursor-not-allowed"
-                    style={{
-                      fontFamily: "var(--font-geist-sans)",
-                      fontWeight: 300,
-                    }}
+                    aria-label="Email address"
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-sm text-white/80 placeholder:text-white/25 focus:border-white/45 focus:outline-none transition-colors duration-500 disabled:text-white/35 disabled:cursor-not-allowed"
+                    style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
                   />
                   {error && (
                     <motion.p
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute -bottom-6 left-0 text-[11px] text-amber-400/70"
-                      style={{ fontFamily: "var(--font-geist-sans)" }}
+                      role="alert"
+                      className="absolute -bottom-6 left-0 text-[11px]"
+                      style={{ color: "oklch(0.75 0.09 60)", fontFamily: "var(--font-geist-sans)" }}
                     >
                       {error}
                     </motion.p>
                   )}
                 </div>
 
-                <label className="flex w-full items-start gap-3 mt-2 cursor-pointer group">
+                <label className="flex w-full items-start gap-3 mt-1 cursor-pointer group">
                   <input
                     type="checkbox"
                     checked={consent}
@@ -141,21 +188,20 @@ export function NewsletterCorrespondence() {
                     }}
                     className="sr-only peer"
                   />
-                  <span
-                    className="mt-0.5 w-3.5 h-3.5 rounded-sm border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-white/40 peer-checked:bg-white/15 peer-checked:border-white/40 shrink-0"
-                  >
+                  <span className="mt-0.5 w-3.5 h-3.5 rounded-sm border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-white/35 peer-checked:bg-white/10 peer-checked:border-white/35 shrink-0">
                     <svg
-                      className="w-2.5 h-2.5 text-white/60 opacity-0 peer-checked:opacity-100 transition-opacity duration-300"
+                      className="w-2.5 h-2.5 opacity-0 peer-checked:opacity-100 transition-opacity duration-300"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke="currentColor"
                       strokeWidth={3}
+                      aria-hidden="true"
+                      style={{ stroke: "oklch(0.70 0.07 75)" }}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </span>
                   <span
-                    className="text-[11px] leading-relaxed text-white/45 transition-colors duration-300 group-hover:text-white/60"
+                    className="text-[11px] leading-relaxed text-white/40 transition-colors duration-300 group-hover:text-white/55"
                     style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
                   >
                     I would like to receive this correspondence.
@@ -165,23 +211,28 @@ export function NewsletterCorrespondence() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/60 border border-amber-200/30 transition-all duration-500 hover:text-white/90 hover:border-amber-200/70 disabled:text-white/25 disabled:border-white/10 disabled:cursor-not-allowed mt-2"
-                  style={{ fontFamily: "var(--font-geist-mono)" }}
+                  className="group relative w-fit px-7 py-3 mt-2 text-xs uppercase tracking-[0.2em] transition-all duration-500 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/40 rounded-sm"
+                  style={{ fontFamily: "var(--font-geist-mono)", color: "oklch(0.72 0.08 75)" }}
                 >
-                  <span className="relative z-10">{sending ? "Sending..." : "Send"}</span>
+                  <span className="relative z-10 transition-colors duration-500 group-hover:text-[oklch(0.84_0.09_75)] group-disabled:text-white/25">
+                    {sending ? "Sending..." : "Send"}
+                  </span>
+                  <span
+                    className="absolute inset-0 border transition-all duration-500 group-hover:bg-white/[0.04]"
+                    style={{ borderColor: "oklch(0.50 0.07 75 / 0.45)" }}
+                  />
                 </button>
               </motion.form>
             ) : (
               <motion.div
                 key="thanks"
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-center"
               >
                 <p
-                  className="text-white/60 text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
+                  className="text-sm leading-relaxed"
+                  style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300, color: "oklch(0.63 0.006 55)" }}
                 >
                   Noted. The next letter will find you.
                 </p>
@@ -189,17 +240,31 @@ export function NewsletterCorrespondence() {
             )}
           </AnimatePresence>
 
-          {/* Decorative fine print */}
-          <motion.p
+          {/* Colophon — "Sword Circle Pen" as a centered seal between flanking rules */}
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-16 text-[10px] uppercase tracking-[0.25em] text-white/25"
-            style={{ fontFamily: "var(--font-geist-mono)" }}
+            transition={{ duration: 1.1, delay: 0.55 }}
+            className="mt-20 flex items-center gap-5"
+            aria-hidden="true"
           >
-            Sword Circle Pen
-          </motion.p>
+            <div
+              className="flex-1 h-px"
+              style={{ background: "linear-gradient(to right, transparent, oklch(0.26 0.01 55))" }}
+            />
+            <span
+              className="text-[9px] uppercase tracking-[0.32em]"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "oklch(0.34 0.008 55)" }}
+            >
+              Sword Circle Pen
+            </span>
+            <div
+              className="flex-1 h-px"
+              style={{ background: "linear-gradient(to left, transparent, oklch(0.26 0.01 55))" }}
+            />
+          </motion.div>
+
         </div>
       </div>
     </section>

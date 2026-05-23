@@ -29,6 +29,21 @@ export function SiteHeader() {
     const t = window.setTimeout(() => closeBtnRef.current?.focus(), 50);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
+      if (e.key !== "Tab") return;
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      const focusable = panel.querySelectorAll<HTMLElement>(
+        'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        (last as HTMLElement).focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        (first as HTMLElement).focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
@@ -39,7 +54,7 @@ export function SiteHeader() {
       document.body.style.overflow = prevOverflow;
       previouslyFocused.current?.focus?.();
     };
-  }, [open, close]);
+  }, [open, close, panelId]);
 
   useEffect(() => {
     startTransition(() => {
@@ -72,8 +87,9 @@ export function SiteHeader() {
                   <Link
                     key={href}
                     href={href}
+                    aria-current={active ? "page" : undefined}
                     className={cn(
-                      "text-xs uppercase tracking-[0.2em] transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]",
+                      "text-xs uppercase tracking-[0.2em] transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 rounded-sm",
                       active ? "text-white" : "text-zinc-200 hover:text-white",
                     )}
                   >
@@ -134,6 +150,7 @@ export function SiteHeader() {
         role="dialog"
         aria-modal="true"
         aria-label="Site navigation"
+        aria-hidden={!open}
         className={cn(
           "fixed top-14 right-0 bottom-0 z-[45] flex w-[min(100%,20rem)] flex-col border-l border-white/10 bg-zinc-950 shadow-[-12px_0_40px_rgba(0,0,0,0.45)] transition-transform duration-300 ease-out md:top-16 md:hidden",
           open ? "translate-x-0" : "translate-x-full pointer-events-none",
@@ -159,8 +176,9 @@ export function SiteHeader() {
               <Link
                 key={href}
                 href={href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
-                  "border-b border-white/5 py-4 text-sm uppercase tracking-[0.2em] transition-colors",
+                  "border-b border-white/5 py-4 text-sm uppercase tracking-[0.2em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50",
                   active ? "text-white" : "text-zinc-400 hover:text-zinc-100",
                 )}
                 onClick={close}

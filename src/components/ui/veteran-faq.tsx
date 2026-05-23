@@ -39,6 +39,7 @@ export function VeteranFaq() {
   return (
     <section
       id="veteran-faq"
+      aria-label="Veteran Transfer Project FAQ"
       className="py-32 md:py-44 px-6"
     >
       <div className="mx-auto max-w-4xl">
@@ -58,7 +59,7 @@ export function VeteranFaq() {
             className="group border-b border-white/10 py-9"
           >
             <summary
-              className="flex cursor-pointer list-none items-center justify-between text-lg text-white"
+              className="flex cursor-pointer list-none items-center justify-between text-lg text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40 rounded-sm"
               style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               <span>{faq.question}</span>
@@ -84,8 +85,8 @@ export function VeteranFaq() {
               </span>
             </summary>
             <p
-              className="pt-6 pb-2 text-base font-light leading-relaxed text-zinc-400 max-w-2xl"
-              style={{ fontFamily: "var(--font-geist-sans)" }}
+              className="pt-6 pb-2 text-base font-light leading-relaxed max-w-2xl"
+              style={{ fontFamily: "var(--font-geist-sans)", color: "oklch(0.62 0.008 55)" }}
             >
               {faq.answer}
             </p>

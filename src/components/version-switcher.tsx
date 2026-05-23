@@ -13,21 +13,21 @@ export function VersionSwitcher() {
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-[200] flex items-center"
+      className="fixed bottom-6 right-6 z-50 flex items-center"
       style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.45))' }}
     >
       <div
         className="flex items-center"
-        style={{ background: '#0F0F0F', border: '1px solid #0F0F0F' }}
+        style={{ background: 'oklch(0.08 0.005 55)', border: '1px solid oklch(0.08 0.005 55)' }}
       >
         <span
           className="px-3 py-2.5"
           style={{
-            fontFamily: "'Space Mono', monospace",
+            fontFamily: 'var(--font-space-mono), monospace',
             fontSize: '9px',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'rgba(244,244,240,0.4)',
+            color: 'oklch(0.94 0.003 55 / 0.4)',
           }}
         >
           Design
@@ -39,15 +39,16 @@ export function VersionSwitcher() {
               key={v.href}
               href={v.href}
               title={v.name}
-              className="relative px-4 py-2.5 transition-colors"
+              aria-current={active ? 'page' : undefined}
+              className="relative px-4 py-2.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40"
               style={{
-                fontFamily: "'Space Mono', monospace",
+                fontFamily: 'var(--font-space-mono), monospace',
                 fontSize: '11px',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                background: active ? '#FF3B00' : 'transparent',
-                color: active ? '#F4F4F0' : 'rgba(244,244,240,0.5)',
-                borderLeft: '1px solid rgba(244,244,240,0.12)',
+                background: active ? 'oklch(0.65 0.08 55)' : 'transparent',
+                color: active ? 'oklch(0.94 0.003 55)' : 'oklch(0.94 0.003 55 / 0.5)',
+                borderLeft: '1px solid oklch(0.94 0.003 55 / 0.12)',
               }}
             >
               {v.label}

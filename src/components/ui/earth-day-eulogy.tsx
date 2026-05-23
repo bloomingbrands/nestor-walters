@@ -12,16 +12,17 @@ export function EarthDayEulogy() {
     const section = sectionRef.current;
     if (!section) return;
 
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
-      // Text reveal
       gsap.utils.toArray<HTMLElement>("[data-eulogy-reveal]").forEach((el) => {
         gsap.fromTo(
           el,
-          { y: 40, opacity: 0 },
+          { y: prefersReduced ? 0 : 40, opacity: prefersReduced ? 1 : 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: prefersReduced ? 0 : 1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: el,
@@ -40,7 +41,7 @@ export function EarthDayEulogy() {
     <section
       ref={sectionRef}
       id="earth-day-eulogy"
-      className="relative w-full overflow-hidden bg-[url('/assets/earth-day-bg.png')] bg-cover bg-center bg-no-repeat bg-fixed"
+      className="relative w-full overflow-hidden bg-[url('/assets/earth-day-bg.png')] bg-cover bg-center bg-no-repeat bg-scroll"
       
     >
       {/* Atmospheric layers */}
@@ -118,8 +119,8 @@ export function EarthDayEulogy() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <a
-              href="#earth-day-eulogy"
-              className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] transition-colors duration-500"
+              href="/books"
+              className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] transition-colors duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-900/40"
               style={{ fontFamily: "var(--font-geist-mono)", color: "oklch(0.35 0.03 65)" }}
             >
               <span className="relative z-10 transition-colors duration-500 group-hover:text-[oklch(0.20_0.03_60)]">Explore Earth Day Eulogy</span>

@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import { Chivo, Cormorant_Garamond, Space_Mono, Inter } from "next/font/google";
+import {
+  Chivo,
+  Cormorant_Garamond,
+  Space_Mono,
+  Inter,
+  Caveat,
+  Geist,
+  Geist_Mono,
+} from "next/font/google";
 import { BookCheckoutDrawerWrapper } from "@/components/checkout/book-checkout-drawer-wrapper";
 import { ConditionalShell } from "@/components/conditional-shell";
 import { CartProvider } from "@/context/cart-context";
@@ -31,6 +39,25 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["600"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-caveat",
+  display: "swap",
+});
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -89,7 +116,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${chivo.variable} ${cormorant.variable} ${spaceMono.variable} ${inter.variable} antialiased`}
+      className={`${chivo.variable} ${cormorant.variable} ${spaceMono.variable} ${inter.variable} ${caveat.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-black text-zinc-100">
         <script

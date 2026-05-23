@@ -12,17 +12,19 @@ export function PhilosophyScene() {
     const section = sectionRef.current;
     if (!section) return;
 
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
       const elements = gsap.utils.toArray<HTMLElement>("[data-philosophy-reveal]");
       gsap.fromTo(
         elements,
-        { y: 40, opacity: 0 },
+        { y: prefersReduced ? 0 : 40, opacity: prefersReduced ? 1 : 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
+          duration: prefersReduced ? 0 : 0.9,
           ease: "power3.out",
-          stagger: 0.12,
+          stagger: prefersReduced ? 0 : 0.12,
           scrollTrigger: {
             trigger: section,
             start: "top 80%",
@@ -73,6 +75,7 @@ export function PhilosophyScene() {
                   fontFamily: "var(--font-caveat)",
                   color: "oklch(0.94 0.003 55)",
                 }}
+              aria-hidden="true"
               >
                 ⚔
               </span>
@@ -127,6 +130,7 @@ export function PhilosophyScene() {
                   fontFamily: "var(--font-caveat)",
                   color: "oklch(0.94 0.003 55)",
                 }}
+              aria-hidden="true"
               >
                 ◯
               </span>
@@ -181,6 +185,7 @@ export function PhilosophyScene() {
                   fontFamily: "var(--font-caveat)",
                   color: "oklch(0.94 0.003 55)",
                 }}
+              aria-hidden="true"
               >
                 ✎
               </span>

@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 
 const PortraitCard = () => (
   <Card className="group relative h-full min-h-0 w-full overflow-hidden p-0">
+    <div className="relative h-full w-full">
     {/* Custom illustration — always visible */}
     <Image
       src="/assets/nestor-and-dog-custom.png"
@@ -19,12 +20,14 @@ const PortraitCard = () => (
     {/* Real photo — fades in on hover, fades out on mouse leave */}
     <Image
       src="/assets/nestor-and-rider.png"
-      alt="Nestor Walters"
+      alt=""
       fill
+      aria-hidden="true"
       className="object-cover object-center opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
       sizes="(max-width: 768px) 100vw, 19rem"
       loading="eager"
     />
+    </div>
     <div className="absolute bottom-0 left-0 right-0 z-10 bg-linear-to-t from-black/80 to-transparent px-6 py-6">
       <p className="text-xl font-serif font-bold tracking-tight text-white drop-shadow-md">
         Nestor &amp; Rider Walters
@@ -137,7 +140,7 @@ export function SelectedWork() {
       <div className="mx-auto flex w-full max-w-6xl flex-col">
         <div className="mb-10 max-w-2xl text-left md:mb-12">
           <p
-            className="text-[14px] font-black uppercase tracking-[0.28em]"
+            className="text-sm font-black uppercase tracking-[0.28em]"
             style={{ color: "oklch(0.65 0.08 55)" }}
           >
             The archive
@@ -154,7 +157,7 @@ export function SelectedWork() {
           <p className="mt-5 text-[10px] uppercase tracking-[0.25em]">
             <Link
               href="/blog"
-              className="text-[14px] font-black uppercase tracking-[0.28em] underline-offset-4 transition-all duration-300 hover:underline"
+              className="text-sm font-black uppercase tracking-[0.28em] underline-offset-4 transition-all duration-300 hover:underline"
               style={{ color: "oklch(0.65 0.08 55 / 0.7)" }}
             >
               Journal →

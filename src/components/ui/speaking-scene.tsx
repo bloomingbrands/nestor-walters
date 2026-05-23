@@ -86,6 +86,9 @@ export function SpeakingScene() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
     const section = sectionRef.current;
     const spotlight = spotlightRef.current;
     if (!section || !spotlight) return;
@@ -174,9 +177,11 @@ export function SpeakingScene() {
     <section
       ref={sectionRef}
       id="speaking"
-      className="relative w-full overflow-hidden bg-[url('/assets/wood-bg.png')] bg-cover bg-no-repeat bg-left-top"
-      
+      aria-labelledby="speaking-heading"
+      className="relative w-full overflow-hidden bg-[url('/assets/speaking-event.png')] motion-safe:bg-fixed motion-reduce:bg-scroll bg-left bg-no-repeat bg-cover"
     >
+      {/* Dark scrim — ensures 4.5:1 contrast for all text against the background image */}
+      <div aria-hidden="true" className="absolute inset-0 z-20 bg-black/70" />
       <div className="relative z-30 flex flex-col items-center justify-center min-h-[90vh] md:min-h-[100vh] px-6 py-20 md:py-28">
         {/* Stage figure silhouette */}
         <div data-speaker-reveal className="relative mb-12 md:mb-16">
@@ -200,13 +205,14 @@ export function SpeakingScene() {
             className="text-xs uppercase tracking-[0.3em] mb-6"
             style={{
               fontFamily: "var(--font-geist-mono)",
-              color: "oklch(0.65 0.08 55)",
+              color: "oklch(0.78 0.08 55)",
             }}
           >
             Lectures &amp; Appearances
           </p>
 
           <h2
+            id="speaking-heading"
             data-speaker-reveal
             className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight"
             style={{
@@ -238,7 +244,7 @@ export function SpeakingScene() {
             style={{
               fontFamily: "var(--font-geist-sans)",
               fontWeight: 300,
-              color: "oklch(0.62 0.008 55)",
+              color: "oklch(0.80 0.008 55)",
             }}
           >
             Available for university keynotes, panel discussions, veteran transition
@@ -252,7 +258,7 @@ export function SpeakingScene() {
           >
             <a
               href="mailto:nestor@swordcirclepen.com?subject=Speaking%20Inquiry"
-              className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] transition-colors duration-500"
+              className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] transition-colors duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-sm"
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 color: "oklch(0.94 0.003 55)",
@@ -268,7 +274,7 @@ export function SpeakingScene() {
               className="text-[10px] uppercase tracking-[0.2em]"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                color: "oklch(0.62 0.008 55)",
+                color: "oklch(0.80 0.008 55)",
               }}
             >
               Universities · Conferences · Veteran Organizations

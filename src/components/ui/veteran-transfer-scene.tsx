@@ -61,7 +61,11 @@ export function VeteranTransferScene() {
     const layers = layersRef.current;
     if (!section || !layers) return;
 
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
+      if (prefersReduced) return;
+
       // Background parallax: subtle drift upward
       gsap.to(layers.querySelector("[data-vtp-layer='bg']"), {
         yPercent: -20,
@@ -150,7 +154,7 @@ export function VeteranTransferScene() {
     <section
       ref={sectionRef}
       id="veteran-transfer"
-      className="relative w-full overflow-hidden bg-[url('/assets/forward.png')] bg-fixed bg-center bg-cover"
+      className="relative w-full overflow-hidden bg-[url('/assets/forward-colored.png')] bg-fixed bg-center bg-cover"
     >
       
       {/* Layered content */}
@@ -342,7 +346,8 @@ export function VeteranTransferScene() {
         {/* Military artifacts */}
         <div
           data-vtp-layer="artifact"
-          className="absolute top-[40%] right-[20%] z-15 pointer-events-none"
+          className="absolute top-[40%] right-[20%] z-10 pointer-events-none"
+          aria-hidden="true"
         >
           <div
             className="w-24 h-24 md:w-32 md:h-32 rounded-full opacity-30"
@@ -362,7 +367,8 @@ export function VeteranTransferScene() {
 
         <div
           data-vtp-layer="artifact"
-          className="absolute top-[65%] left-[5%] z-15 pointer-events-none"
+          className="absolute top-[65%] left-[5%] z-10 pointer-events-none"
+          aria-hidden="true"
         >
           <div
             className="w-16 h-20 md:w-20 md:h-24 opacity-25"
@@ -377,11 +383,14 @@ export function VeteranTransferScene() {
         {/* Academic items fading in */}
         <div
           data-vtp-layer="academic"
-          className="absolute top-[50%] right-[5%] z-15 pointer-events-none"
+          className="absolute top-[50%] right-[5%] z-10 pointer-events-none"
+          aria-hidden="true"
         >
           <div
-            className="w-200 h-36 md:w-300 md:h-44 p-3 opacity-0"
+            className="h-36 md:h-44 p-3 opacity-0"
             style={{
+              width: 200,
+              minWidth: 200,
               backgroundColor: "oklch(0.88 0.02 75)",
               boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
               transform: "rotate(4deg)",
@@ -403,7 +412,8 @@ export function VeteranTransferScene() {
 
         <div
           data-vtp-layer="academic"
-          className="absolute top-[70%] left-[25%] z-15 pointer-events-none"
+          className="absolute top-[70%] left-[25%] z-10 pointer-events-none"
+          aria-hidden="true"
         >
           <div
             className="w-24 h-32 md:w-28 md:h-40 p-2.5 opacity-0"
@@ -438,7 +448,7 @@ export function VeteranTransferScene() {
           <div className="max-w-6xl text-center bg-black/40 backdrop-blur-sm rounded-lg p-8 md:p-12">
             <p
               data-vtp-reveal
-              className="text-md uppercase tracking-[0.4em] font-semibold text-white mb-6"
+              className="text-sm uppercase tracking-[0.4em] font-semibold text-white mb-6"
               style={{ fontFamily: "var(--font-geist-mono)" }}
             >
               Your Next Mission
