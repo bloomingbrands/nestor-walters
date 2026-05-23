@@ -43,7 +43,7 @@ async function main() {
   for (const route of ROUTES) {
     const url = `${BASE_URL}${route.path}`;
     console.log(`Capturing ${url} → ${route.filename}`);
-    await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
+    await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 2 });
     await page.goto(url, { waitUntil: "networkidle0" });
     await page.waitForSelector(route.waitFor, { timeout: 10000 });
     await new Promise((r) => setTimeout(r, 2000));
