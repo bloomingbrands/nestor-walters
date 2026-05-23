@@ -100,29 +100,6 @@ export function NewsletterCorrespondence() {
           }}
         >
 
-          {/* Wax mark — sword through circle, reduced to pure line geometry */}
-          <motion.div {...reveal(0)} aria-hidden="true" className="mb-10">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <circle
-                cx="15" cy="15" r="13"
-                stroke="oklch(0.35 0.06 75)"
-                strokeWidth="0.8"
-                strokeDasharray="2.8 3.2"
-              />
-              <circle
-                cx="15" cy="15" r="7"
-                stroke="oklch(0.35 0.06 75)"
-                strokeWidth="0.6"
-              />
-              {/* Blade — vertical */}
-              <line x1="15" y1="2" x2="15" y2="28" stroke="oklch(0.40 0.06 75)" strokeWidth="0.9" />
-              {/* Guard — horizontal crosspiece */}
-              <line x1="10" y1="15" x2="20" y2="15" stroke="oklch(0.40 0.06 75)" strokeWidth="1.1" />
-              {/* Pommel dot */}
-              <circle cx="15" cy="26" r="1.2" fill="oklch(0.35 0.06 75)" />
-            </svg>
-          </motion.div>
-
           <motion.p
             {...reveal(0.05)}
             className="text-xs uppercase tracking-[0.3em] mb-4"
