@@ -119,7 +119,7 @@ export function NewsletterCorrespondence() {
           <motion.h2
             id="correspondence-heading"
             {...reveal(0.1)}
-            className="text-3xl md:text-4xl font-bold tracking-tight mb-5 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 leading-tight"
             style={{ color: "oklch(0.90 0.012 72)", fontFamily: "var(--font-caveat)" }}
           >
             A word between us
@@ -127,7 +127,7 @@ export function NewsletterCorrespondence() {
 
           <motion.p
             {...reveal(0.22)}
-            className="text-sm md:text-base leading-relaxed mb-10"
+            className="text-base md:text-lg lg:text-xl leading-relaxed mb-10"
             style={{
               fontFamily: "var(--font-geist-sans)",
               fontWeight: 300,
@@ -161,7 +161,7 @@ export function NewsletterCorrespondence() {
                     placeholder="your address"
                     required
                     aria-label="Email address"
-                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-sm text-white/80 placeholder:text-white/25 focus:border-white/45 focus:outline-none transition-colors duration-500 disabled:text-white/35 disabled:cursor-not-allowed"
+                    className="w-full bg-transparent border-b border-white/40 px-0 py-3 text-base text-white/90 placeholder:text-white/45 focus:border-white/70 focus:outline-none transition-colors duration-500 disabled:text-white/40 disabled:cursor-not-allowed"
                     style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
                   />
                   {error && (
@@ -188,20 +188,20 @@ export function NewsletterCorrespondence() {
                     }}
                     className="sr-only peer"
                   />
-                  <span className="mt-0.5 w-3.5 h-3.5 rounded-sm border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-white/35 peer-checked:bg-white/10 peer-checked:border-white/35 shrink-0">
+                  <span className="mt-0.5 w-3.5 h-3.5 rounded-sm border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white/60 peer-checked:bg-white/15 peer-checked:border-white/60 shrink-0">
                     <svg
                       className="w-2.5 h-2.5 opacity-0 peer-checked:opacity-100 transition-opacity duration-300"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={3}
                       aria-hidden="true"
-                      style={{ stroke: "oklch(0.70 0.07 75)" }}
+                      style={{ stroke: "oklch(0.85 0.10 75)" }}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </span>
                   <span
-                    className="text-[11px] leading-relaxed text-white/40 transition-colors duration-300 group-hover:text-white/55"
+                    className="text-[11px] leading-relaxed text-white/70 transition-colors duration-300 group-hover:text-white/90"
                     style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
                   >
                     I would like to receive this correspondence.
@@ -212,14 +212,14 @@ export function NewsletterCorrespondence() {
                   type="submit"
                   disabled={sending}
                   className="group relative w-fit px-7 py-3 mt-2 text-xs uppercase tracking-[0.2em] transition-all duration-500 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/40 rounded-sm"
-                  style={{ fontFamily: "var(--font-geist-mono)", color: "oklch(0.72 0.08 75)" }}
+                  style={{ fontFamily: "var(--font-geist-mono)", color: "oklch(0.85 0.10 75)" }}
                 >
-                  <span className="relative z-10 transition-colors duration-500 group-hover:text-[oklch(0.84_0.09_75)] group-disabled:text-white/25">
+                  <span className="relative z-10 transition-colors duration-500 group-hover:text-[oklch(0.94_0.12_75)] group-disabled:text-white/40">
                     {sending ? "Sending..." : "Send"}
                   </span>
                   <span
-                    className="absolute inset-0 border transition-all duration-500 group-hover:bg-white/[0.04]"
-                    style={{ borderColor: "oklch(0.50 0.07 75 / 0.45)" }}
+                    className="absolute inset-0 border transition-all duration-500 group-hover:bg-white/[0.06]"
+                    style={{ borderColor: "oklch(0.65 0.09 75 / 0.6)" }}
                   />
                 </button>
               </motion.form>
