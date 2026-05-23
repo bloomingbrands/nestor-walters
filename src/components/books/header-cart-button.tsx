@@ -25,7 +25,12 @@ export function HeaderCartButton({ className, onOpen }: Props) {
       )}
       aria-label={count > 0 ? `Cart, ${count} item${count === 1 ? "" : "s"}` : "Open cart"}
     >
-      Cart
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M6 6h15l-1.5 9h-12z" />
+        <circle cx="9" cy="20" r="1" />
+        <circle cx="18" cy="20" r="1" />
+        <path d="M6 6L5 3H2" />
+      </svg>
       {count > 0 ? (
         <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-200/20 px-1.5 text-[10px] font-medium tabular-nums text-amber-100">
           {count}
