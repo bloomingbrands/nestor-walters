@@ -26,6 +26,9 @@ export async function generateMetadata({
   return {
     title: p > 1 ? `Journal — Page ${p} — Nestor Walters` : "Journal — Nestor Walters",
     description: JOURNAL_DESCRIPTION,
+    alternates: {
+      canonical: p > 1 ? `/blog?page=${p}` : "/blog",
+    },
   };
 }
 
@@ -51,7 +54,7 @@ function PostEntry({ post }: { post: WPPost }) {
       <div className="flex flex-col gap-6 md:flex-row md:items-start">
         {img ? (
           <div className="relative h-36 w-full shrink-0 overflow-hidden bg-zinc-900 md:h-28 md:w-40">
-            <Image fill src={img} alt={title} sizes="(min-width: 768px) 160px, 100vw" className="h-full w-full object-cover opacity-90" />
+            <Image fill src={img} alt={title} sizes="(min-width: 768px) 160px, 100vw" className="h-full w-full object-cover opacity-90" loading="eager" />
           </div>
         ) : null}
         <div className="min-w-0 flex-1">

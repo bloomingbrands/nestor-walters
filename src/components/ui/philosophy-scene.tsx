@@ -13,23 +13,23 @@ export function PhilosophyScene() {
     if (!section) return;
 
     const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-philosophy-reveal]").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      });
+      const elements = gsap.utils.toArray<HTMLElement>("[data-philosophy-reveal]");
+      gsap.fromTo(
+        elements,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
     }, section);
 
     return () => ctx.revert();
@@ -39,7 +39,7 @@ export function PhilosophyScene() {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="relative w-full overflow-hidden"
+      className="relative w-full h-full flex flex-col overflow-hidden"
       style={{ backgroundColor: "oklch(0.08 0.005 55)" }}
     >
       {/* Warm ambient glow */}
@@ -51,8 +51,8 @@ export function PhilosophyScene() {
         }}
       />
 
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] md:min-h-[90vh] px-6 py-20 md:py-28">
-        <div className="max-w-4xl text-center">
+      <div className="relative z-10 flex flex-col flex-1 items-center justify-center px-6 py-20 md:py-28">
+        <div className="w-full max-w-xl text-center">
           <h2
             data-philosophy-reveal
             className="text-4xl md:text-6xl lg:text-7xl text-center mb-16 md:mb-24"

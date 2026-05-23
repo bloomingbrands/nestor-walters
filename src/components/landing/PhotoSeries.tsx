@@ -61,10 +61,12 @@ export default function PhotoSeries() {
           >
             <div className="relative overflow-hidden" style={{ aspectRatio: "4 / 5" }}>
               <Image
-              fill
+                fill
                 src={it.img}
                 alt={it.title}
+                sizes="(min-width: 768px) 33vw, 100vw"
                 className="duotone w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
               />
               <div
                 className="absolute top-4 left-4 meta px-2 py-1"

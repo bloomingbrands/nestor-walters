@@ -22,6 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${title} — Books — Nestor Walters`,
     description: wpPlainText(book.excerpt.rendered).slice(0, 160) || undefined,
+    alternates: {
+      canonical: `/books/${slug}`,
+    },
   };
 }
 
@@ -50,8 +53,37 @@ export default async function BookDetailPage({ params }: Props) {
       ? { id: book.id, slug: book.slug, title, unitPriceCents: priceCents }
       : null;
 
+  const bookJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: title,
+    author: author ? { "@type": "Person", name: author } : undefined,
+    image: cover ? `https://swordcirclepen.com${cover}` : undefined,
+    description: book.acf?.description || wpPlainText(book.excerpt.rendered).slice(0, 300) || undefined,
+    url: `https://swordcirclepen.com/books/${slug}`,
+    dateModified: book.modified ?? undefined,
+  };
+
+  if (priceCents !== null) {
+    bookJsonLd.offers = {
+      "@type": "Offer",
+      price: (priceCents / 100).toFixed(2),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `https://swordcirclepen.com/books/${slug}`,
+    };
+  }
+
+  if (external) {
+    bookJsonLd.sameAs = external;
+  }
+
   return (
     <main className="px-6 pb-24 pt-10 md:px-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }}
+      />
       <article className="mx-auto max-w-5xl">
         <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
           <Link href="/books" className="text-zinc-400 hover:text-white">
@@ -64,7 +96,7 @@ export default async function BookDetailPage({ params }: Props) {
         <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start">
           <div className="relative overflow-hidden rounded-lg border border-white/10 bg-zinc-900">
             {cover ? (
-              <Image fill src={cover} alt={title} sizes="(min-width: 1024px) 500px, 100vw" className="aspect-[3/4] w-full object-cover" />
+              <Image fill src={cover} alt={title} sizes="(min-width: 1024px) 500px, 100vw" className="aspect-[3/4] w-full object-cover" priority />
             ) : (
               <div className="flex aspect-[3/4] items-center justify-center text-sm text-zinc-600">
                 No cover image

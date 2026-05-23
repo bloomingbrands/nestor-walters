@@ -12,6 +12,9 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Books — Nestor Walters",
   description: "Published books and works for sale — Sword Circle Pen.",
+  alternates: {
+    canonical: "/books",
+  },
 };
 
 function BookCard({ book }: { book: WPBook }) {
@@ -34,6 +37,7 @@ function BookCard({ book }: { book: WPBook }) {
             alt={title}
             sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw"
             className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.02]"
+            loading="eager"
           />
         ) : (
           <div className="flex h-full items-center justify-center p-6 text-center text-xs uppercase tracking-[0.2em] text-zinc-600">

@@ -35,6 +35,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://swordcirclepen.com"),
   title: "Nestor Walters",
   description:
     "Fiction, poetry, essays and tutorials by Navy veteran and earth scientist Nestor Walters.",
@@ -58,11 +59,20 @@ export const metadata: Metadata = {
     siteName: "Nestor Walters",
     locale: "en_US",
     url: "https://swordcirclepen.com",
+    images: [
+      {
+        url: "/assets/og/og-home.png",
+        width: 1200,
+        height: 630,
+        alt: "Nestor Walters — Veteran, Poet, Earth Scientist",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@nestorwalters",
     creator: "@nestorwalters",
+    images: ["/assets/og/og-home.png"],
   },
   icons: {
     icon: "/assets/ico.png",
@@ -91,7 +101,9 @@ export default function RootLayout({
               name: "Nestor Walters",
               description: "Navy veteran, poet, and earth scientist",
               url: "https://swordcirclepen.com",
-              sameAs: [],
+              sameAs: [
+                "https://x.com/nestorwalters",
+              ],
               jobTitle: ["Writer", "Poet", "Earth Scientist", "Public Speaker"],
               alumniOf: ["Stanford University", "University of Maine"],
             }),

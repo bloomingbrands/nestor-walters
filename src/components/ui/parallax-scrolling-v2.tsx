@@ -109,9 +109,9 @@ export function ParallaxComponentV2() {
               data-parallax-layer="3"
               className="absolute top-0 left-0 flex h-svh w-full flex-col items-center justify-start pt-[15%] gap-4"
             >
-              <h2 className="relative text-center font-serif text-[clamp(3rem,12vw,8em)] font-bold leading-none tracking-tight text-white md:text-[10em]">
+              <h1 className="relative text-center font-serif text-[clamp(3rem,12vw,8em)] font-bold leading-none tracking-tight text-white md:text-[10em]">
                 Nestor Walters
-              </h2>
+              </h1>
               <p className="text-center font-serif text-lg font-black tracking-[0.25em] text-white/90 uppercase md:text-2xl">
                 Veteran &nbsp;·&nbsp; Writer &nbsp;·&nbsp; Earth Scientist
               </p>

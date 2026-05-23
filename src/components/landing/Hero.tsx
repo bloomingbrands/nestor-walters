@@ -89,8 +89,10 @@ export default function Hero() {
             <Image
               src={HERO_IMG}
               alt="Silhouette by the ocean"
-                fill
+              fill
+              sizes="(min-width: 1024px) 33vw, 100vw"
               className="duotone w-full h-full object-cover"
+              priority
             />
             <div
               className="absolute top-4 left-4 meta px-2 py-1"

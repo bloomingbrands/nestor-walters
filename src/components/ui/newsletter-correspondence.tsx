@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function NewsletterCorrespondence() {
@@ -11,7 +11,7 @@ export function NewsletterCorrespondence() {
   const [sending, setSending] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: { preventDefault(): void }) => {
     e.preventDefault();
     if (!email || !email.includes("@")) {
       setError("A valid address, please.");
@@ -51,7 +51,7 @@ export function NewsletterCorrespondence() {
   return (
     <section
       id="correspondence"
-      className="relative w-full overflow-hidden"
+      className="relative w-full h-full flex flex-col overflow-hidden"
     >
       {/* Atmospheric warm glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -64,47 +64,25 @@ export function NewsletterCorrespondence() {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 py-28 md:py-36">
-        <div className="max-w-lg w-full text-center">
+      <div className="relative z-10 flex flex-col flex-1 justify-start px-8 pt-28 pb-12 md:px-12 md:pt-36 md:pb-16">
+        <div className="w-full max-w-md">
           {/* Wax seal / mark */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mx-auto mb-8 w-10 h-10 rounded-full border flex items-center justify-center"
-            style={{
-              borderColor: "oklch(0.65 0.08 55 / 0.4)",
-              backgroundColor: "oklch(0.65 0.08 55 / 0.08)",
-            }}
-          >
-            <span
-              className="text-lg"
-              style={{
-                color: "oklch(0.65 0.08 55 / 0.7)",
-                fontFamily: "var(--font-caveat)",
-              }}
-            >
-              N
-            </span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
+<motion.h2
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-4"
-            style={{ fontFamily: "var(--font-caveat)" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="text-2xl md:text-3xl font-bold tracking-tight mb-4"
+            style={{ color: "oklch(0.88 0.1 80)", fontFamily: "var(--font-caveat)" }}
           >
             A word between us
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
             className="text-sm md:text-base text-white/60 leading-relaxed mb-10"
             style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
           >
@@ -115,12 +93,12 @@ export function NewsletterCorrespondence() {
             {!submitted ? (
               <motion.form
                 key="form"
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                transition={{ duration: 0.9, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
                 onSubmit={handleSubmit}
-                className="flex flex-col items-center gap-4 max-w-sm mx-auto"
+                className="flex flex-col items-start gap-4"
               >
                 <div className="relative w-full">
                   <input
@@ -152,7 +130,7 @@ export function NewsletterCorrespondence() {
                   )}
                 </div>
 
-                <label className="flex items-start gap-3 mt-2 cursor-pointer group">
+                <label className="flex w-full items-start gap-3 mt-2 cursor-pointer group">
                   <input
                     type="checkbox"
                     checked={consent}
@@ -187,11 +165,10 @@ export function NewsletterCorrespondence() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/60 transition-colors duration-500 hover:text-white/90 disabled:text-white/25 disabled:cursor-not-allowed mt-2"
+                  className="group relative px-6 py-3 text-xs uppercase tracking-[0.2em] text-white/60 border border-amber-200/30 transition-all duration-500 hover:text-white/90 hover:border-amber-200/70 disabled:text-white/25 disabled:border-white/10 disabled:cursor-not-allowed mt-2"
                   style={{ fontFamily: "var(--font-geist-mono)" }}
                 >
                   <span className="relative z-10">{sending ? "Sending..." : "Send"}</span>
-                  <span className="absolute bottom-2 left-6 right-6 h-px bg-white/20 transition-all duration-500 group-hover:bg-white/50 disabled:bg-white/10" />
                 </button>
               </motion.form>
             ) : (
@@ -217,7 +194,7 @@ export function NewsletterCorrespondence() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+            transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="mt-16 text-[10px] uppercase tracking-[0.25em] text-white/25"
             style={{ fontFamily: "var(--font-geist-mono)" }}
           >

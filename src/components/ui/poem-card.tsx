@@ -75,6 +75,8 @@ export function PoemCard({
             width={compact ? 52 : 72}
             height={compact ? 20 : 28}
             className="object-contain"
+            style={{ width: "auto", height: "auto" }}
+            loading="eager"
           />
         </div>
 

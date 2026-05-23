@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Nav from "@/components/landing/Nav";
 import Hero from "@/components/landing/Hero";
 import Marquee from "@/components/landing/Marquee";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 import SelectedWork from "@/components/landing/SelectedWorkV3";
 import PhotoSeries from "@/components/landing/PhotoSeries";
 import Bio from "@/components/landing/Bio";

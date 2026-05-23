@@ -56,6 +56,7 @@ export function PolaroidCard({ src, alt, caption, rotate = 0, size = "default", 
           fill
           sizes={imageSizes}
           className="object-cover sepia transition-all duration-500 ease-out group-hover:sepia-0 group-hover:saturate-110"
+          loading="eager"
         />
       </div>
       <p

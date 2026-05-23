@@ -39,11 +39,11 @@ export function VeteranFaq() {
   return (
     <section
       id="veteran-faq"
-      className="py-24 px-6"
+      className="py-32 md:py-44 px-6"
     >
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-4xl">
         <p
-          className="mb-12 text-center text-sm font-normal uppercase tracking-[0.3em]"
+          className="mb-20 text-center text-sm font-normal uppercase tracking-[0.35em]"
           style={{
             fontFamily: "var(--font-geist-mono)",
             color: "oklch(0.65 0.08 55)",
@@ -55,24 +55,24 @@ export function VeteranFaq() {
         {faqs.map((faq, index) => (
           <details
             key={index}
-            className="group border-b border-white/10 py-6"
+            className="group border-b border-white/10 py-9"
           >
             <summary
-              className="flex cursor-pointer list-none items-center justify-between text-base text-white"
+              className="flex cursor-pointer list-none items-center justify-between text-lg text-white"
               style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               <span>{faq.question}</span>
               <span
-                className="ml-4 inline-block transition-transform duration-200 group-open:rotate-45"
+                className="ml-6 inline-block shrink-0 transition-transform duration-200 group-open:rotate-45"
                 aria-hidden="true"
               >
                 <svg
-                  width="12"
-                  height="12"
+                  width="16"
+                  height="16"
                   viewBox="0 0 12 12"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-zinc-400"
+                  className="text-zinc-500"
                 >
                   <path
                     d="M6 1V11M1 6H11"
@@ -84,7 +84,7 @@ export function VeteranFaq() {
               </span>
             </summary>
             <p
-              className="pt-4 text-sm font-light leading-relaxed text-zinc-400"
+              className="pt-6 pb-2 text-base font-light leading-relaxed text-zinc-400 max-w-2xl"
               style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               {faq.answer}

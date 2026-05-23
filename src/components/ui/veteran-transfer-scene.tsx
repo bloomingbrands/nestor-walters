@@ -150,26 +150,9 @@ export function VeteranTransferScene() {
     <section
       ref={sectionRef}
       id="veteran-transfer"
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden bg-[url('/assets/forward.png')] bg-fixed bg-center bg-cover"
     >
-      {/* Atmospheric gradient overlay */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 30% 20%, oklch(0.18 0.03 75 / 0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, oklch(0.14 0.02 200 / 0.12) 0%, transparent 50%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, oklch(0.08 0.005 55) 0%, transparent 15%, transparent 85%, oklch(0.08 0.005 55) 100%)",
-          }}
-        />
-      </div>
-
+      
       {/* Layered content */}
       <div
         ref={layersRef}
@@ -204,36 +187,36 @@ export function VeteranTransferScene() {
         >
           <div
             data-vtp-layer="letter"
-            className="w-48 md:w-64 p-4 md:p-6 shadow-2xl"
+            className="w-72 md:w-96 p-6 md:p-8 shadow-2xl"
             style={{
               backgroundColor: "oklch(0.95 0.02 75)",
               boxShadow: "0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2)",
               transform: "rotate(-3deg)",
             }}
           >
-            <div className="border-b border-amber-900/20 pb-2 mb-3">
+            <div className="border-b border-amber-900/20 pb-3 mb-4">
               <p
-                className="text-[10px] uppercase tracking-[0.2em] text-amber-900/60"
+                className="text-xs uppercase tracking-[0.2em] text-amber-900/60"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
                 Office of Admissions
               </p>
             </div>
             <p
-              className="text-xs leading-relaxed text-amber-950/80 mb-3"
+              className="text-sm leading-relaxed text-amber-950/80 mb-4"
               style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               We are pleased to inform you of your acceptance into the graduate program in Earth and Environmental Sciences.
             </p>
-            <div className="flex items-center gap-2 mt-4">
+            <div className="flex items-center gap-3 mt-5">
               <div
-                className="w-6 h-6 rounded-full border border-amber-900/30 flex items-center justify-center"
+                className="w-8 h-8 rounded-full border border-amber-900/30 flex items-center justify-center"
                 style={{ backgroundColor: "oklch(0.85 0.06 55)" }}
               >
-                <span className="text-[8px] text-amber-950/70">S</span>
+                <span className="text-[11px] text-amber-950/70">S</span>
               </div>
               <p
-                className="text-[10px] text-amber-900/50 italic"
+                className="text-sm text-amber-900/50 italic"
                 style={{ fontFamily: "var(--font-caveat)" }}
               >
                 Stanford University
@@ -252,29 +235,29 @@ export function VeteranTransferScene() {
         >
           <div
             data-vtp-layer="letter"
-            className="w-40 md:w-52 p-4 md:p-5 shadow-2xl"
+            className="w-60 md:w-80 p-5 md:p-7 shadow-2xl"
             style={{
               backgroundColor: "oklch(0.94 0.018 85)",
               boxShadow: "0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.15)",
               transform: "rotate(2deg)",
             }}
           >
-            <div className="border-b border-stone-800/15 pb-2 mb-2">
+            <div className="border-b border-stone-800/15 pb-2.5 mb-3">
               <p
-                className="text-[9px] uppercase tracking-[0.2em] text-stone-700/50"
+                className="text-xs uppercase tracking-[0.2em] text-stone-700/50"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
                 Admissions Committee
               </p>
             </div>
             <p
-              className="text-[11px] leading-relaxed text-stone-800/75 mb-2"
+              className="text-sm leading-relaxed text-stone-800/75 mb-3"
               style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               Congratulations. Your application to the College of Arts and Sciences has been reviewed and accepted.
             </p>
             <p
-              className="text-[10px] text-stone-600/60 italic"
+              className="text-sm text-stone-600/60 italic"
               style={{ fontFamily: "var(--font-caveat)" }}
             >
               University of Maine
@@ -292,26 +275,66 @@ export function VeteranTransferScene() {
         >
           <div
             data-vtp-layer="letter"
-            className="w-36 md:w-44 p-3 md:p-4 shadow-xl"
+            className="w-56 md:w-68 p-5 md:p-6 shadow-xl"
             style={{
               backgroundColor: "oklch(0.93 0.015 95)",
               boxShadow: "0 6px 24px rgba(0,0,0,0.3), 0 1px 6px rgba(0,0,0,0.15)",
               transform: "rotate(-1deg)",
             }}
           >
-            <div className="border-b border-yellow-900/15 pb-1.5 mb-2">
+            <div className="border-b border-yellow-900/15 pb-2 mb-3">
               <p
-                className="text-[8px] uppercase tracking-[0.2em] text-yellow-900/50"
+                className="text-xs uppercase tracking-[0.2em] text-yellow-900/50"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
                 Veterans Services
               </p>
             </div>
             <p
-              className="text-[10px] leading-relaxed text-yellow-950/75"
+              className="text-sm leading-relaxed text-yellow-950/75"
               style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               Your transfer packet is complete. Welcome to the next chapter.
+            </p>
+          </div>
+        </FloatingLetter>
+
+        <FloatingLetter
+          className="absolute top-[65%] right-[8%] z-20"
+          delay={9}
+          duration={21}
+          xRange={[-12, 18]}
+          yRange={[-10, 10]}
+          rotateRange={[-3, 4]}
+        >
+          <div
+            data-vtp-layer="letter"
+            className="w-64 md:w-80 p-5 md:p-7 shadow-2xl"
+            style={{
+              backgroundColor: "oklch(0.96 0.012 80)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.38), 0 2px 8px rgba(0,0,0,0.18)",
+              transform: "rotate(3deg)",
+            }}
+          >
+            <div className="border-b border-stone-800/20 pb-3 mb-4">
+              <p
+                className="text-xs uppercase tracking-[0.2em] text-stone-700/55"
+                style={{ fontFamily: "var(--font-geist-mono)" }}
+              >
+                Letter of Recommendation
+              </p>
+            </div>
+            <p
+              className="text-sm leading-relaxed text-stone-800/80 mb-4"
+              style={{ fontFamily: "var(--font-geist-sans)" }}
+            >
+              It is without reservation that I recommend this candidate. His discipline, intellectual rigor, and clarity of purpose are unlike anything I have encountered in twenty years of teaching.
+            </p>
+            <p
+              className="text-sm text-stone-600/55 italic"
+              style={{ fontFamily: "var(--font-caveat)" }}
+            >
+              — Prof. R. Holloway, Dept. of Earth Sciences
             </p>
           </div>
         </FloatingLetter>
@@ -357,7 +380,7 @@ export function VeteranTransferScene() {
           className="absolute top-[50%] right-[5%] z-15 pointer-events-none"
         >
           <div
-            className="w-28 h-36 md:w-36 md:h-44 p-3 opacity-0"
+            className="w-200 h-36 md:w-300 md:h-44 p-3 opacity-0"
             style={{
               backgroundColor: "oklch(0.88 0.02 75)",
               boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
@@ -412,13 +435,13 @@ export function VeteranTransferScene() {
 
         {/* Central text content */}
         <div className="relative z-30 flex flex-col items-center justify-center min-h-[70vh] px-6 py-16 md:py-20">
-          <div className="max-w-3xl text-center">
+          <div className="max-w-6xl text-center bg-black/40 backdrop-blur-sm rounded-lg p-8 md:p-12">
             <p
               data-vtp-reveal
-              className="text-xs uppercase tracking-[0.3em] text-white/40 mb-6"
+              className="text-md uppercase tracking-[0.4em] font-semibold text-white mb-6"
               style={{ fontFamily: "var(--font-geist-mono)" }}
             >
-              The Next Mission
+              Your Next Mission
             </p>
 
             <h2
@@ -431,15 +454,7 @@ export function VeteranTransferScene() {
 
             <p
               data-vtp-reveal
-              className="text-base md:text-lg text-white/60 leading-relaxed mb-6 max-w-2xl mx-auto"
-              style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
-            >
-              The next mission begins in the classroom. Helping military veterans navigate the path toward elite academic institutions, intellectual growth, and renewed purpose after service.
-            </p>
-
-            <p
-              data-vtp-reveal
-              className="text-sm text-white/55 leading-relaxed mb-10 max-w-xl mx-auto"
+              className="text-2xl text-white leading-relaxed mb-10 mx-auto text-center"
               style={{ fontFamily: "var(--font-geist-sans)", fontWeight: 300 }}
             >
               Service develops discipline. Education expands possibility. The transition between the two should never be walked alone. Built from lived experience, this project offers guidance, strategy, and mentorship for veterans pursuing higher education and long-term transformation.
@@ -451,7 +466,7 @@ export function VeteranTransferScene() {
             >
               <Link
                 href="#veteran-transfer"
-                className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] text-white/80 transition-colors duration-500 hover:text-white"
+                className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] text-white transition-colors duration-500 hover:text-white"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
                 <span className="relative z-10">Explore the Mission</span>
@@ -459,7 +474,7 @@ export function VeteranTransferScene() {
               </Link>
               <Link
                 href="/blog"
-                className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] text-white/60 transition-colors duration-500 hover:text-white/80"
+                className="group relative px-8 py-3 text-xs uppercase tracking-[0.2em] text-white transition-colors duration-500 hover:text-white/80"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
                 <span className="relative z-10">Read the Manual</span>

@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { VersionSwitcher } from "@/components/version-switcher";
 import { ParallaxComponentV2 } from "@/components/ui/parallax-scrolling-v2";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 import { BentoGridShowcase } from "@/components/ui/bento-grid";
 import { PolaroidCard } from "@/components/ui/polaroid-card";
 import { PoemCard } from "@/components/ui/poem-card";

@@ -26,7 +26,9 @@ export default function Bio() {
               fill
               src={PORTRAIT}
               alt="Nestor Walters"
+              sizes="(min-width: 1024px) 42vw, 100vw"
               className="duotone w-full h-full object-cover"
+              loading="eager"
             />
             <div
               className="absolute top-5 left-5 meta px-2 py-1"

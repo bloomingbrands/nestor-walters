@@ -23,6 +23,7 @@ const PortraitCard = () => (
       fill
       className="object-cover object-center opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
       sizes="(max-width: 768px) 100vw, 19rem"
+      loading="eager"
     />
     <div className="absolute bottom-0 left-0 right-0 z-10 bg-linear-to-t from-black/80 to-transparent px-6 py-6">
       <p className="text-xl font-serif font-bold tracking-tight text-white drop-shadow-md">

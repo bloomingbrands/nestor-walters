@@ -31,6 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${title} — Nestor Walters`,
     description: description || undefined,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
   };
 }
 
@@ -42,9 +45,38 @@ export default async function BlogPostPage({ params }: Props) {
   const title = wpPlainText(post.title.rendered);
   const author = post._embedded?.author?.[0]?.name;
   const img = getPostFeaturedImage(post);
+  const excerpt = wpPlainText(post.excerpt.rendered).slice(0, 300);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    author: author ? { "@type": "Person", name: author } : undefined,
+    datePublished: post.date,
+    dateModified: (post as { modified?: string }).modified ?? post.date,
+    image: img ? `https://swordcirclepen.com${img}` : undefined,
+    description: excerpt || undefined,
+    url: `https://swordcirclepen.com/blog/${slug}`,
+    publisher: {
+      "@type": "Organization",
+      name: "Sword Circle Pen",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://swordcirclepen.com/assets/ico.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://swordcirclepen.com/blog/${slug}`,
+    },
+  };
 
   return (
     <article className="px-6 pb-24 pt-10 md:px-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto max-w-3xl">
         <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
           <Link href="/blog" className="text-zinc-400 transition-colors hover:text-white">
@@ -60,7 +92,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {img ? (
           <div className="relative mt-10 aspect-video w-full overflow-hidden bg-zinc-900">
-            <Image fill src={img} alt={title} sizes="(min-width: 768px) 768px, 100vw" className="h-full w-full object-cover" />
+            <Image fill src={img} alt={title} sizes="(min-width: 768px) 768px, 100vw" className="h-full w-full object-cover" priority />
           </div>
         ) : null}
 

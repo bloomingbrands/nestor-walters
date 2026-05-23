@@ -130,11 +130,13 @@ export default function VeteranProject() {
             style={{ border: "1px solid rgba(244,244,240,0.2)", aspectRatio: "4 / 3" }}
           >
             <Image
-                fill
+              fill
               src={VETERAN_DOCS_IMG}
               alt="Veteran transfer documents"
+              sizes="(min-width: 1024px) 42vw, 100vw"
               className="w-full h-full object-cover"
               style={{ filter: "grayscale(100%) contrast(110%) brightness(90%)" }}
+              loading="eager"
             />
             <div
               className="absolute top-3 left-3 meta px-2 py-1"
