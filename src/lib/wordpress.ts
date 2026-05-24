@@ -8,10 +8,7 @@ import "server-only";
  * In development only, falls back to the staging host if unset.
  */
 const WP_JSON_BASE =
-  process.env.WORDPRESS_API_URL?.trim().replace(/\/$/, "") ||
-  (process.env.NODE_ENV === "development"
-    ? "https://swordcirclepen.blooming-brands.com/wp-json"
-    : "");
+  process.env.WORDPRESS_API_URL?.trim().replace(/\/$/, "") || "";
 
 function isWpConfigured(): boolean {
   return WP_JSON_BASE.length > 0;

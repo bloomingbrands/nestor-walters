@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # These values are public by design and get inlined into build output by Next.js.
+  # ORDER_NOTIFICATION_EMAIL is the site's public contact email (mailto links).
+  # WORDPRESS_API_URL is a public REST endpoint.
+  SECRETS_SCAN_OMIT_KEYS = "ORDER_NOTIFICATION_EMAIL,WORDPRESS_API_URL"
