@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const versions = [
-  { label: 'I', name: 'Original', href: '/' },
-  { label: 'II', name: 'Refined', href: '/v2' },
+  { label: 'I',   name: 'Original',  href: '/'   },
+  { label: 'II',  name: 'Refined',   href: '/v2' },
   { label: 'III', name: 'Editorial', href: '/v3' },
+  { label: 'IV',  name: 'Samuel',    href: '/v4' },
 ];
 
 export function VersionSwitcher() {

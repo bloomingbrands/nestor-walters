@@ -180,9 +180,9 @@ export function NewsletterCorrespondence() {
                     }}
                     className="sr-only peer"
                   />
-                  <span className="mt-0.5 w-3.5 h-3.5 rounded-sm border border-black/30 flex items-center justify-center transition-all duration-300 group-hover:border-black/50 peer-checked:bg-black/10 peer-checked:border-black/50 shrink-0">
+                  <span className={`mt-0.5 w-3.5 h-3.5 rounded-sm border flex items-center justify-center transition-all duration-300 shrink-0 ${consent ? "bg-black/10 border-black/50" : "border-black/30 group-hover:border-black/50"}`}>
                     <svg
-                      className="w-2.5 h-2.5 opacity-0 peer-checked:opacity-100 transition-opacity duration-300"
+                      className={`w-2.5 h-2.5 transition-opacity duration-300 ${consent ? "opacity-100" : "opacity-0"}`}
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={3}
