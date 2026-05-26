@@ -110,11 +110,12 @@ export function HeroV5() {
               className="absolute top-0 left-0 flex h-svh w-full flex-col items-center justify-start pt-[14%] gap-6 px-6"
             >
               <p
-                className="text-[10px] md:text-[11px] uppercase"
+                className="text-xs md:text-sm uppercase"
                 style={{
                   letterSpacing: "0.42em",
-                  color: "rgba(255,254,255,0.55)",
+                  color: "rgba(255,254,255,0.95)",
                   fontFamily: "var(--font-ibm-plex-mono), monospace",
+                  textShadow: "0 1px 4px rgba(16,16,20,0.6)",
                 }}
               >
                 No. 005 · A field edition

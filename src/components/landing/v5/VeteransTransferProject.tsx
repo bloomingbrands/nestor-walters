@@ -650,14 +650,11 @@ export function VeteransTransferProject() {
                 className="mt-8 text-lg leading-relaxed"
                 style={{ fontFamily: SANS, color: INK, maxWidth: "62ch" }}
               >
-                Watch Khan Academy&rsquo;s{" "}
-                <em>You Can Learn Anything</em> to get a better appreciation of
-                your own potential. Browse the 2014 remake of Carl
-                Sagan&rsquo;s <em>Cosmos</em> to see how we, humanity, got here
-                and where we could go. On a personal note, here is my own
-                (briefly told) college story, a few of my notes for veterans
-                pursuing competitive universities, and my own reasons for
-                doing anything difficult or challenging.
+                {"Watch Khan Academy’s "}
+                <em>You Can Learn Anything</em>
+                {" to get a better appreciation of your own potential. Browse the 2014 remake of Carl Sagan’s "}
+                <em>Cosmos</em>
+                {" to see how we, humanity, got here and where we could go. On a personal note, here is my own (briefly told) college story, a few of my notes for veterans pursuing competitive universities, and my own reasons for doing anything difficult or challenging."}
               </p>
 
               <p

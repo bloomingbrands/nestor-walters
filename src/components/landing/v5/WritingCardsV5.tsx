@@ -96,20 +96,21 @@ export function WritingCardsV5() {
                 color: VOID,
               }}
             >
-              From the catalog
+              Selected Work
             </h2>
           </div>
           <p
             className="text-[11px] uppercase"
             style={{ fontFamily: MONO, letterSpacing: "0.28em", color: INK }}
           >
-            Five entries · open shelf
+            by Nestor Walters
           </p>
         </header>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-[minmax(320px,auto)]">
           {CARDS.map((c) => {
             const isReserved = c.status === "Slot reserved";
+            const isFeatured = c.genre === "Essay";
             const inner = (
               <article
                 className="relative flex h-full flex-col p-6 md:p-7 transition-colors"
@@ -208,7 +209,10 @@ export function WritingCardsV5() {
             );
 
             return (
-              <li key={c.call} className="h-full">
+              <li
+                key={c.call}
+                className={`h-full ${isFeatured ? "sm:row-span-2" : ""}`}
+              >
                 {c.href && !isReserved ? (
                   <a
                     href={c.href}

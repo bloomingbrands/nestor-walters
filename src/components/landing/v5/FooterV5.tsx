@@ -53,7 +53,7 @@ export function FooterV5() {
               { label: "Writing", href: "#writing" },
               { label: "The Book", href: "#book" },
               { label: "Newsletter", href: "#newsletter" },
-              { label: "Journal", href: "/blog" },
+              { label: "Journal", href: "/v5/journal" },
             ].map((l) => (
               <a
                 key={l.label}

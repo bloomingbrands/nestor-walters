@@ -123,11 +123,12 @@ export function SubpageShell({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <aside className="md:col-span-3">
             <p
-              className="sticky top-28 text-[10px] uppercase"
+              className="sticky top-28 text-xs md:text-sm uppercase"
               style={{
                 fontFamily: MONO,
-                letterSpacing: "0.32em",
-                color: STONE,
+                letterSpacing: "0.3em",
+                color: INK,
+                fontWeight: 500,
               }}
             >
               Notes · {index}
@@ -146,11 +147,12 @@ export function SubpageShell({
               >
                 {b.kicker && (
                   <p
-                    className="text-[10px] uppercase"
+                    className="text-xs md:text-sm uppercase"
                     style={{
                       fontFamily: MONO,
-                      letterSpacing: "0.32em",
-                      color: STONE,
+                      letterSpacing: "0.3em",
+                      color: INK,
+                      fontWeight: 500,
                     }}
                   >
                     {b.kicker}

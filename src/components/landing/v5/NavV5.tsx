@@ -12,7 +12,7 @@ const ITEMS: Item[] = [
   { label: "Science", href: "/v5/science", section: "pillars" },
   { label: "Writing", href: "/v5/writing", section: "writing" },
   { label: "The Book", href: "/v5#book", section: "book" },
-  { label: "Newsletter", href: "/v5#newsletter", section: "newsletter" },
+  { label: "Journal", href: "/v5/journal" },
 ];
 
 const SECTIONS = ["pillars", "book", "writing", "newsletter"];
