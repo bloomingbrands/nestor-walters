@@ -16,13 +16,12 @@ export function OrderBookButtonV5({ line }: Props) {
         type="button"
         aria-disabled="true"
         title="Checkout opens once a price is set for this book"
-        className="inline-flex w-fit cursor-not-allowed items-center gap-3 px-6 py-3 text-[11px] uppercase opacity-50"
+        className="inline-flex w-fit cursor-not-allowed items-center gap-3 px-6 py-3 text-[11px] uppercase"
         style={{
           fontFamily: MONO,
           letterSpacing: "0.3em",
-          color: INK,
-          backgroundColor: PAPER,
-          border: `1px solid ${STONE}`,
+          color: PAPER,
+          backgroundColor: VOID,
         }}
       >
         Order the book
