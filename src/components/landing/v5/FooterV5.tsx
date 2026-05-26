@@ -13,8 +13,14 @@ export function FooterV5() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/white-bold-logo.png"
+              alt="Sword · Circle · Pen"
+              className="h-16 w-auto select-none md:h-20"
+            />
             <p
-              className="text-[12px] uppercase"
+              className="mt-4 text-[12px] uppercase"
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
@@ -23,14 +29,8 @@ export function FooterV5() {
             >
               Sword · Circle · Pen
             </p>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/white-bold-logo.png"
-              alt="Sword · Circle · Pen"
-              className="mt-4 h-16 w-auto select-none md:h-20"
-            />
             <p
-              className="mt-4 text-base leading-relaxed"
+              className="mt-2 text-base leading-relaxed"
               style={{
                 fontFamily: SANS,
                 color: "rgba(255,254,255,0.65)",
