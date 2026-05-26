@@ -131,7 +131,7 @@ export async function BookV5() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://swordcirclepen.com/assets/images/EDE_cover_web.png"
+              src="/assets/earth-day-eulogy.png"
               alt="An Earth Day Eulogy — book cover"
               className="absolute inset-0 h-full w-full object-cover"
             />
