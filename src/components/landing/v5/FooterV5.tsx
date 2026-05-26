@@ -43,11 +43,11 @@ export function FooterV5() {
 
           <nav className="md:col-span-4 flex flex-col items-start text-left justify-start">
             <p
-              className="text-[12px] uppercase"
+              className="text-sm uppercase"
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
-                color: SLATE,
+                color: PAPER,
               }}
             >
               Navigate
@@ -80,11 +80,11 @@ export function FooterV5() {
 
           <div className="md:col-span-3 flex flex-col items-start text-left justify-start">
             <p
-              className="text-[12px] uppercase"
+              className="text-sm uppercase"
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
-                color: SLATE,
+                color: PAPER,
               }}
             >
               Social
