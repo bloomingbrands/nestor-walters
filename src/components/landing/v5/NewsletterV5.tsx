@@ -27,7 +27,7 @@ export function NewsletterV5() {
             color: STONE,
           }}
         >
-          Correspondence
+          Sign up to our newsletter
         </p>
 
         <h2
