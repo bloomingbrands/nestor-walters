@@ -23,17 +23,12 @@ export function FooterV5() {
             >
               Imprint
             </p>
-            <h3
-              className="mt-4 font-light leading-tight"
-              style={{
-                fontFamily: SANS,
-                fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                letterSpacing: "-0.02em",
-                color: PAPER,
-              }}
-            >
-              Sword · Circle · Pen
-            </h3>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/white-bold-logo.png"
+              alt="Sword · Circle · Pen"
+              className="mt-4 h-16 w-auto select-none md:h-20"
+            />
             <p
               className="mt-4 text-sm leading-relaxed"
               style={{
