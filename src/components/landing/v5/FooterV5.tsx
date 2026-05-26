@@ -100,10 +100,10 @@ export function FooterV5() {
                     href={l.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[13px]"
+                    className="text-[13px] uppercase"
                     style={{
                       fontFamily: MONO,
-                      letterSpacing: "0.1em",
+                      letterSpacing: "0.28em",
                       color: PAPER,
                     }}
                   >
