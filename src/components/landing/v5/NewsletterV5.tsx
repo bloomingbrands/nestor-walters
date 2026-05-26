@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, STONE, INK, VOID, MONO, SANS } from "./tokens";
 
 export function NewsletterV5() {
   const [email, setEmail] = useState("");
