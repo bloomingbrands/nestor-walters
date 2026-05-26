@@ -97,7 +97,7 @@ export function NewsletterV5() {
           <button
             type="submit"
             disabled={submitted || !email || !agree}
-            className="mt-2 inline-flex items-center gap-3 px-6 py-3 text-[11px] uppercase transition-opacity hover:opacity-90 disabled:cursor-not-allowed"
+            className="mt-2 inline-flex items-center gap-3 px-12 py-3 text-[11px] uppercase transition-opacity hover:opacity-90 disabled:cursor-not-allowed"
             style={{
               fontFamily: MONO,
               letterSpacing: "0.3em",
@@ -105,7 +105,7 @@ export function NewsletterV5() {
               backgroundColor: VOID,
             }}
           >
-            {submitted ? "Received" : "Send"}
+            {submitted ? "Received" : "SIGNUP"}
           </button>
           <p aria-live="polite" className="sr-only">
             {submitted ? "You have been subscribed." : ""}
