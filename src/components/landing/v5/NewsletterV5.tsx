@@ -85,7 +85,7 @@ export function NewsletterV5() {
               className="text-[11px] leading-relaxed"
               style={{ fontFamily: MONO, color: INK, letterSpacing: "0.05em" }}
             >
-              I would like to receive this correspondence.
+              I would like to be notified.
             </span>
           </label>
 
