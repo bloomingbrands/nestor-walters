@@ -5,6 +5,7 @@ import { HeroV5 } from "@/components/landing/v5/HeroV5";
 import { PillarsV5 } from "@/components/landing/v5/PillarsV5";
 import { BookV5 } from "@/components/landing/v5/BookV5";
 import { WritingCardsV5 } from "@/components/landing/v5/WritingCardsV5";
+import { AboutAuthorV5 } from "@/components/landing/v5/AboutAuthorV5";
 import { NewsletterV5 } from "@/components/landing/v5/NewsletterV5";
 import { FooterV5 } from "@/components/landing/v5/FooterV5";
 
@@ -23,6 +24,7 @@ export default function V5Landing() {
       <PillarsV5 />
       <BookV5 />
       <WritingCardsV5 />
+      <AboutAuthorV5 />
       <NewsletterV5 />
       <FooterV5 />
       <VersionSwitcher />

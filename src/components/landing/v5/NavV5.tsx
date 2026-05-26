@@ -12,10 +12,11 @@ const ITEMS: Item[] = [
   { label: "Science", href: "/v5/science", section: "pillars" },
   { label: "Writing", href: "/v5/writing", section: "writing" },
   { label: "The Book", href: "/v5#book", section: "book" },
+  { label: "About", href: "/v5#about", section: "about" },
   { label: "Journal", href: "/v5/journal" },
 ];
 
-const SECTIONS = ["pillars", "book", "writing", "newsletter"];
+const SECTIONS = ["pillars", "book", "writing", "about", "newsletter"];
 
 export function NavV5() {
   const pathname = usePathname();
