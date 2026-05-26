@@ -127,7 +127,7 @@ export function HeroV5() {
                 style={{
                   color: PAPER,
                   fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-                  fontSize: "clamp(3.5rem, 13vw, 12rem)",
+                  fontSize: "clamp(2.5rem, 13vw, 12rem)",
                   letterSpacing: "-0.04em",
                 }}
               >

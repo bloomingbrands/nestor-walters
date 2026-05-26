@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { PAPER, STONE, INK, VOID, MONO } from "./tokens";
+import { PAPER, STONE, INK, VOID, MONO, SANS } from "./tokens";
 
 type Item = { label: string; href: string; section?: string };
 
@@ -22,6 +22,7 @@ export function NavV5() {
   const pathname = usePathname();
   const [active, setActive] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (pathname !== "/v5") return;
@@ -50,85 +51,212 @@ export function NavV5() {
     };
   }, [pathname]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [menuOpen]);
+
   const isHome = pathname === "/v5";
+  const solid = scrolled || !isHome || menuOpen;
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-40 transition-all"
-      style={{
-        backgroundColor:
-          scrolled || !isHome ? "rgba(255,254,255,0.92)" : "transparent",
-        borderBottom:
-          scrolled || !isHome
-            ? `1px solid ${STONE}`
-            : "1px solid transparent",
-        backdropFilter: scrolled || !isHome ? "blur(10px)" : "none",
-      }}
-    >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-12 py-4">
-        <Link
-          href="/v5"
-          className="text-[11px] uppercase"
+    <>
+      <header
+        className="fixed top-0 left-0 right-0 z-40 transition-all"
+        style={{
+          backgroundColor: solid ? "rgba(255,254,255,0.92)" : "transparent",
+          borderBottom: solid ? `1px solid ${STONE}` : "1px solid transparent",
+          backdropFilter: solid ? "blur(10px)" : "none",
+        }}
+      >
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-12 py-4">
+          <Link
+            href="/v5"
+            className="text-[10px] sm:text-[11px] uppercase"
+            style={{
+              fontFamily: MONO,
+              letterSpacing: "0.32em",
+              color: solid ? VOID : PAPER,
+              mixBlendMode: solid ? "normal" : "difference",
+            }}
+          >
+            Sword · Circle · Pen
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-7">
+            {ITEMS.map((it) => {
+              const isActive =
+                (isHome && it.section && active === it.section) ||
+                (!isHome && pathname === it.href);
+              const baseColor = solid ? (isActive ? VOID : INK) : PAPER;
+              return (
+                <Link
+                  key={it.href}
+                  href={it.href}
+                  className="relative text-[11px] uppercase transition-colors"
+                  style={{
+                    fontFamily: MONO,
+                    letterSpacing: "0.28em",
+                    color: baseColor,
+                    mixBlendMode: solid ? "normal" : "difference",
+                    opacity: isActive ? 1 : 0.85,
+                  }}
+                >
+                  {it.label}
+                  {isActive && (
+                    <span
+                      aria-hidden
+                      className="absolute -bottom-1.5 left-0 right-0 h-px"
+                      style={{ backgroundColor: solid ? VOID : PAPER }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <Link
+            href="/v5#book"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-[10px] uppercase transition-colors"
+            style={{
+              fontFamily: MONO,
+              letterSpacing: "0.28em",
+              color: solid ? PAPER : VOID,
+              backgroundColor: solid ? VOID : PAPER,
+            }}
+          >
+            Order the book
+          </Link>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="md:hidden inline-flex flex-col items-end justify-center gap-1.5 p-2 -mr-2"
+          >
+            <span
+              aria-hidden
+              className="block h-px transition-all"
+              style={{
+                width: 22,
+                backgroundColor: solid ? VOID : PAPER,
+                transform: menuOpen
+                  ? "translateY(6px) rotate(45deg)"
+                  : "none",
+                mixBlendMode: solid ? "normal" : "difference",
+              }}
+            />
+            <span
+              aria-hidden
+              className="block h-px transition-all"
+              style={{
+                width: menuOpen ? 22 : 16,
+                backgroundColor: solid ? VOID : PAPER,
+                opacity: menuOpen ? 0 : 1,
+                mixBlendMode: solid ? "normal" : "difference",
+              }}
+            />
+            <span
+              aria-hidden
+              className="block h-px transition-all"
+              style={{
+                width: 22,
+                backgroundColor: solid ? VOID : PAPER,
+                transform: menuOpen
+                  ? "translateY(-6px) rotate(-45deg)"
+                  : "none",
+                mixBlendMode: solid ? "normal" : "difference",
+              }}
+            />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-30 md:hidden flex flex-col"
           style={{
-            fontFamily: MONO,
-            letterSpacing: "0.32em",
-            color: scrolled || !isHome ? VOID : PAPER,
-            mixBlendMode: scrolled || !isHome ? "normal" : "difference",
+            backgroundColor: PAPER,
+            paddingTop: "64px",
           }}
         >
-          Sword · Circle · Pen
-        </Link>
-
-        <nav className="hidden md:flex items-center gap-7">
-          {ITEMS.map((it) => {
-            const isActive =
-              (isHome && it.section && active === it.section) ||
-              (!isHome && pathname === it.href);
-            const baseColor =
-              scrolled || !isHome ? (isActive ? VOID : INK) : PAPER;
-            return (
-              <Link
-                key={it.href}
-                href={it.href}
-                className="relative text-[11px] uppercase transition-colors"
-                style={{
-                  fontFamily: MONO,
-                  letterSpacing: "0.28em",
-                  color: baseColor,
-                  mixBlendMode:
-                    scrolled || !isHome ? "normal" : "difference",
-                  opacity: isActive ? 1 : 0.85,
-                }}
-              >
-                {it.label}
-                {isActive && (
+          <nav className="flex flex-col px-5 pt-8 pb-10 gap-5 overflow-y-auto">
+            <p
+              className="text-[10px] uppercase"
+              style={{
+                fontFamily: MONO,
+                letterSpacing: "0.4em",
+                color: STONE,
+              }}
+            >
+              Navigate
+            </p>
+            {ITEMS.map((it) => {
+              const isActive =
+                (isHome && it.section && active === it.section) ||
+                (!isHome && pathname === it.href);
+              return (
+                <Link
+                  key={it.href}
+                  href={it.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-baseline justify-between border-b py-3"
+                  style={{ borderColor: STONE }}
+                >
                   <span
-                    aria-hidden
-                    className="absolute -bottom-1.5 left-0 right-0 h-px"
                     style={{
-                      backgroundColor:
-                        scrolled || !isHome ? VOID : PAPER,
+                      fontFamily: SANS,
+                      fontSize: "1.5rem",
+                      letterSpacing: "-0.02em",
+                      color: isActive ? VOID : INK,
+                      fontWeight: isActive ? 500 : 400,
                     }}
-                  />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
+                  >
+                    {it.label}
+                  </span>
+                  <span
+                    className="text-[10px] uppercase"
+                    style={{
+                      fontFamily: MONO,
+                      letterSpacing: "0.3em",
+                      color: STONE,
+                    }}
+                  >
+                    {isActive ? "Now" : "→"}
+                  </span>
+                </Link>
+              );
+            })}
 
-        <Link
-          href="/v5#book"
-          className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-[10px] uppercase transition-colors"
-          style={{
-            fontFamily: MONO,
-            letterSpacing: "0.28em",
-            color: scrolled || !isHome ? PAPER : VOID,
-            backgroundColor: scrolled || !isHome ? VOID : PAPER,
-          }}
-        >
-          Order the book
-        </Link>
-      </div>
-    </header>
+            <Link
+              href="/v5#book"
+              onClick={() => setMenuOpen(false)}
+              className="mt-6 inline-flex w-full items-center justify-center gap-3 px-5 py-4 text-[12px] uppercase"
+              style={{
+                fontFamily: MONO,
+                letterSpacing: "0.3em",
+                color: PAPER,
+                backgroundColor: VOID,
+              }}
+            >
+              Order the book
+              <span aria-hidden>→</span>
+            </Link>
+          </nav>
+        </div>
+      )}
+    </>
   );
 }
