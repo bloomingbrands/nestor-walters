@@ -100,7 +100,7 @@ export function NavV5() {
       <header
         className="fixed top-0 left-0 right-0 z-40 transition-all"
         style={{
-          backgroundColor: solid ? "rgba(255,254,255,0.92)" : "transparent",
+          backgroundColor: solid ? "rgba(241,241,243,0.96)" : "transparent",
           borderBottom: solid ? `1px solid ${STONE}` : "1px solid transparent",
           backdropFilter: solid ? "blur(10px)" : "none",
         }}
