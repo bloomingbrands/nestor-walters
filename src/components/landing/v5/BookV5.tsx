@@ -5,7 +5,7 @@ import {
 } from "@/lib/wordpress";
 import type { CartLine } from "@/context/cart-context";
 import { OrderBookButtonV5 } from "./OrderBookButtonV5";
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 // Drawings from the Earth Day Eulogy series (also used on v1).
 const SIDE_IMAGES: { src: string; alt: string }[] = [
@@ -49,7 +49,7 @@ export async function BookV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.32em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Volume · 2025
@@ -77,7 +77,7 @@ export async function BookV5() {
             </p>
             <p
               className="mt-4 text-sm leading-relaxed italic"
-              style={{ fontFamily: SANS, color: STONE, maxWidth: "40ch" }}
+              style={{ fontFamily: SANS, color: SLATE, maxWidth: "40ch" }}
             >
               First-edition paperback, independently printed using 100%
               post-consumer materials.
@@ -92,7 +92,7 @@ export async function BookV5() {
                 style={{
                   fontFamily: MONO,
                   letterSpacing: "0.28em",
-                  color: STONE,
+                  color: SLATE,
                 }}
               >
                 ${(line.unitPriceCents / 100).toFixed(2)} · ships from us ·
@@ -111,6 +111,7 @@ export async function BookV5() {
               }}
             >
               Also on digital platforms ↗
+              <span className="sr-only"> (opens in new tab)</span>
             </a>
           </div>
         </div>

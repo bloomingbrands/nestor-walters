@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 type Block = {
   kicker?: string;
@@ -72,7 +72,7 @@ export function SubpageShell({
             style={{
               fontFamily: MONO,
               letterSpacing: "0.4em",
-              color: STONE,
+              color: SLATE,
             }}
           >
             <span style={{ color: INK }}>{index}</span>
@@ -103,10 +103,10 @@ export function SubpageShell({
           {cta && (
             <a
               href={cta.href}
-              className="mt-12 inline-flex items-center gap-3 px-6 py-3 text-[11px] uppercase"
+              className="mt-12 inline-flex items-center gap-3 px-6 py-3 text-[11px] uppercase transition-opacity hover:opacity-90"
               style={{
                 fontFamily: MONO,
-                letterSpacing: "0.28em",
+                letterSpacing: "0.3em",
                 color: PAPER,
                 backgroundColor: VOID,
               }}

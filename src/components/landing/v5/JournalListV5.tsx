@@ -5,7 +5,7 @@ import {
   getPostFeaturedImage,
   POSTS_PER_PAGE,
 } from "@/lib/wordpress";
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 function formatDate(iso: string): string {
   try {
@@ -46,7 +46,7 @@ function PostCard({ post, index }: { post: WPPost; index: number }) {
             style={{
               fontFamily: MONO,
               letterSpacing: "0.3em",
-              color: STONE,
+              color: SLATE,
             }}
           >
             {num}
@@ -59,7 +59,7 @@ function PostCard({ post, index }: { post: WPPost; index: number }) {
             style={{
               fontFamily: MONO,
               letterSpacing: "0.28em",
-              color: STONE,
+              color: SLATE,
             }}
           >
             <span style={{ color: INK }}>{formatDate(post.date)}</span>
@@ -127,7 +127,7 @@ function PostCard({ post, index }: { post: WPPost; index: number }) {
                 style={{
                   fontFamily: MONO,
                   letterSpacing: "0.3em",
-                  color: STONE,
+                  color: SLATE,
                 }}
               >
                 No image
@@ -176,7 +176,7 @@ function Pager({
         style={{
           fontFamily: MONO,
           letterSpacing: "0.3em",
-          color: STONE,
+          color: SLATE,
         }}
       >
         Page {String(page).padStart(2, "0")} of {String(totalPages).padStart(2, "0")}
@@ -273,7 +273,7 @@ export function JournalListV5({
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.3em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               {total} {total === 1 ? "entry" : "entries"} · Page{" "}
@@ -289,7 +289,7 @@ export function JournalListV5({
         {posts.length === 0 ? (
           <p
             className="py-20 text-center text-base"
-            style={{ fontFamily: SANS, color: STONE }}
+            style={{ fontFamily: SANS, color: SLATE }}
           >
             No entries yet.
           </p>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 type Video = { id: string; title: string };
 
@@ -178,7 +178,7 @@ export function VeteransTransferProject() {
             style={{
               fontFamily: MONO,
               letterSpacing: "0.4em",
-              color: STONE,
+              color: SLATE,
             }}
           >
             <span style={{ color: INK }}>I</span>
@@ -219,7 +219,7 @@ export function VeteransTransferProject() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.32em",
-                color: STONE,
+                color: SLATE,
                 paddingLeft: "1.5rem",
               }}
             >
@@ -238,7 +238,7 @@ export function VeteransTransferProject() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.32em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Notes · I
@@ -283,6 +283,7 @@ export function VeteransTransferProject() {
                 }}
               >
                 Next Step Inbound
+                <span className="sr-only"> (opens in new tab)</span>
               </a>{" "}
               to make this series:
             </p>
@@ -306,7 +307,7 @@ export function VeteransTransferProject() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.32em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Resources
@@ -350,7 +351,7 @@ export function VeteransTransferProject() {
                             style={{
                               fontFamily: MONO,
                               letterSpacing: "0.28em",
-                              color: isActiveGroup ? VOID : STONE,
+                              color: isActiveGroup ? VOID : SLATE,
                               minWidth: "2.5rem",
                             }}
                           >
@@ -374,7 +375,7 @@ export function VeteransTransferProject() {
                               style={{
                                 fontFamily: MONO,
                                 letterSpacing: "0.3em",
-                                color: STONE,
+                                color: SLATE,
                               }}
                             >
                               {g.kicker}
@@ -423,7 +424,7 @@ export function VeteransTransferProject() {
                                       style={{
                                         fontFamily: MONO,
                                         letterSpacing: "0.22em",
-                                        color: isActiveVideo ? VOID : STONE,
+                                        color: isActiveVideo ? VOID : SLATE,
                                         minWidth: "1.5rem",
                                       }}
                                     >
@@ -477,7 +478,7 @@ export function VeteransTransferProject() {
                   style={{
                     fontFamily: MONO,
                     letterSpacing: "0.32em",
-                    color: STONE,
+                    color: SLATE,
                   }}
                 >
                   <span>
@@ -504,6 +505,7 @@ export function VeteransTransferProject() {
                       }}
                     >
                       Open ↗
+                      <span className="sr-only"> (opens in new tab)</span>
                     </a>
                     {activeGroup.kind === "pdf" && (
                       <a
@@ -520,6 +522,7 @@ export function VeteransTransferProject() {
                         }}
                       >
                         Download ↓
+                        <span className="sr-only"> (opens in new tab)</span>
                       </a>
                     )}
                   </div>
@@ -586,7 +589,7 @@ export function VeteransTransferProject() {
                     style={{
                       fontFamily: MONO,
                       letterSpacing: "0.3em",
-                      color: STONE,
+                      color: SLATE,
                     }}
                   >
                     Episode {String(active.videoIdx + 1).padStart(2, "0")} of{" "}
@@ -599,6 +602,7 @@ export function VeteransTransferProject() {
                       style={{ color: INK }}
                     >
                       Full playlist ↗
+                      <span className="sr-only"> (opens in new tab)</span>
                     </a>
                   </p>
                 )}
@@ -625,7 +629,7 @@ export function VeteransTransferProject() {
                 style={{
                   fontFamily: MONO,
                   letterSpacing: "0.32em",
-                  color: STONE,
+                  color: SLATE,
                 }}
               >
                 Further · Inspiration
@@ -696,7 +700,7 @@ export function VeteransTransferProject() {
                         style={{
                           fontFamily: MONO,
                           letterSpacing: "0.3em",
-                          color: STONE,
+                          color: SLATE,
                         }}
                       >
                         Khan Academy
@@ -726,6 +730,7 @@ export function VeteransTransferProject() {
                       }}
                     >
                       Watch ↗
+                      <span className="sr-only"> (opens in new tab)</span>
                     </a>
                   </figcaption>
                 </figure>
@@ -761,7 +766,7 @@ export function VeteransTransferProject() {
                         style={{
                           fontFamily: MONO,
                           letterSpacing: "0.3em",
-                          color: STONE,
+                          color: SLATE,
                         }}
                       >
                         2014 · Carl Sagan
@@ -791,6 +796,7 @@ export function VeteransTransferProject() {
                       }}
                     >
                       Watch ↗
+                      <span className="sr-only"> (opens in new tab)</span>
                     </a>
                   </figcaption>
                 </figure>

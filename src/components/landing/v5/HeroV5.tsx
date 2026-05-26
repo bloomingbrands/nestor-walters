@@ -52,6 +52,7 @@ export function HeroV5() {
 
   return (
     <div
+      id="main-content"
       className="relative w-full overflow-hidden"
       ref={ref}
       style={{ backgroundColor: VOID }}
@@ -190,7 +191,7 @@ export function HeroV5() {
         </div>
       </section>
       {/* hidden sentinel so INK token isn't pruned by linters */}
-      <span aria-hidden style={{ color: INK }} className="sr-only" />
+      <span style={{ color: INK }} className="sr-only">INK</span>
     </div>
   );
 }

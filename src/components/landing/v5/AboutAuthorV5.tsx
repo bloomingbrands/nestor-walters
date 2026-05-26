@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 export function AboutAuthorV5() {
   return (
@@ -69,7 +69,7 @@ export function AboutAuthorV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
-                color: INK,
+                color: SLATE,
                 fontWeight: 500,
               }}
             >
@@ -93,7 +93,7 @@ export function AboutAuthorV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.32em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Veteran · Writer · Earth Scientist
@@ -134,7 +134,7 @@ export function AboutAuthorV5() {
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link
                 href="/v5/journal"
-                className="inline-flex items-center gap-3 px-5 py-2.5 text-[11px] uppercase transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-3 px-6 py-3 text-[11px] uppercase transition-opacity hover:opacity-90"
                 style={{
                   fontFamily: MONO,
                   letterSpacing: "0.3em",

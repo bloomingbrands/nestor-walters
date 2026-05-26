@@ -1,4 +1,4 @@
-import { PAPER, STONE, VOID, MONO, SANS } from "./tokens";
+import { PAPER, STONE, VOID, MONO, SANS, SLATE } from "./tokens";
 
 export function FooterV5() {
   const year = new Date().getFullYear();
@@ -18,7 +18,7 @@ export function FooterV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Sword · Circle · Pen
@@ -71,7 +71,7 @@ export function FooterV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Elsewhere
@@ -95,6 +95,7 @@ export function FooterV5() {
                     }}
                   >
                     {l.label}
+                    <span className="sr-only"> (opens in new tab)</span>
                   </a>
                 </li>
               ))}
@@ -133,6 +134,7 @@ export function FooterV5() {
               style={{ color: "rgba(255,254,255,0.85)" }}
             >
               Blooming Brands Inc
+              <span className="sr-only"> (opens in new tab)</span>
             </a>
           </p>
         </div>

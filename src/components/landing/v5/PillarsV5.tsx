@@ -1,4 +1,4 @@
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 type Pillar = {
   index: string;
@@ -98,7 +98,7 @@ export function PillarsV5() {
                 style={{
                   fontFamily: MONO,
                   letterSpacing: "0.32em",
-                  color: STONE,
+                  color: SLATE,
                 }}
               >
                 <span style={{ color: INK }}>{p.index}</span>
@@ -128,10 +128,10 @@ export function PillarsV5() {
               <div className="mt-2">
                 <a
                   href={p.href}
-                  className="inline-flex items-center gap-3 text-[11px] uppercase"
+                  className="inline-flex items-center gap-3 text-[11px] uppercase transition-opacity hover:opacity-80"
                   style={{
                     fontFamily: MONO,
-                    letterSpacing: "0.28em",
+                    letterSpacing: "0.3em",
                     color: VOID,
                     borderBottom: `1px solid ${INK}`,
                     paddingBottom: "4px",

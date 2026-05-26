@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { useEffect, useRef, useState } from "react";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 export type WritingCard = {
   call: string;
@@ -20,6 +20,12 @@ export type WritingCard = {
 
 export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  const closeModal = () => {
+    setOpenIdx(null);
+    setTimeout(() => triggerRef.current?.focus(), 0);
+  };
 
   useEffect(() => {
     if (openIdx === null) return;
@@ -54,7 +60,10 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
             >
               <button
                 type="button"
-                onClick={() => setOpenIdx(i)}
+                onClick={() => {
+                  triggerRef.current = document.activeElement as HTMLElement;
+                  setOpenIdx(i);
+                }}
                 className="block h-full w-full text-left"
               >
                 <article
@@ -80,7 +89,7 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
 
                   <div
                     className="flex items-center justify-between text-[10px] uppercase"
-                    style={{ letterSpacing: "0.3em", color: STONE }}
+                    style={{ letterSpacing: "0.3em", color: SLATE }}
                   >
                     <span>{c.call}</span>
                     <span>{c.year}</span>
@@ -127,7 +136,7 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
                   <div className="mt-6 flex items-center justify-between gap-3">
                     <span
                       className="text-[10px] uppercase"
-                      style={{ letterSpacing: "0.3em", color: STONE }}
+                      style={{ letterSpacing: "0.3em", color: SLATE }}
                     >
                       {c.status}
                     </span>
@@ -151,7 +160,7 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
       </ul>
 
       {open && (
-        <Modal card={open} onClose={() => setOpenIdx(null)} />
+        <Modal card={open} onClose={closeModal} />
       )}
     </>
   );
@@ -164,6 +173,31 @@ function Modal({
   card: WritingCard;
   onClose: () => void;
 }) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    dialog?.focus();
+    const handler = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const focusable = dialog?.querySelectorAll(
+        'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0] as HTMLElement;
+      const last = focusable[focusable.length - 1] as HTMLElement;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
   return (
     <div
       role="dialog"
@@ -174,6 +208,8 @@ function Modal({
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
+        tabIndex={-1}
         className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[860px] overflow-y-auto"
         style={{
           backgroundColor: PAPER,
@@ -197,7 +233,7 @@ function Modal({
             style={{
               fontFamily: MONO,
               letterSpacing: "0.32em",
-              color: STONE,
+              color: SLATE,
             }}
           >
             <span style={{ color: INK }}>{card.call}</span>
@@ -227,7 +263,7 @@ function Modal({
             style={{
               fontFamily: MONO,
               letterSpacing: "0.32em",
-              color: STONE,
+              color: SLATE,
             }}
           >
             {card.publication}
@@ -285,7 +321,7 @@ function Modal({
                   href={card.externalUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-fit items-center gap-3 px-5 py-2.5 text-[11px] uppercase"
+                  className="inline-flex w-fit items-center gap-3 px-6 py-3 text-[11px] uppercase"
                   style={{
                     fontFamily: MONO,
                     letterSpacing: "0.3em",
@@ -294,6 +330,7 @@ function Modal({
                   }}
                 >
                   {card.externalLabel ?? "View at publisher"}
+                  <span className="sr-only"> (opens in new tab)</span>
                   <span aria-hidden>↗</span>
                 </a>
               )}
@@ -323,7 +360,7 @@ function ExternalOnlyBody({ card }: { card: WritingCard }) {
           style={{
             fontFamily: MONO,
             letterSpacing: "0.32em",
-            color: STONE,
+            color: SLATE,
           }}
         >
           Where to find it

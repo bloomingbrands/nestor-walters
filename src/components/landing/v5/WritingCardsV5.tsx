@@ -1,6 +1,6 @@
 import { getPostBySlug } from "@/lib/wordpress";
 import { WritingCardsGrid, type WritingCard } from "./WritingCardsGrid";
-import { PAPER, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 type CardSeed = Omit<WritingCard, "hostedHtml" | "hostedDate"> & {
   wpSlug?: string;
@@ -107,7 +107,7 @@ export async function WritingCardsV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.32em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Stack · Selected

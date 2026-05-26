@@ -58,7 +58,11 @@ export function NewsletterV5() {
           }}
           className="mx-auto mt-12 flex max-w-md flex-col items-center gap-6"
         >
+          <label htmlFor="newsletter-email" className="sr-only">
+            Email address
+          </label>
           <input
+            id="newsletter-email"
             type="email"
             required
             disabled={submitted}
@@ -93,16 +97,19 @@ export function NewsletterV5() {
           <button
             type="submit"
             disabled={submitted || !email || !agree}
-            className="mt-2 px-8 py-3 text-[11px] uppercase transition-opacity disabled:opacity-40"
+            className="mt-2 inline-flex items-center gap-3 px-6 py-3 text-[11px] uppercase transition-opacity hover:opacity-90 disabled:cursor-not-allowed"
             style={{
               fontFamily: MONO,
-              letterSpacing: "0.32em",
+              letterSpacing: "0.3em",
               color: PAPER,
               backgroundColor: VOID,
             }}
           >
             {submitted ? "Received" : "Send"}
           </button>
+          <p aria-live="polite" className="sr-only">
+            {submitted ? "You have been subscribed." : ""}
+          </p>
         </form>
 
         <p

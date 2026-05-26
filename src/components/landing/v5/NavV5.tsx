@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { PAPER, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { useEffect, useRef, useState } from "react";
+import { PAPER, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 type Item = { label: string; href: string; section?: string };
 
@@ -23,6 +23,8 @@ export function NavV5() {
   const [active, setActive] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (pathname !== "/v5") return;
@@ -53,8 +55,33 @@ export function NavV5() {
 
   useEffect(() => {
     if (!menuOpen) return;
+    const menu = menuRef.current;
+    const hamburger = hamburgerRef.current;
+    setTimeout(() => {
+      const firstLink = menu?.querySelector("a");
+      firstLink?.focus();
+    }, 0);
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        setTimeout(() => hamburger?.focus(), 0);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const focusable = menu?.querySelectorAll(
+        'a[href], button, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0] as HTMLElement;
+      const last = focusable[focusable.length - 1] as HTMLElement;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
@@ -139,6 +166,7 @@ export function NavV5() {
 
           {/* Mobile hamburger */}
           <button
+            ref={hamburgerRef}
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -186,6 +214,7 @@ export function NavV5() {
       {/* Mobile menu overlay */}
       {menuOpen && (
         <div
+          ref={menuRef}
           className="fixed inset-0 z-30 md:hidden flex flex-col"
           style={{
             backgroundColor: PAPER,
@@ -198,7 +227,7 @@ export function NavV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
-                color: STONE,
+                color: SLATE,
               }}
             >
               Navigate
@@ -231,7 +260,7 @@ export function NavV5() {
                     style={{
                       fontFamily: MONO,
                       letterSpacing: "0.3em",
-                      color: STONE,
+                      color: SLATE,
                     }}
                   >
                     {isActive ? "Now" : "→"}
