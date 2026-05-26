@@ -33,17 +33,8 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
       if (e.key === "Escape") setOpenIdx(null);
     };
     document.addEventListener("keydown", onKey);
-    // Trap scroll inside the modal using overscroll-behavior instead of
-    // locking body overflow, which breaks touchpad wheel events.
-    const html = document.documentElement;
-    const prevOverflow = html.style.overflow;
-    html.style.overflow = "hidden";
-    const lenis = (window as unknown as { __v5Lenis?: { stop: () => void; start: () => void } }).__v5Lenis;
-    lenis?.stop();
     return () => {
       document.removeEventListener("keydown", onKey);
-      html.style.overflow = prevOverflow;
-      lenis?.start();
     };
   }, [openIdx]);
 
@@ -204,7 +195,7 @@ function Modal({
       role="dialog"
       aria-modal="true"
       aria-label={card.title}
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-8"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
       style={{ backgroundColor: "rgba(16,16,20,0.55)" }}
       onClick={onClose}
     >
@@ -216,7 +207,7 @@ function Modal({
           backgroundColor: PAPER,
           border: `1px solid ${STONE}`,
           color: INK,
-          maxHeight: "85dvh",
+          height: "85dvh",
         }}
         onClick={(e) => e.stopPropagation()}
       >
