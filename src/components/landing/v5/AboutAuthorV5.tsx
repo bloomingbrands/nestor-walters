@@ -28,7 +28,7 @@ export function AboutAuthorV5() {
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 py-24 md:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           {/* LEFT — rider painting on the left, two smaller images stacked on the right */}
-          <div className="lg:col-span-5 order-2 lg:order-1 lg:pt-[10%]">
+          <div className="lg:col-span-5 order-2 lg:order-1 lg:pt-[14%]">
             <div className="grid grid-cols-12 gap-4 md:gap-6 items-center">
               <div className="col-span-7">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
