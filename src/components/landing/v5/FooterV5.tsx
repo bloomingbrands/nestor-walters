@@ -128,7 +128,7 @@ export function FooterV5() {
               color: "rgba(255,254,255,0.5)",
             }}
           >
-            © {year} Nestor Walters
+            &copy; {year} Sword · Circle · Pen
           </p>
           <p
             className="text-[12px] uppercase"
