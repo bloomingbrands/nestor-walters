@@ -1,4 +1,4 @@
-import { PAPER, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { PAPER, STONE, VOID, MONO, SANS } from "./tokens";
 
 export function FooterV5() {
   const year = new Date().getFullYear();
@@ -129,7 +129,16 @@ export function FooterV5() {
               color: "rgba(255,254,255,0.5)",
             }}
           >
-            INK · {INK.toUpperCase()}
+            Designed by{" "}
+            <a
+              href="https://www.blooming-brands.com"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors"
+              style={{ color: "rgba(255,254,255,0.85)" }}
+            >
+              Blooming Brands Inc
+            </a>
           </p>
         </div>
       </div>
