@@ -21,7 +21,7 @@ export function FooterV5() {
                 color: STONE,
               }}
             >
-              Imprint
+              Sword · Circle · Pen
             </p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
