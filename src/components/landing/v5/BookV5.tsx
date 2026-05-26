@@ -125,7 +125,6 @@ export async function BookV5() {
             className="relative w-full max-w-[320px] overflow-hidden"
             style={{
               aspectRatio: "2 / 3",
-              backgroundColor: MIST,
               boxShadow: "0 30px 60px -25px rgba(16,16,20,0.35)",
             }}
           >
