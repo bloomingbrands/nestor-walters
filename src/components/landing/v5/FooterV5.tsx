@@ -12,7 +12,7 @@ export function FooterV5() {
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          <div className="md:col-span-5 flex flex-col items-center text-center">
+          <div className="md:col-span-5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/white-bold-logo.png"
@@ -41,7 +41,7 @@ export function FooterV5() {
             </p>
           </div>
 
-          <nav className="md:col-span-4 flex flex-col items-center text-center">
+          <nav className="md:col-span-4 flex flex-col items-center text-center justify-center">
             <p
               className="text-[12px] uppercase"
               style={{
@@ -78,7 +78,7 @@ export function FooterV5() {
             </ul>
           </nav>
 
-          <div className="md:col-span-3 flex flex-col items-center text-center">
+          <div className="md:col-span-3 flex flex-col items-center text-center justify-center">
             <p
               className="text-[12px] uppercase"
               style={{
