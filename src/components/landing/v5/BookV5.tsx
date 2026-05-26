@@ -121,7 +121,7 @@ export async function BookV5() {
           className="lg:col-span-4 flex items-center justify-center p-8 md:p-12 lg:p-16"
           style={{ borderRight: `1px solid ${STONE}`, backgroundColor: PAPER }}
         >
-          <div className="flex w-full max-w-[540px] gap-4">
+          <div className="flex w-full max-w-[640px] gap-4">
             {/* Front cover */}
             <div
               className="relative flex-1 overflow-hidden"
