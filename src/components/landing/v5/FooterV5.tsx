@@ -50,7 +50,7 @@ export function FooterV5() {
                 color: PAPER,
               }}
             >
-              Navigate
+              Quick Links
             </p>
             <ul className="mt-4 grid grid-cols-2 gap-3">
               {[
