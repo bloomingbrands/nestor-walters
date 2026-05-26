@@ -61,7 +61,7 @@ export function NewsletterV5() {
             type="email"
             required
             disabled={submitted}
-            placeholder="your address"
+            placeholder="your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full bg-transparent px-0 py-3 text-center text-sm outline-none"
