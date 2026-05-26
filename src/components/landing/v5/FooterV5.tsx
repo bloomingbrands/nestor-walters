@@ -14,7 +14,7 @@ export function FooterV5() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
             <p
-              className="text-[10px] uppercase"
+              className="text-[12px] uppercase"
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
@@ -30,7 +30,7 @@ export function FooterV5() {
               className="mt-4 h-16 w-auto select-none md:h-20"
             />
             <p
-              className="mt-4 text-sm leading-relaxed"
+              className="mt-4 text-base leading-relaxed"
               style={{
                 fontFamily: SANS,
                 color: "rgba(255,254,255,0.65)",
@@ -53,7 +53,7 @@ export function FooterV5() {
               <a
                 key={l.label}
                 href={l.href}
-                className="text-[11px] uppercase"
+                className="text-[13px] uppercase"
                 style={{
                   fontFamily: MONO,
                   letterSpacing: "0.28em",
@@ -67,7 +67,7 @@ export function FooterV5() {
 
           <div className="md:col-span-3">
             <p
-              className="text-[10px] uppercase"
+              className="text-[12px] uppercase"
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
@@ -87,7 +87,7 @@ export function FooterV5() {
                     href={l.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[11px]"
+                    className="text-[13px]"
                     style={{
                       fontFamily: MONO,
                       letterSpacing: "0.1em",
@@ -107,7 +107,7 @@ export function FooterV5() {
           style={{ borderTop: `1px solid rgba(189,189,196,0.18)` }}
         >
           <p
-            className="text-[10px] uppercase"
+            className="text-[12px] uppercase"
             style={{
               fontFamily: MONO,
               letterSpacing: "0.32em",
@@ -117,7 +117,7 @@ export function FooterV5() {
             © {year} Nestor Walters
           </p>
           <p
-            className="text-[10px] uppercase"
+            className="text-[12px] uppercase"
             style={{
               fontFamily: MONO,
               letterSpacing: "0.32em",
