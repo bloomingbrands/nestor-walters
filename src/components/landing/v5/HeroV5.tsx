@@ -41,10 +41,12 @@ export function HeroV5() {
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
+    (window as unknown as { __v5Lenis?: Lenis }).__v5Lenis = lenis;
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       if (trigger) gsap.killTweensOf(trigger);
       lenis.destroy();
+      delete (window as unknown as { __v5Lenis?: Lenis }).__v5Lenis;
     };
   }, []);
 

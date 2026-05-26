@@ -29,9 +29,14 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    // Pause Lenis (smooth-scroll) while modal is open so wheel events
+    // reach the modal panel instead of the document body.
+    const lenis = (window as unknown as { __v5Lenis?: { stop: () => void; start: () => void } }).__v5Lenis;
+    lenis?.stop();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
+      lenis?.start();
     };
   }, [openIdx]);
 
