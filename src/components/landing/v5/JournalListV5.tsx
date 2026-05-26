@@ -37,7 +37,7 @@ function PostCard({ post, index }: { post: WPPost; index: number }) {
       style={{ borderTop: `1px solid ${STONE}` }}
     >
       <Link
-        href={`/blog/${post.slug}`}
+        href={`/v5/journal/${post.slug}`}
         className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 md:py-12"
       >
         <div className="md:col-span-1">
