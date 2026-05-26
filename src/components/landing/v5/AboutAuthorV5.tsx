@@ -55,8 +55,15 @@ export function AboutAuthorV5() {
             </div>
           </div>
 
-          {/* RIGHT — copy */}
-          <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col">
+          {/* RIGHT — copy on a translucent paper card (no rounded corners) */}
+          <div
+            className="lg:col-span-7 order-1 lg:order-2 flex flex-col p-8 md:p-10 lg:p-12"
+            style={{
+              backgroundColor: "rgba(255,254,255,0.82)",
+              backdropFilter: "blur(4px)",
+              border: `1px solid ${STONE}`,
+            }}
+          >
             <p
               className="text-[10px] uppercase"
               style={{
