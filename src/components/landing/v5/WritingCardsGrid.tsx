@@ -204,14 +204,14 @@ function Modal({
       role="dialog"
       aria-modal="true"
       aria-label={card.title}
-      className="fixed inset-0 z-50 flex items-start justify-center"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-8"
       style={{ backgroundColor: "rgba(16,16,20,0.55)" }}
       onClick={onClose}
     >
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[1300px] flex flex-col"
+        className="relative w-full max-w-[1300px] overflow-y-auto"
         style={{
           backgroundColor: PAPER,
           border: `1px solid ${STONE}`,
@@ -222,7 +222,7 @@ function Modal({
       >
         {/* Header */}
         <div
-          className="shrink-0 flex items-center justify-between gap-4 px-6 md:px-10 py-4"
+          className="flex items-center justify-between gap-4 px-6 md:px-10 py-4"
           style={{
             backgroundColor: "rgba(255,254,255,0.96)",
             backdropFilter: "blur(6px)",
@@ -258,7 +258,7 @@ function Modal({
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-6 md:px-10 pt-10 pb-12">
+        <div className="px-6 md:px-10 pt-10 pb-12">
           <p
             className="text-[10px] uppercase"
             style={{
