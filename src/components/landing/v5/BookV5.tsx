@@ -125,7 +125,7 @@ export async function BookV5() {
             {/* Front cover */}
             <div
               className="relative overflow-hidden"
-              style={{ aspectRatio: "2 / 3", minWidth: "280px", maxWidth: "340px", flex: "1 1 280px" }}
+              style={{ aspectRatio: "2 / 3", minWidth: "300px", maxWidth: "360px", flex: "1 1 300px" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -137,7 +137,7 @@ export async function BookV5() {
             {/* Back cover */}
             <div
               className="relative overflow-hidden"
-              style={{ aspectRatio: "2 / 3", minWidth: "280px", maxWidth: "340px", flex: "1 1 280px" }}
+              style={{ aspectRatio: "2 / 3", minWidth: "300px", maxWidth: "360px", flex: "1 1 300px" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
