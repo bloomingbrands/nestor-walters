@@ -121,11 +121,11 @@ export async function BookV5() {
           className="lg:col-span-4 flex items-center justify-center p-8 md:p-12 lg:p-16"
           style={{ borderRight: `1px solid ${STONE}`, backgroundColor: PAPER }}
         >
-          <div className="flex w-full max-w-[640px] gap-4">
+          <div className="flex w-full gap-4 justify-center">
             {/* Front cover */}
             <div
-              className="relative flex-1 overflow-hidden"
-              style={{ aspectRatio: "2 / 3" }}
+              className="relative overflow-hidden"
+              style={{ aspectRatio: "2 / 3", minWidth: "260px", maxWidth: "320px", flex: "1 1 260px" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -136,8 +136,8 @@ export async function BookV5() {
             </div>
             {/* Back cover */}
             <div
-              className="relative flex-1 overflow-hidden"
-              style={{ aspectRatio: "2 / 3" }}
+              className="relative overflow-hidden"
+              style={{ aspectRatio: "2 / 3", minWidth: "260px", maxWidth: "320px", flex: "1 1 260px" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
