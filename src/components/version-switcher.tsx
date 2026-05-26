@@ -7,6 +7,7 @@ const versions = [
   { label: 'II',  name: 'Refined',   href: '/v2' },
   { label: 'III', name: 'Editorial', href: '/v3' },
   { label: 'IV',  name: 'Samuel',    href: '/v4' },
+  { label: 'V',   name: 'SCP',       href: '/v5' },
 ];
 
 export function VersionSwitcher() {

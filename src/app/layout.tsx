@@ -7,6 +7,7 @@ import {
   Caveat,
   Geist,
   Geist_Mono,
+  IBM_Plex_Mono,
 } from "next/font/google";
 import { BookCheckoutDrawerWrapper } from "@/components/checkout/book-checkout-drawer-wrapper";
 import { ConditionalShell } from "@/components/conditional-shell";
@@ -58,6 +59,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-ibm-plex-mono",
   display: "swap",
 });
 
@@ -116,7 +124,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${chivo.variable} ${cormorant.variable} ${spaceMono.variable} ${inter.variable} ${caveat.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${chivo.variable} ${cormorant.variable} ${spaceMono.variable} ${inter.variable} ${caveat.variable} ${geistSans.variable} ${geistMono.variable} ${ibmPlexMono.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-black text-zinc-100">
         <script
