@@ -27,110 +27,27 @@ export function AboutAuthorV5() {
 
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 py-24 md:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          {/* LEFT — three editorial plates */}
+          {/* LEFT — three editorial images, no framing */}
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative flex flex-col">
-              {/* Plate I — Rider painting (tall, object-contain so face isn't cropped) */}
-              <figure
-                className="relative w-[82%] ml-auto"
-                style={{
-                  border: `1px solid ${STONE}`,
-                  backgroundColor: PAPER,
-                  boxShadow: "0 30px 60px -30px rgba(16,16,20,0.25)",
-                }}
-              >
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{ aspectRatio: "3 / 4", backgroundColor: MIST }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/assets/nestor-and-rider-painting.png"
-                    alt="Nestor and Rider — painting"
-                    className="absolute inset-0 h-full w-full"
-                    style={{ objectFit: "contain", objectPosition: "center" }}
-                  />
-                </div>
-                <figcaption
-                  className="px-4 py-3 text-[10px] uppercase"
-                  style={{
-                    fontFamily: MONO,
-                    letterSpacing: "0.32em",
-                    color: STONE,
-                    borderTop: `1px solid ${STONE}`,
-                  }}
-                >
-                  Plate I · Nestor & Rider
-                </figcaption>
-              </figure>
-
-              {/* Plate II — Inspiration in a car (medium, overlapping upward) */}
-              <figure
-                className="relative w-[68%] -mt-16 md:-mt-24"
-                style={{
-                  border: `1px solid ${STONE}`,
-                  backgroundColor: PAPER,
-                  boxShadow: "0 30px 60px -30px rgba(16,16,20,0.3)",
-                }}
-              >
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{ aspectRatio: "4 / 3", backgroundColor: MIST }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/assets/inspiration-in-car.png"
-                    alt="Inspiration, in a car"
-                    className="absolute inset-0 h-full w-full"
-                    style={{ objectFit: "cover", objectPosition: "center" }}
-                  />
-                </div>
-                <figcaption
-                  className="px-4 py-3 text-[10px] uppercase"
-                  style={{
-                    fontFamily: MONO,
-                    letterSpacing: "0.32em",
-                    color: STONE,
-                    borderTop: `1px solid ${STONE}`,
-                  }}
-                >
-                  Plate II · Field notes
-                </figcaption>
-              </figure>
-
-              {/* Plate III — Nestor and Earth (small, right-aligned, overlapping upward) */}
-              <figure
-                className="relative w-[60%] ml-auto -mt-16 md:-mt-20"
-                style={{
-                  border: `1px solid ${STONE}`,
-                  backgroundColor: PAPER,
-                  boxShadow: "0 30px 60px -30px rgba(16,16,20,0.3)",
-                }}
-              >
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{ aspectRatio: "4 / 5", backgroundColor: MIST }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/assets/nestor-and-earth.png"
-                    alt="Nestor and Earth"
-                    className="absolute inset-0 h-full w-full"
-                    style={{ objectFit: "contain", objectPosition: "center" }}
-                  />
-                </div>
-                <figcaption
-                  className="px-4 py-3 text-[10px] uppercase"
-                  style={{
-                    fontFamily: MONO,
-                    letterSpacing: "0.32em",
-                    color: STONE,
-                    borderTop: `1px solid ${STONE}`,
-                  }}
-                >
-                  Plate III · Earth
-                </figcaption>
-              </figure>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/nestor-and-rider-painting.png"
+                alt="Nestor and Rider — painting"
+                className="w-[82%] ml-auto h-auto select-none"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/inspiration-in-car.png"
+                alt="Inspiration, in a car"
+                className="w-[68%] -mt-12 md:-mt-16 h-auto select-none"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/nestor-and-earth.png"
+                alt="Nestor and Earth"
+                className="w-[60%] ml-auto -mt-12 md:-mt-16 h-auto select-none"
+              />
             </div>
           </div>
 
