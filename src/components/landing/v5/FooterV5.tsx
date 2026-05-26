@@ -52,7 +52,7 @@ export function FooterV5() {
             >
               Navigate
             </p>
-            <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-3">
+            <ul className="mt-4 flex flex-col items-center gap-3">
               {[
                 { label: "Veterans", href: "#pillars" },
                 { label: "Science", href: "#pillars" },
