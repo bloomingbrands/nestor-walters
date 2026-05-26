@@ -131,11 +131,11 @@ export function FooterV5() {
             &copy; {year} Sword · Circle · Pen
           </p>
           <p
-            className="text-[12px] uppercase"
+            className="text-sm uppercase"
             style={{
               fontFamily: MONO,
               letterSpacing: "0.32em",
-              color: "rgba(255,254,255,0.5)",
+              color: "rgba(255,254,255,0.7)",
             }}
           >
             Designed by{" "}
@@ -144,7 +144,7 @@ export function FooterV5() {
               target="_blank"
               rel="noreferrer"
               className="transition-colors"
-              style={{ color: "rgba(255,254,255,0.85)" }}
+              style={{ color: PAPER }}
             >
               Blooming Brands Inc
               <span className="sr-only"> (opens in new tab)</span>
