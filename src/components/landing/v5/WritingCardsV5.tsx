@@ -110,7 +110,7 @@ export async function WritingCardsV5() {
                 color: SLATE,
               }}
             >
-              Stack · Selected
+              Published Writing
             </p>
             <h2
               className="mt-4 font-light leading-[1.02]"
