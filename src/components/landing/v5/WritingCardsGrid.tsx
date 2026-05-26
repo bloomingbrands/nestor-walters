@@ -211,7 +211,7 @@ function Modal({
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[1100px] h-full overflow-y-auto"
+        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[1300px] h-full overflow-y-auto"
         style={{
           backgroundColor: PAPER,
           border: `1px solid ${STONE}`,
@@ -384,22 +384,23 @@ function ModalProse({ html }: { html: string }) {
   return (
     <>
       <style>{`
-        .v5-modal-prose { font-family: ${SANS}; color: ${INK}; }
+        .v5-modal-prose { font-family: ${SANS}; color: ${INK}; column-count: 2; column-gap: 2.5rem; column-rule: 1px solid ${STONE}; }
+        @media (max-width: 768px) { .v5-modal-prose { column-count: 1; column-rule: none; } }
         .v5-modal-prose p { margin-bottom: 1.25rem; line-height: 1.75; font-size: 1.05rem; }
         .v5-modal-prose a { color: ${VOID}; text-decoration: underline; text-decoration-color: ${INK}; text-underline-offset: 4px; }
-        .v5-modal-prose h2, .v5-modal-prose h3 { color: ${VOID}; font-weight: 300; letter-spacing: -0.02em; margin-top: 2.5rem; margin-bottom: 1rem; line-height: 1.15; }
+        .v5-modal-prose h2, .v5-modal-prose h3 { color: ${VOID}; font-weight: 300; letter-spacing: -0.02em; margin-top: 2.5rem; margin-bottom: 1rem; line-height: 1.15; break-after: avoid; }
         .v5-modal-prose h2 { font-size: 1.875rem; }
         .v5-modal-prose h3 { font-size: 1.5rem; }
-        .v5-modal-prose blockquote { border-left: 1px solid ${INK}; padding-left: 1.5rem; margin: 1.75rem 0; font-style: italic; color: ${VOID}; }
+        .v5-modal-prose blockquote { border-left: 1px solid ${INK}; padding-left: 1.5rem; margin: 1.75rem 0; font-style: italic; color: ${VOID}; break-inside: avoid; }
         .v5-modal-prose ul, .v5-modal-prose ol { padding-left: 1.5rem; margin: 1rem 0 1.25rem; }
         .v5-modal-prose ul { list-style: disc; }
         .v5-modal-prose ol { list-style: decimal; }
         .v5-modal-prose li { margin-bottom: 0.5rem; }
         .v5-modal-prose img { max-width: 100%; height: auto; margin: 1.5rem 0; }
-        .v5-modal-prose figure { margin: 2rem 0; }
+        .v5-modal-prose figure { margin: 2rem 0; break-inside: avoid; }
         .v5-modal-prose code { background: ${MIST}; border: 1px solid ${STONE}; padding: 0.1em 0.4em; font-family: ${MONO}; font-size: 0.9em; color: ${VOID}; }
-        .v5-modal-prose pre { background: ${MIST}; border: 1px solid ${STONE}; padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; font-family: ${MONO}; font-size: 0.9em; color: ${INK}; }
-        .v5-modal-prose hr { border: 0; border-top: 1px solid ${STONE}; margin: 2.5rem 0; }
+        .v5-modal-prose pre { background: ${MIST}; border: 1px solid ${STONE}; padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; font-family: ${MONO}; font-size: 0.9em; color: ${INK}; break-inside: avoid; }
+        .v5-modal-prose hr { border: 0; border-top: 1px solid ${STONE}; margin: 2.5rem 0; break-inside: avoid; }
         .v5-modal-prose em { font-style: italic; }
         .v5-modal-prose strong { font-weight: 500; color: ${VOID}; }
       `}</style>
