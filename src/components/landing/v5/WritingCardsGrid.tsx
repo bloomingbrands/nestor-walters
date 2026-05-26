@@ -170,7 +170,18 @@ function Modal({
   useEffect(() => {
     const dialog = dialogRef.current;
     dialog?.focus();
-    const handler = (e: KeyboardEvent) => {
+
+    // Capture wheel events before Lenis smooth-scroll can intercept them,
+    // then manually scroll the modal panel.
+    const wheelHandler = (e: WheelEvent) => {
+      if (!dialog) return;
+      dialog.scrollTop += e.deltaY;
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    dialog?.addEventListener("wheel", wheelHandler, { passive: false, capture: true });
+
+    const keyHandler = (e: KeyboardEvent) => {
       if (e.key !== "Tab") return;
       const focusable = dialog?.querySelectorAll(
         'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
@@ -186,8 +197,12 @@ function Modal({
         first.focus();
       }
     };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
+    document.addEventListener("keydown", keyHandler);
+
+    return () => {
+      dialog?.removeEventListener("wheel", wheelHandler, { capture: true });
+      document.removeEventListener("keydown", keyHandler);
+    };
   }, []);
 
   return (
