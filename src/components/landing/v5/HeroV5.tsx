@@ -118,7 +118,7 @@ export function HeroV5() {
                   textShadow: "0 1px 4px rgba(16,16,20,0.6)",
                 }}
               >
-                No. 005 · A field edition
+                Helping veterans one at a time
               </p>
               <h1
                 className="text-center font-light leading-[0.95] tracking-tight"

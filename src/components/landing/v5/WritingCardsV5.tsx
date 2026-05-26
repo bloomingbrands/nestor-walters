@@ -1,69 +1,94 @@
-import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
+import { getPostBySlug } from "@/lib/wordpress";
+import { WritingCardsGrid, type WritingCard } from "./WritingCardsGrid";
+import { PAPER, STONE, INK, VOID, MONO, SANS } from "./tokens";
 
-type Card = {
-  call: string;
-  genre: string;
-  title: string;
-  publication: string;
-  year: string;
-  excerpt: string;
-  href?: string;
-  status?: "Published" | "Forthcoming" | "Slot reserved";
+type CardSeed = Omit<WritingCard, "hostedHtml" | "hostedDate"> & {
+  wpSlug?: string;
 };
 
-const CARDS: Card[] = [
+const CARD_SEEDS: CardSeed[] = [
   {
     call: "PR · 813 · NW",
     genre: "Fiction",
     title: "The Nursery",
-    publication: "The New England Review",
-    year: "Forthcoming",
+    publication: "The New England Review · 46.3–4",
+    year: "2025",
     excerpt:
-      "A short story about what we hand down — and what insists on being inherited anyway. Forthcoming in the pages of NER.",
-    href: "https://www.nereview.com",
-    status: "Forthcoming",
+      "A short story about what we hand down — and what insists on being inherited anyway. Read it in NER issue 46.3–4.",
+    status: "Published",
+    cta: "Order issue 46.3–4 →",
+    externalUrl: "https://www.nereview.com/single-issues/",
+    externalLabel: "Order from NER",
   },
   {
     call: "PR · 814 · NW",
-    genre: "Poem",
-    title: "Staring at the Horizon",
-    publication: "Periodical · TBD",
-    year: "—",
+    genre: "Poetry",
+    title: "The Glass Beach",
+    publication: "Strange Horizons",
+    year: "Forthcoming",
     excerpt:
-      "A poem on watchstanding — the long blue line where sky stops pretending to be water. Excerpt to be provided.",
-    status: "Published",
+      "A poem at the edge of the tideline — what the ocean returns once it's done with it.",
+    status: "Forthcoming",
+    cta: "Strange Horizons →",
+    externalUrl: "https://strangehorizons.com",
+    externalLabel: "Visit Strange Horizons",
   },
   {
     call: "PR · 815 · NW",
     genre: "Essay",
-    title: "Essay (title forthcoming)",
-    publication: "Periodical · TBD",
-    year: "—",
+    title: "Ensuring Tomorrows",
+    publication: "STANFORD Magazine",
+    year: "2024",
     excerpt:
-      "Selected essay from the collected nonfiction. Final selection and excerpt pending Nestor's pick.",
-    status: "Published",
+      "An essay on what gets handed to the next generation — service, science, and the long obligation of looking ahead.",
+    status: "Hosted here",
+    wpSlug: "the-impossible-dream",
+    externalUrl: "https://stanfordmag.org/contents/the-impossible-dream",
+    externalLabel: "Read at STANFORD Magazine",
   },
   {
     call: "PR · 816 · NW",
-    genre: "—",
-    title: "Reserved",
-    publication: "To be assigned",
+    genre: "Poetry",
+    title: "five ways to kill a mouse",
+    publication: "ISSUED Journal",
     year: "—",
-    excerpt: "Card slot held for a fourth work — Nestor to select.",
-    status: "Slot reserved",
+    excerpt:
+      "we burned the one in the sticky trap. it struggled against its tiny legs, writhing flames, fluttering like cloth in a strong wind.",
+    status: "Hosted here",
+    wpSlug: "five-ways-to-kill-a-mouse",
+    externalUrl: "https://issuedjournal.com/three-poems-by-nestor-walters/",
+    externalLabel: "Read at ISSUED Journal",
   },
   {
     call: "PR · 817 · NW",
-    genre: "—",
-    title: "Reserved",
-    publication: "To be assigned",
+    genre: "Review",
+    title: "Mercy for Heroes",
+    publication: "ISSUED Journal",
     year: "—",
-    excerpt: "Card slot held for a fifth work — Nestor to select.",
-    status: "Slot reserved",
+    excerpt:
+      "A review on the costs we ask soldiers to carry home, and the imagination it takes to meet them where they actually are.",
+    status: "Published",
+    cta: "ISSUED Journal →",
+    externalUrl: "https://issuedjournal.com/nestor-walters/",
+    externalLabel: "Read at ISSUED Journal",
   },
 ];
 
-export function WritingCardsV5() {
+export async function WritingCardsV5() {
+  const cards: WritingCard[] = await Promise.all(
+    CARD_SEEDS.map(async ({ wpSlug, ...rest }) => {
+      if (!wpSlug) {
+        return { ...rest, hostedHtml: null, hostedDate: null };
+      }
+      const post = await getPostBySlug(wpSlug);
+      return {
+        ...rest,
+        hostedHtml: post?.content.rendered ?? null,
+        hostedDate: post?.date ?? null,
+      };
+    }),
+  );
+
   return (
     <section
       id="writing"
@@ -107,131 +132,7 @@ export function WritingCardsV5() {
           </p>
         </header>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-[minmax(320px,auto)]">
-          {CARDS.map((c) => {
-            const isReserved = c.status === "Slot reserved";
-            const isFeatured = c.genre === "Essay";
-            const inner = (
-              <article
-                className="relative flex h-full flex-col p-6 md:p-7 transition-colors"
-                style={{
-                  backgroundColor: PAPER,
-                  border: `1px solid ${STONE}`,
-                  fontFamily: MONO,
-                  color: INK,
-                  minHeight: "320px",
-                }}
-              >
-                {/* corner perforations */}
-                <span
-                  aria-hidden
-                  className="absolute top-2 left-2 h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: STONE }}
-                />
-                <span
-                  aria-hidden
-                  className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: STONE }}
-                />
-
-                <div
-                  className="flex items-center justify-between text-[10px] uppercase"
-                  style={{ letterSpacing: "0.3em", color: STONE }}
-                >
-                  <span>{c.call}</span>
-                  <span>{c.year}</span>
-                </div>
-
-                <div
-                  className="mt-4 text-[11px] uppercase"
-                  style={{ letterSpacing: "0.3em", color: VOID }}
-                >
-                  {c.genre}
-                </div>
-
-                <h3
-                  className="mt-3 text-[1.45rem] leading-tight"
-                  style={{
-                    fontFamily: MONO,
-                    fontWeight: 500,
-                    color: VOID,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {c.title}
-                </h3>
-
-                <p
-                  className="mt-2 text-[11px] uppercase"
-                  style={{ letterSpacing: "0.22em", color: INK }}
-                >
-                  {c.publication}
-                </p>
-
-                <div
-                  className="my-5 h-px w-10"
-                  style={{ backgroundColor: STONE }}
-                />
-
-                <p
-                  className="text-[13px] leading-relaxed"
-                  style={{
-                    fontFamily: MONO,
-                    color: isReserved ? STONE : INK,
-                    flex: 1,
-                  }}
-                >
-                  {c.excerpt}
-                </p>
-
-                <div className="mt-6 flex items-center justify-between">
-                  <span
-                    className="text-[10px] uppercase"
-                    style={{ letterSpacing: "0.3em", color: STONE }}
-                  >
-                    {c.status}
-                  </span>
-                  {c.href && !isReserved && (
-                    <span
-                      className="text-[10px] uppercase"
-                      style={{
-                        letterSpacing: "0.3em",
-                        color: VOID,
-                        borderBottom: `1px solid ${INK}`,
-                        paddingBottom: "2px",
-                      }}
-                    >
-                      Read ↗
-                    </span>
-                  )}
-                </div>
-              </article>
-            );
-
-            return (
-              <li
-                key={c.call}
-                className={`h-full ${isFeatured ? "sm:row-span-2" : ""}`}
-              >
-                {c.href && !isReserved ? (
-                  <a
-                    href={c.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block h-full"
-                  >
-                    {inner}
-                  </a>
-                ) : (
-                  inner
-                )}
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* hidden sentinel — keeps MIST token referenced */}
-        <span aria-hidden style={{ color: MIST }} className="sr-only" />
+        <WritingCardsGrid cards={cards} />
       </div>
     </section>
   );
