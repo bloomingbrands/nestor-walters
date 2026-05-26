@@ -104,7 +104,7 @@ export function FooterV5() {
                     style={{
                       fontFamily: MONO,
                       letterSpacing: "0.1em",
-                      color: "rgba(255,254,255,0.8)",
+                      color: PAPER,
                     }}
                   >
                     {l.label}
