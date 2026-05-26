@@ -20,11 +20,12 @@ export function NewsletterV5() {
     >
       <div className="mx-auto max-w-3xl px-6 md:px-12 py-24 md:py-32 text-center">
         <p
-          className="text-[10px] uppercase"
+          className="text-[13px] md:text-[14px] uppercase"
           style={{
             fontFamily: MONO,
-            letterSpacing: "0.4em",
-            color: STONE,
+            letterSpacing: "0.38em",
+            color: INK,
+            fontWeight: 500,
           }}
         >
           Sign up to our newsletter
@@ -105,11 +106,12 @@ export function NewsletterV5() {
         </form>
 
         <p
-          className="mt-16 text-[10px] uppercase"
+          className="mt-16 text-[13px] md:text-[14px] uppercase"
           style={{
             fontFamily: MONO,
-            letterSpacing: "0.4em",
-            color: STONE,
+            letterSpacing: "0.38em",
+            color: INK,
+            fontWeight: 500,
           }}
         >
           Sword · Circle · Pen
