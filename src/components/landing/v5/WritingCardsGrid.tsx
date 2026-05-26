@@ -204,26 +204,25 @@ function Modal({
       role="dialog"
       aria-modal="true"
       aria-label={card.title}
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-hidden"
+      className="fixed inset-0 z-50 flex items-start justify-center"
       style={{ backgroundColor: "rgba(16,16,20,0.55)" }}
       onClick={onClose}
     >
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[1300px] h-full overflow-y-auto"
+        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[1300px] flex flex-col"
         style={{
           backgroundColor: PAPER,
           border: `1px solid ${STONE}`,
           color: INK,
-          maxHeight: "100dvh",
-          overscrollBehavior: "contain",
+          maxHeight: "85dvh",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Sticky header */}
+        {/* Header */}
         <div
-          className="sticky top-0 z-10 flex items-center justify-between gap-4 px-6 md:px-10 py-4"
+          className="shrink-0 flex items-center justify-between gap-4 px-6 md:px-10 py-4"
           style={{
             backgroundColor: "rgba(255,254,255,0.96)",
             backdropFilter: "blur(6px)",
@@ -259,7 +258,7 @@ function Modal({
           </button>
         </div>
 
-        <div className="px-6 md:px-10 pt-10 pb-12">
+        <div className="flex-1 overflow-y-auto px-6 md:px-10 pt-10 pb-12">
           <p
             className="text-[10px] uppercase"
             style={{
