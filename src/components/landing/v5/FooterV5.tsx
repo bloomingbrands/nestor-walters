@@ -87,7 +87,7 @@ export function FooterV5() {
                 color: SLATE,
               }}
             >
-              Elsewhere
+              Social
             </p>
             <ul className="mt-4 space-y-2">
               {[
