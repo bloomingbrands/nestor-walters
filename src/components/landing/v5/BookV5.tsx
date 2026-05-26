@@ -116,21 +116,36 @@ export async function BookV5() {
           </div>
         </div>
 
-        {/* MIDDLE — book cover */}
+        {/* MIDDLE — book covers */}
         <div
           className="lg:col-span-4 flex items-center justify-center p-8 md:p-12 lg:p-16"
           style={{ borderRight: `1px solid ${STONE}`, backgroundColor: PAPER }}
         >
-          <div
-            className="relative w-full max-w-[320px] overflow-hidden"
-            style={{ aspectRatio: "2 / 3" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/earth-day-eulogy.png"
-              alt="An Earth Day Eulogy — book cover"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+          <div className="flex w-full max-w-[540px] gap-4">
+            {/* Front cover */}
+            <div
+              className="relative flex-1 overflow-hidden"
+              style={{ aspectRatio: "2 / 3" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/earth-day-eulogy.png"
+                alt="An Earth Day Eulogy — front cover"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+            {/* Back cover */}
+            <div
+              className="relative flex-1 overflow-hidden"
+              style={{ aspectRatio: "2 / 3" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/Earth-day-eulogy-back-cover.png"
+                alt="An Earth Day Eulogy — back cover"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
 
