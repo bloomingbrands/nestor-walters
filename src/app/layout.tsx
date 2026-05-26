@@ -110,9 +110,9 @@ export const metadata: Metadata = {
     images: ["/assets/og/og-home.png"],
   },
   icons: {
-    icon: "/assets/ico.png",
-    shortcut: "/assets/ico.png",
-    apple: "/assets/ico.png",
+    icon: "/assets/bold-logo.png",
+    shortcut: "/assets/bold-logo.png",
+    apple: "/assets/bold-logo.png",
   },
 };
 

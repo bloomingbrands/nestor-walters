@@ -73,7 +73,7 @@ export function AboutAuthorV5() {
                 fontWeight: 500,
               }}
             >
-              The Author
+              About The Author
             </p>
 
             <h2

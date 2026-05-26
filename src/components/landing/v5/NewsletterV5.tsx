@@ -13,7 +13,7 @@ export function NewsletterV5() {
       id="newsletter"
       className="w-full"
       style={{
-        backgroundColor: MIST,
+        backgroundColor: PAPER,
         borderTop: `1px solid ${STONE}`,
         color: INK,
       }}
