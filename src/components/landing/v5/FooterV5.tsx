@@ -12,7 +12,7 @@ export function FooterV5() {
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          <div className="md:col-span-5">
+          <div className="md:col-span-5 flex flex-col items-center text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/white-bold-logo.png"
@@ -41,31 +41,44 @@ export function FooterV5() {
             </p>
           </div>
 
-          <nav className="md:col-span-4 grid grid-cols-2 gap-6 content-start">
-            {[
-              { label: "Veterans", href: "#pillars" },
-              { label: "Science", href: "#pillars" },
-              { label: "Writing", href: "#writing" },
-              { label: "The Book", href: "#book" },
-              { label: "Newsletter", href: "#newsletter" },
-              { label: "Journal", href: "/v5/journal" },
-            ].map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="text-[13px] uppercase"
-                style={{
-                  fontFamily: MONO,
-                  letterSpacing: "0.28em",
-                  color: PAPER,
-                }}
-              >
-                {l.label} ↗
-              </a>
-            ))}
+          <nav className="md:col-span-4 flex flex-col items-center text-center">
+            <p
+              className="text-[12px] uppercase"
+              style={{
+                fontFamily: MONO,
+                letterSpacing: "0.4em",
+                color: SLATE,
+              }}
+            >
+              Navigate
+            </p>
+            <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-3">
+              {[
+                { label: "Veterans", href: "#pillars" },
+                { label: "Science", href: "#pillars" },
+                { label: "Writing", href: "#writing" },
+                { label: "The Book", href: "#book" },
+                { label: "Newsletter", href: "#newsletter" },
+                { label: "Journal", href: "/v5/journal" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    className="text-[13px] uppercase"
+                    style={{
+                      fontFamily: MONO,
+                      letterSpacing: "0.28em",
+                      color: PAPER,
+                    }}
+                  >
+                    {l.label} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 flex flex-col items-center text-center">
             <p
               className="text-[12px] uppercase"
               style={{
