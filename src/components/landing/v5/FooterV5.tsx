@@ -78,7 +78,7 @@ export function FooterV5() {
             </ul>
           </nav>
 
-          <div className="md:col-span-3 flex flex-col items-start text-left justify-center">
+          <div className="md:col-span-3 flex flex-col items-start text-left justify-start">
             <p
               className="text-[12px] uppercase"
               style={{
