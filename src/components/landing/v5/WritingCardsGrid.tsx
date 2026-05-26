@@ -33,15 +33,16 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
       if (e.key === "Escape") setOpenIdx(null);
     };
     document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    // Pause Lenis (smooth-scroll) while modal is open so wheel events
-    // reach the modal panel instead of the document body.
+    // Trap scroll inside the modal using overscroll-behavior instead of
+    // locking body overflow, which breaks touchpad wheel events.
+    const html = document.documentElement;
+    const prevOverflow = html.style.overflow;
+    html.style.overflow = "hidden";
     const lenis = (window as unknown as { __v5Lenis?: { stop: () => void; start: () => void } }).__v5Lenis;
     lenis?.stop();
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
+      html.style.overflow = prevOverflow;
       lenis?.start();
     };
   }, [openIdx]);
@@ -210,12 +211,13 @@ function Modal({
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[860px] h-full overflow-y-auto"
+        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[1100px] h-full overflow-y-auto"
         style={{
           backgroundColor: PAPER,
           border: `1px solid ${STONE}`,
           color: INK,
           maxHeight: "100dvh",
+          overscrollBehavior: "contain",
         }}
         onClick={(e) => e.stopPropagation()}
       >
