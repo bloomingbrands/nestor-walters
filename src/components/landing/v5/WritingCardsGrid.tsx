@@ -203,19 +203,19 @@ function Modal({
       role="dialog"
       aria-modal="true"
       aria-label={card.title}
-      className="fixed inset-0 z-50 flex items-stretch justify-center"
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-hidden"
       style={{ backgroundColor: "rgba(16,16,20,0.55)" }}
       onClick={onClose}
     >
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[860px] overflow-y-auto"
+        className="relative my-0 sm:my-8 mx-0 sm:mx-6 w-full max-w-[860px] h-full overflow-y-auto"
         style={{
           backgroundColor: PAPER,
           border: `1px solid ${STONE}`,
           color: INK,
-          maxHeight: "100vh",
+          maxHeight: "100dvh",
         }}
         onClick={(e) => e.stopPropagation()}
       >
