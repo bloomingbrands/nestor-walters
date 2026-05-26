@@ -24,7 +24,7 @@ export function FooterV5() {
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
-                color: SLATE,
+                color: PAPER,
               }}
             >
               Sword · Circle · Pen
