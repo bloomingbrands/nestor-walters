@@ -41,7 +41,7 @@ export function FooterV5() {
             </p>
           </div>
 
-          <nav className="md:col-span-4 flex flex-col items-center text-center justify-center">
+          <nav className="md:col-span-4 flex flex-col items-start text-left justify-start">
             <p
               className="text-[12px] uppercase"
               style={{
