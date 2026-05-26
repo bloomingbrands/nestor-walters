@@ -1,3 +1,10 @@
+import {
+  getBookBySlug,
+  getBookPriceUsdCents,
+  wpPlainText,
+} from "@/lib/wordpress";
+import type { CartLine } from "@/context/cart-context";
+import { OrderBookButtonV5 } from "./OrderBookButtonV5";
 import { PAPER, MIST, STONE, INK, VOID, MONO, SANS } from "./tokens";
 
 // Drawings from the Earth Day Eulogy series (also used on v1).
@@ -8,7 +15,19 @@ const SIDE_IMAGES: { src: string; alt: string }[] = [
   { src: "/assets/EDE4_Rider_web.jpg", alt: "Rider" },
 ];
 
-export function BookV5() {
+export async function BookV5() {
+  const book = await getBookBySlug("an-earth-day-eulogy");
+  const priceCents = book ? getBookPriceUsdCents(book) : null;
+  const line: CartLine | null =
+    book && priceCents !== null
+      ? {
+          id: book.id,
+          slug: book.slug,
+          title: wpPlainText(book.title.rendered) || "An Earth Day Eulogy",
+          unitPriceCents: priceCents,
+        }
+      : null;
+
   return (
     <section
       id="book"
@@ -66,21 +85,20 @@ export function BookV5() {
           </div>
 
           <div className="mt-12 flex flex-col gap-4">
-            <a
-              href="https://ede-book.org"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-fit items-center gap-3 px-6 py-3 text-[11px] uppercase transition-colors"
-              style={{
-                fontFamily: MONO,
-                letterSpacing: "0.28em",
-                color: PAPER,
-                backgroundColor: VOID,
-              }}
-            >
-              Order the book
-              <span aria-hidden>→</span>
-            </a>
+            <OrderBookButtonV5 line={line} />
+            {line && (
+              <p
+                className="text-[10px] uppercase"
+                style={{
+                  fontFamily: MONO,
+                  letterSpacing: "0.28em",
+                  color: STONE,
+                }}
+              >
+                ${(line.unitPriceCents / 100).toFixed(2)} · ships from us ·
+                secure PayPal checkout
+              </p>
+            )}
             <a
               href="https://books2read.com"
               target="_blank"
