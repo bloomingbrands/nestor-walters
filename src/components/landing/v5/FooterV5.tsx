@@ -20,7 +20,7 @@ export function FooterV5() {
               className="h-16 w-auto select-none md:h-20"
             />
             <p
-              className="mt-4 text-[12px] uppercase"
+              className="mt-4 text-lg uppercase"
               style={{
                 fontFamily: MONO,
                 letterSpacing: "0.4em",
