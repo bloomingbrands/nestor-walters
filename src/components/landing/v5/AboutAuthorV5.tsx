@@ -145,19 +145,6 @@ export function AboutAuthorV5() {
                 Read the Journal
                 <span aria-hidden>→</span>
               </Link>
-              <a
-                href="#writing"
-                className="text-[11px] uppercase"
-                style={{
-                  fontFamily: MONO,
-                  letterSpacing: "0.3em",
-                  color: VOID,
-                  borderBottom: `1px solid ${INK}`,
-                  paddingBottom: "2px",
-                }}
-              >
-                Selected Work ↓
-              </a>
             </div>
           </div>
         </div>
