@@ -1,4 +1,4 @@
-import { PAPER, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
+import { PAPER, MIST, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 
 type Pillar = {
   index: string;
@@ -56,6 +56,42 @@ export function PillarsV5() {
               borderBottom: `1px solid ${STONE}`,
             }}
           >
+            <div
+              className="relative w-full overflow-hidden"
+              style={{
+                aspectRatio: "16 / 10",
+                backgroundColor: MIST,
+                borderBottom: `1px solid ${STONE}`,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={p.image}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(16,16,20,0.15) 0%, rgba(16,16,20,0) 35%, rgba(16,16,20,0.35) 100%)",
+                }}
+                aria-hidden
+              />
+              <div
+                className="absolute top-4 left-4 px-2 py-1 text-[10px] uppercase"
+                style={{
+                  fontFamily: MONO,
+                  letterSpacing: "0.3em",
+                  color: PAPER,
+                  backgroundColor: "rgba(16,16,20,0.55)",
+                  backdropFilter: "blur(2px)",
+                }}
+              >
+                {p.kicker}
+              </div>
+            </div>
+
             <div className="flex flex-col gap-3 p-5 md:p-6 lg:p-7">
               <div
                 className="text-[10px] uppercase"
