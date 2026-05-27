@@ -162,7 +162,7 @@ export function VeteransTransferProject() {
 
         <div className="relative mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 pt-40 md:pt-48 pb-20 md:pb-24">
           <Link
-            href="/v5"
+            href="/"
             className="inline-flex items-center gap-2 text-[10px] uppercase"
             style={{
               fontFamily: MONO,

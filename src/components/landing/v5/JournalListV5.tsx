@@ -37,7 +37,7 @@ function PostCard({ post, index }: { post: WPPost; index: number }) {
       style={{ borderTop: `1px solid ${STONE}` }}
     >
       <Link
-        href={`/v5/journal/${post.slug}`}
+        href={`/journal/${post.slug}`}
         className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 md:py-12"
       >
         <div className="md:col-span-1">
@@ -148,8 +148,8 @@ function Pager({
   totalPages: number;
 }) {
   if (totalPages <= 1) return null;
-  const prev = page > 1 ? `/v5/journal${page - 1 > 1 ? `?page=${page - 1}` : ""}` : null;
-  const next = page < totalPages ? `/v5/journal?page=${page + 1}` : null;
+  const prev = page > 1 ? `/journal${page - 1 > 1 ? `?page=${page - 1}` : ""}` : null;
+  const next = page < totalPages ? `/journal?page=${page + 1}` : null;
 
   return (
     <nav
@@ -222,7 +222,7 @@ export function JournalListV5({
       >
         <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 pt-40 md:pt-48 pb-16 md:pb-20">
           <Link
-            href="/v5"
+            href="/"
             className="inline-flex items-center gap-2 text-[10px] uppercase"
             style={{
               fontFamily: MONO,

@@ -133,7 +133,7 @@ export function AboutAuthorV5() {
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link
-                href="/v5/journal"
+                href="/journal"
                 className="inline-flex items-center gap-3 px-6 py-3 text-[11px] uppercase transition-opacity hover:opacity-90"
                 style={{
                   fontFamily: MONO,

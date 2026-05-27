@@ -9,7 +9,6 @@ import {
 import { NavV5 } from "@/components/landing/v5/NavV5";
 import { NewsletterV5 } from "@/components/landing/v5/NewsletterV5";
 import { FooterV5 } from "@/components/landing/v5/FooterV5";
-import { VersionSwitcher } from "@/components/version-switcher";
 import {
   PAPER,
   MIST,
@@ -53,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function V5JournalPostPage({ params }: Props) {
+export default async function JournalPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
@@ -69,13 +68,10 @@ export default async function V5JournalPostPage({ params }: Props) {
     "text-[1.05rem]",
     "md:text-[1.125rem]",
     "leading-[1.75]",
-    // Anchors
     "[&_a]:underline",
     "[&_a]:underline-offset-4",
     "[&_a]:decoration-1",
-    // Paragraphs
     "[&_p]:mb-5",
-    // Headings
     "[&_h2]:mt-12",
     "[&_h2]:mb-4",
     "[&_h2]:text-3xl",
@@ -88,11 +84,9 @@ export default async function V5JournalPostPage({ params }: Props) {
     "[&_h3]:text-2xl",
     "[&_h3]:font-light",
     "[&_h3]:tracking-tight",
-    // Blockquote
     "[&_blockquote]:my-8",
     "[&_blockquote]:pl-6",
     "[&_blockquote]:italic",
-    // Lists
     "[&_ul]:list-disc",
     "[&_ul]:pl-6",
     "[&_ul]:mb-5",
@@ -100,15 +94,12 @@ export default async function V5JournalPostPage({ params }: Props) {
     "[&_ol]:pl-6",
     "[&_ol]:mb-5",
     "[&_li]:mb-2",
-    // Media
     "[&_figure]:my-10",
     "[&_img]:my-6",
     "[&_img]:h-auto",
     "[&_img]:max-w-full",
-    // Inline emphasis
     "[&_em]:italic",
     "[&_strong]:font-medium",
-    // Code
     "[&_code]:px-1.5",
     "[&_code]:py-0.5",
     "[&_code]:text-[0.9em]",
@@ -130,7 +121,7 @@ export default async function V5JournalPostPage({ params }: Props) {
         >
           <div className="mx-auto max-w-[920px] px-6 md:px-12 lg:px-16 pt-36 md:pt-44 pb-12 md:pb-16">
             <Link
-              href="/v5/journal"
+              href="/journal"
               className="inline-flex items-center gap-2 text-[10px] uppercase"
               style={{
                 fontFamily: MONO,
@@ -233,7 +224,7 @@ export default async function V5JournalPostPage({ params }: Props) {
             style={{ borderTop: `1px solid ${STONE}` }}
           >
             <Link
-              href="/v5/journal"
+              href="/journal"
               className="text-[11px] uppercase"
               style={{
                 fontFamily: MONO,
@@ -261,7 +252,6 @@ export default async function V5JournalPostPage({ params }: Props) {
       </main>
       <NewsletterV5 />
       <FooterV5 />
-      <VersionSwitcher />
     </>
   );
 }

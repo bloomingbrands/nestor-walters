@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart, type CartLine } from "@/context/cart-context";
-import { PAPER, STONE, INK, VOID, MONO } from "./tokens";
+import { PAPER, INK, VOID, MONO } from "./tokens";
 
 type Props = {
   line: CartLine | null;

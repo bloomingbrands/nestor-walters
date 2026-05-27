@@ -15,7 +15,7 @@ const PILLARS: Pillar[] = [
     kicker: "Sword",
     title: "Veterans Transfer Project",
     body: "Unlocking the untapped veteran intellectual potential — personal statements, recommendation letters, and resume preparation, drawn from those who have done it.",
-    href: "/v5/veterans-transfer-project",
+    href: "/veterans-transfer-project",
     image:
       "/assets/vtp01.png",
   },
@@ -24,7 +24,7 @@ const PILLARS: Pillar[] = [
     kicker: "Circle",
     title: "Science",
     body: "Doctoral research in earth science at the University of Maine. Field notes from where the planet keeps the longer record.",
-    href: "/v5/science",
+    href: "/science",
     image: "/assets/sceince01.png",
   },
   {
@@ -32,7 +32,7 @@ const PILLARS: Pillar[] = [
     kicker: "Pen",
     title: "Writing",
     body: "Fiction, poetry, and essays born from service, science, and the long work of paying attention.",
-    href: "/v5/writing",
+    href: "/writing",
     image:
       "/assets/writing01.png",
   },

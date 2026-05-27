@@ -4,7 +4,6 @@ import { NavV5 } from "@/components/landing/v5/NavV5";
 import { JournalListV5 } from "@/components/landing/v5/JournalListV5";
 import { NewsletterV5 } from "@/components/landing/v5/NewsletterV5";
 import { FooterV5 } from "@/components/landing/v5/FooterV5";
-import { VersionSwitcher } from "@/components/version-switcher";
 import { getPublishedPostsPage, POSTS_PER_PAGE } from "@/lib/wordpress";
 
 type Props = {
@@ -27,7 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function JournalV5Page({ searchParams }: Props) {
+export default async function JournalPage({ searchParams }: Props) {
   const { page: raw } = await searchParams;
   const pageNum = Math.max(1, parseInt(raw ?? "1", 10) || 1);
 
@@ -38,7 +37,7 @@ export default async function JournalV5Page({ searchParams }: Props) {
 
   if (totalPages > 0 && pageNum > totalPages) {
     redirect(
-      totalPages <= 1 ? "/v5/journal" : `/v5/journal?page=${totalPages}`,
+      totalPages <= 1 ? "/journal" : `/journal?page=${totalPages}`,
     );
   }
 
@@ -53,7 +52,6 @@ export default async function JournalV5Page({ searchParams }: Props) {
       />
       <NewsletterV5 />
       <FooterV5 />
-      <VersionSwitcher />
     </>
   );
 }

@@ -8,12 +8,12 @@ import { PAPER, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 type Item = { label: string; href: string; section?: string };
 
 const ITEMS: Item[] = [
-  { label: "Veterans", href: "/v5/veterans-transfer-project", section: "pillars" },
-  { label: "Science", href: "/v5/science", section: "pillars" },
-  { label: "Writing", href: "/v5/writing", section: "writing" },
-  { label: "The Book", href: "/v5#book", section: "book" },
-  { label: "About", href: "/v5#about", section: "about" },
-  { label: "Journal", href: "/v5/journal" },
+  { label: "Veterans", href: "/veterans-transfer-project", section: "pillars" },
+  { label: "Science", href: "/science", section: "pillars" },
+  { label: "Writing", href: "/writing", section: "writing" },
+  { label: "The Book", href: "/#book", section: "book" },
+  { label: "About", href: "/#about", section: "about" },
+  { label: "Journal", href: "/journal" },
 ];
 
 const SECTIONS = ["pillars", "book", "writing", "about", "newsletter"];
@@ -27,7 +27,7 @@ export function NavV5() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (pathname !== "/v5") return;
+    if (pathname !== "/") return;
 
     const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
@@ -92,7 +92,7 @@ export function NavV5() {
     };
   }, [menuOpen]);
 
-  const isHome = pathname === "/v5";
+  const isHome = pathname === "/";
   const solid = scrolled || !isHome || menuOpen;
 
   return (
@@ -107,7 +107,7 @@ export function NavV5() {
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-12 py-4">
           <Link
-            href="/v5"
+            href="/"
             className="text-[10px] sm:text-[11px] uppercase"
             style={{
               fontFamily: MONO,
@@ -152,7 +152,7 @@ export function NavV5() {
           </nav>
 
           <Link
-            href="/v5#book"
+            href="/#book"
             className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-[10px] uppercase transition-colors"
             style={{
               fontFamily: MONO,
@@ -270,7 +270,7 @@ export function NavV5() {
             })}
 
             <Link
-              href="/v5#book"
+              href="/#book"
               onClick={() => setMenuOpen(false)}
               className="mt-6 inline-flex w-full items-center justify-center gap-3 px-5 py-4 text-[12px] uppercase"
               style={{

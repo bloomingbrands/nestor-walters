@@ -3,7 +3,6 @@ import { NavV5 } from "@/components/landing/v5/NavV5";
 import { VeteransTransferProject } from "@/components/landing/v5/VeteransTransferProject";
 import { NewsletterV5 } from "@/components/landing/v5/NewsletterV5";
 import { FooterV5 } from "@/components/landing/v5/FooterV5";
-import { VersionSwitcher } from "@/components/version-switcher";
 
 export const metadata: Metadata = {
   title: "Veterans Transfer Project — Sword · Circle · Pen",
@@ -19,7 +18,6 @@ export default function VeteransTransferProjectPage() {
       <VeteransTransferProject />
       <NewsletterV5 />
       <FooterV5 />
-      <VersionSwitcher />
     </>
   );
 }

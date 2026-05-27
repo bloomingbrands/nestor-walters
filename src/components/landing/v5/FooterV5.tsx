@@ -1,4 +1,4 @@
-import { PAPER, STONE, VOID, MONO, SANS, SLATE } from "./tokens";
+import { PAPER, VOID, MONO, SANS } from "./tokens";
 
 export function FooterV5() {
   const year = new Date().getFullYear();
@@ -59,7 +59,7 @@ export function FooterV5() {
                 { label: "Writing", href: "#writing" },
                 { label: "The Book", href: "#book" },
                 { label: "Newsletter", href: "#newsletter" },
-                { label: "Journal", href: "/v5/journal" },
+                { label: "Journal", href: "/journal" },
               ].map((l) => (
                 <li key={l.label}>
                   <a

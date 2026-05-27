@@ -3,7 +3,6 @@ import { NavV5 } from "@/components/landing/v5/NavV5";
 import { SubpageShell } from "@/components/landing/v5/SubpageShell";
 import { NewsletterV5 } from "@/components/landing/v5/NewsletterV5";
 import { FooterV5 } from "@/components/landing/v5/FooterV5";
-import { VersionSwitcher } from "@/components/version-switcher";
 
 export const metadata: Metadata = {
   title: "Writing — Sword · Circle · Pen",
@@ -42,7 +41,6 @@ export default function WritingPage() {
       />
       <NewsletterV5 />
       <FooterV5 />
-      <VersionSwitcher />
     </>
   );
 }
