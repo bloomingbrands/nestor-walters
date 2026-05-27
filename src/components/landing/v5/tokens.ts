@@ -6,4 +6,4 @@ export const INK = "#3a3a40";
 export const VOID = "#101014";
 
 export const MONO = "var(--font-ibm-plex-mono), monospace";
-export const SANS = "var(--font-geist-sans), system-ui, sans-serif";
+export const SANS = "var(--font-cormorant), Georgia, serif";

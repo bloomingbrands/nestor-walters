@@ -21,6 +21,19 @@ const CARD_SEEDS: CardSeed[] = [
     externalLabel: "Order from NER",
   },
   {
+    call: "PR · 815 · NW",
+    genre: "Essay",
+    title: "Ensuring Tomorrows",
+    publication: "STANFORD Magazine",
+    year: "2024",
+    excerpt:
+      "...It is possible, as some cosmologists believe, that we will one day command the energy of a galaxy and escape to another universe altogether. But first, each tomorrow must come. And we come from a long line of ancestors who, when faced with an endless desert, a barren field, or a crashing ocean with no land in sight, decided to take one more step, plant one more seed; to look up at the stars and hoist, one last time, some ragged and windbeaten sail....",
+    status: "Hosted here",
+    wpSlug: "the-impossible-dream",
+    externalUrl: "https://stanfordmag.org/contents/the-impossible-dream",
+    externalLabel: "Read at STANFORD Magazine",
+  },
+  {
     call: "PR · 814 · NW",
     genre: "Poetry",
     title: "The Glass Beach",
@@ -32,19 +45,6 @@ const CARD_SEEDS: CardSeed[] = [
     cta: "Strange Horizons →",
     externalUrl: "https://strangehorizons.com",
     externalLabel: "Visit Strange Horizons",
-  },
-  {
-    call: "PR · 815 · NW",
-    genre: "Essay",
-    title: "Ensuring Tomorrows",
-    publication: "STANFORD Magazine",
-    year: "2024",
-    excerpt:
-      "An essay on what gets handed to the next generation — service, science, and the long obligation of looking ahead.",
-    status: "Hosted here",
-    wpSlug: "the-impossible-dream",
-    externalUrl: "https://stanfordmag.org/contents/the-impossible-dream",
-    externalLabel: "Read at STANFORD Magazine",
   },
   {
     call: "PR · 816 · NW",

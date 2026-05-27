@@ -38,21 +38,6 @@ export function SubpageShell({
           style={{ backgroundColor: MIST }}
           aria-hidden
         />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={image}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ opacity: 0.55 }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(255,254,255,0.4) 0%, rgba(255,254,255,0.85) 70%, #fffeff 100%)",
-          }}
-          aria-hidden
-        />
 
         <div className="relative mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16 pt-40 md:pt-48 pb-24 md:pb-32">
           <Link

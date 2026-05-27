@@ -42,13 +42,13 @@ export function WritingCardsGrid({ cards }: { cards: WritingCard[] }) {
 
   return (
     <>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-[minmax(320px,auto)]">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-[minmax(320px,auto)] grid-flow-dense">
         {cards.map((c, i) => {
           const isFeatured = c.genre === "Essay";
           return (
             <li
               key={c.call}
-              className={`h-full ${isFeatured ? "sm:row-span-2" : ""}`}
+              className={`h-full ${isFeatured ? "sm:row-span-2 lg:col-start-2" : ""}`}
             >
               <button
                 type="button"

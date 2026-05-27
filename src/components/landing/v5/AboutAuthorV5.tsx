@@ -112,11 +112,10 @@ export function AboutAuthorV5() {
                 maxWidth: "56ch",
               }}
             >
-              Born in Bangladesh, raised in Greece, served ten years in the
-              U.S. Navy. Transferred to college for math and creative writing,
-              then completed a master&rsquo;s in computational engineering.
-              Now pursuing doctoral studies in earth science at the
-              University of Maine.
+              Nestor was born in Bangladesh, raised in Greece, served ten years
+              in the U.S. Navy, then left the Navy to study math, writing, and
+              computational engineering in college. He is now a doctoral
+              student in earth and climate science at the University of Maine.
             </p>
 
             <p
@@ -127,11 +126,10 @@ export function AboutAuthorV5() {
                 maxWidth: "56ch",
               }}
             >
-              Fiction, poetry, and essays born from service, science, and the
-              long work of paying attention.
+              Essays, field notes, and stray thoughts:
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
                 href="/journal"
                 className="inline-flex items-center gap-3 px-6 py-3 text-[11px] uppercase transition-opacity hover:opacity-90"
@@ -142,7 +140,7 @@ export function AboutAuthorV5() {
                   backgroundColor: VOID,
                 }}
               >
-                Read the Journal
+                Read the journal
                 <span aria-hidden>→</span>
               </Link>
             </div>

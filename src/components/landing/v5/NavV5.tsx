@@ -8,15 +8,14 @@ import { PAPER, STONE, INK, VOID, MONO, SANS, SLATE } from "./tokens";
 type Item = { label: string; href: string; section?: string };
 
 const ITEMS: Item[] = [
+  { label: "Journal", href: "/journal" },
   { label: "Veterans", href: "/veterans-transfer-project", section: "pillars" },
   { label: "Science", href: "/science", section: "pillars" },
   { label: "Writing", href: "/writing", section: "writing" },
-  { label: "The Book", href: "/#book", section: "book" },
   { label: "About", href: "/#about", section: "about" },
-  { label: "Journal", href: "/journal" },
 ];
 
-const SECTIONS = ["pillars", "book", "writing", "about", "newsletter"];
+const SECTIONS = ["pillars", "writing", "about", "newsletter"];
 
 export function NavV5() {
   const pathname = usePathname();
@@ -116,7 +115,7 @@ export function NavV5() {
               mixBlendMode: solid ? "normal" : "difference",
             }}
           >
-            Sword · Circle · Pen
+            Sword Circle Pen
           </Link>
 
           <nav className="hidden md:flex items-center gap-7">

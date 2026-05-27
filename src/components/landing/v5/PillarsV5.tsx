@@ -31,7 +31,7 @@ const PILLARS: Pillar[] = [
     index: "III",
     kicker: "Pen",
     title: "Writing",
-    body: "Fiction, poetry, and essays born from service, science, and the long work of paying attention.",
+    body: "Essays, field notes, and stray thoughts.",
     href: "/writing",
     image:
       "/assets/writing01.png",

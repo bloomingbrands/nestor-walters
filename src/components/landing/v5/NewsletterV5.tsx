@@ -28,7 +28,7 @@ export function NewsletterV5() {
             fontWeight: 500,
           }}
         >
-          Sign up to our newsletter
+          Newsletter
         </p>
 
         <h2
@@ -40,15 +40,14 @@ export function NewsletterV5() {
             color: VOID,
           }}
         >
-          New work, when there is something worth saying.
+          Irregular notes from the field, the code, and the road.
         </h2>
 
         <p
           className="mx-auto mt-6 max-w-xl text-base leading-relaxed"
           style={{ fontFamily: SANS, color: INK }}
         >
-          Essays, field notes, and stray thoughts arrive irregularly. No
-          schedule, no noise.
+          No schedule, no noise.
         </p>
 
         <form
@@ -121,7 +120,7 @@ export function NewsletterV5() {
             fontWeight: 500,
           }}
         >
-          Sword · Circle · Pen
+          Sword Circle Pen
         </p>
       </div>
     </section>

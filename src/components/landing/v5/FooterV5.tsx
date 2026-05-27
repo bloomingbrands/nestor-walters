@@ -27,7 +27,7 @@ export function FooterV5() {
                 color: PAPER,
               }}
             >
-              Sword · Circle · Pen
+              Sword Circle Pen
             </p>
             <p
               className="mt-2 text-base leading-relaxed"
@@ -54,12 +54,11 @@ export function FooterV5() {
             </p>
             <ul className="mt-4 grid grid-cols-2 gap-3">
               {[
+                { label: "Journal", href: "/journal" },
                 { label: "Veterans", href: "#pillars" },
                 { label: "Science", href: "#pillars" },
                 { label: "Writing", href: "#writing" },
-                { label: "The Book", href: "#book" },
                 { label: "Newsletter", href: "#newsletter" },
-                { label: "Journal", href: "/journal" },
               ].map((l) => (
                 <li key={l.label}>
                   <a
@@ -128,7 +127,7 @@ export function FooterV5() {
               color: "rgba(255,254,255,0.5)",
             }}
           >
-            &copy; {year} Sword · Circle · Pen
+            &copy; {year} Sword Circle Pen
           </p>
           <p
             className="text-sm uppercase"
