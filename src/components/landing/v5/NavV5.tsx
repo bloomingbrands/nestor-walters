@@ -122,7 +122,8 @@ export function NavV5() {
             {ITEMS.map((it) => {
               const isActive =
                 (isHome && it.section && active === it.section) ||
-                (!isHome && pathname === it.href);
+                (!isHome && pathname === it.href) ||
+                (isHome && !active && it.label === "Journal");
               const baseColor = solid ? (isActive ? VOID : INK) : PAPER;
               return (
                 <Link
@@ -234,7 +235,8 @@ export function NavV5() {
             {ITEMS.map((it) => {
               const isActive =
                 (isHome && it.section && active === it.section) ||
-                (!isHome && pathname === it.href);
+                (!isHome && pathname === it.href) ||
+                (isHome && !active && it.label === "Journal");
               return (
                 <Link
                   key={it.href}
